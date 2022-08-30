@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="60dp"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="0dp"
+    app:cardUseCompatPadding="false">
+
+    <com.xuexiang.xui.widget.layout.XUILinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.xuexiang.xui.widget.layout.XUIFrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#3FA796"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="恭喜你获得植物！"
+                android:textColor="@color/white"
+                android:textSize="20dp" />
+
+            <ImageView
+                android:id="@+id/close"
+                android:layout_width="15dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="end|center_vertical"
+                android:layout_marginRight="15dp"
+                android:src="@mipmap/cancel" />
+
+        </com.xuexiang.xui.widget.layout.XUIFrameLayout>
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/plant"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="girl_start_plant.json"
+            app:lottie_loop="false" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:src="#EDEEF4" />
+
+        <com.xuexiang.xui.widget.layout.XUILinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <com.xuexiang.xui.widget.layout.XUIButton
+                android:id="@+id/goto_my_garden"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:text="前往查看"
+                android:textColor="#80CBC4" />
+
+            <ImageView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:src="#EDEEF4" />
+
+            <com.xuexiang.xui.widget.layout.XUIButton
+                android:id="@+id/btn_ok"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:text="关闭"
+                android:textColor="@color/input_dvier" />
+        </com.xuexiang.xui.widget.layout.XUILinearLayout>
+    </com.xuexiang.xui.widget.layout.XUILinearLayout>
+</com.google.android.material.card.MaterialCardView>

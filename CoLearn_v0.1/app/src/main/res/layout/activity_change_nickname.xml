@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.xuexiang.xui.widget.layout.XUILinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8F9FE"
+    android:orientation="vertical">
+
+    <com.xuexiang.xui.widget.layout.XUILinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="9"
+        android:orientation="vertical">
+
+        <com.hjq.bar.TitleBar
+            android:id="@+id/title_bar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:leftIcon="@mipmap/arrow_left"
+            app:leftIconWidth="35dp"
+            app:title="编辑昵称" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="40dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="0dp"
+            app:cardUseCompatPadding="true"
+            app:strokeColor="#EAEFF5"
+            app:strokeWidth="1.5dp">
+
+            <com.xuexiang.xui.widget.layout.XUILinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.xuexiang.xui.widget.layout.XUILinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_marginVertical="0dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:layout_marginTop="16dp"
+                        android:gravity="start"
+                        android:textAlignment="viewStart">
+
+                        <com.xuexiang.xui.widget.edittext.materialedittext.MaterialEditText
+                            android:id="@+id/new_nickname"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginHorizontal="20dp"
+                            android:hint="请输入新的昵称"
+                            android:textAlignment="viewStart"
+                            app:met_allowEmpty="false"
+                            app:met_hideUnderline="true"
+                            app:pet_enableIconAlpha="true" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                </com.xuexiang.xui.widget.layout.XUILinearLayout>
+            </com.xuexiang.xui.widget.layout.XUILinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </com.xuexiang.xui.widget.layout.XUILinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/white"
+        android:elevation="0dp">
+
+        <com.xuexiang.xui.widget.layout.XUIButton
+            android:id="@+id/confirm_btn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="92dp"
+            android:layout_marginVertical="17dp"
+            android:background="#E6F15C58"
+            android:text="确认"
+            android:textSize="20dp" />
+    </androidx.cardview.widget.CardView>
+</com.xuexiang.xui.widget.layout.XUILinearLayout>

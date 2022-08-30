@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.xuexiang.xui.widget.layout.XUILinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8F9FE"
+    android:orientation="vertical"
+    tools:context=".my.DataSynchronize">
+
+    <com.hjq.bar.TitleBar
+        android:id="@+id/title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:leftIcon="@mipmap/arrow_left"
+        app:leftIconWidth="35dp"
+        app:title="数据同步" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="30dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="0dp"
+        app:cardUseCompatPadding="true"
+        app:strokeColor="#EAEFF5"
+        app:strokeWidth="1.5dp">
+
+        <com.xuexiang.xui.widget.layout.XUILinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.xuexiang.xui.widget.layout.XUILinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="57dp"
+                android:layout_marginVertical="3dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="30dp"
+                    android:src="@mipmap/data_synchronization" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:text="自动同步"
+                    android:textSize="13dp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="7dp"
+                    android:layout_weight="5"
+                    android:gravity="center_vertical|right"
+                    android:text=""
+                    android:textColor="#B3B8C1"
+                    android:textSize="12dp" />
+
+                <com.xuexiang.xui.widget.button.switchbutton.SwitchButton
+                    android:id="@+id/switchBtn"
+                    style="@style/SwitchButtonStyle"
+                    android:layout_width="80dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="2dp"
+                    app:swb_animationDuration="300"
+                    app:swb_backDrawable="@drawable/ios_back_drawable"
+                    app:swb_thumbDrawable="@drawable/ios_thumb_selector"
+                    app:swb_thumbMarginBottom="-8dp"
+                    app:swb_thumbMarginLeft="-5dp"
+                    app:swb_thumbMarginRight="-5dp"
+                    app:swb_thumbMarginTop="-2.5dp"
+                    app:swb_thumbRangeRatio="1.6" />
+            </com.xuexiang.xui.widget.layout.XUILinearLayout>
+        </com.xuexiang.xui.widget.layout.XUILinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="0dp"
+        app:cardUseCompatPadding="true"
+        app:strokeColor="#EAEFF5"
+        app:strokeWidth="1.5dp">
+
+        <com.xuexiang.xui.widget.layout.XUILinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.xuexiang.xui.widget.layout.XUILinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="57dp"
+                android:layout_marginVertical="3dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="30dp"
+                    android:src="@mipmap/clock" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:text="自动同步"
+                    android:textSize="13dp" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="7dp"
+                    android:layout_weight="5"
+                    android:gravity="center_vertical|right"
+                    android:text=""
+                    android:textColor="#B3B8C1"
+                    android:textSize="12dp" />
+
+                <TextView
+                    android:id="@+id/recent_data_synchronize"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="15dp"
+                    android:text="2022-08-18 18:33"
+                    android:textColor="#B3B8C1"
+
+                    android:textSize="13dp" />
+            </com.xuexiang.xui.widget.layout.XUILinearLayout>
+        </com.xuexiang.xui.widget.layout.XUILinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/synchronize_now"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:gravity="bottom|center_horizontal"
+        android:text="手动同步"
+        android:textColor="@color/xui_config_color_light_blue"
+        android:textSize="13dp" />
+
+    <TextView
+        android:id="@+id/recovery_data"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:gravity="center"
+        android:text="恢复历史备份数据"
+        android:textColor="#B3B8C1"
+        android:textSize="13dp" />
+</com.xuexiang.xui.widget.layout.XUILinearLayout>

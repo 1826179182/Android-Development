@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.xuexiang.xui.widget.layout.XUILinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/finish_time"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="00:00" />
+
+    <com.xuexiang.xui.widget.layout.XUIFrameLayout
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="-40dp"
+        android:layout_weight="1">
+
+        <View
+            android:layout_width="3dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="-30dp"
+            android:background="#DCDEEB" />
+
+        <com.xuexiang.xui.widget.imageview.RadiusImageView
+            android:layout_width="10dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="36.5dp"
+            android:src="@color/checked_bg"
+            app:riv_corner_radius="40dp" />
+    </com.xuexiang.xui.widget.layout.XUIFrameLayout>
+
+    <com.xuexiang.xui.widget.layout.XUILinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_weight="1">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/habit_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            app:cardBackgroundColor="#BBDEFB"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="0dp"
+            app:cardUseCompatPadding="false">
+
+            <com.xuexiang.xui.widget.imageview.IconImageView
+                android:id="@+id/habit_icon_res"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center"
+                android:src="@mipmap/reading" />
+        </androidx.cardview.widget.CardView>
+    </com.xuexiang.xui.widget.layout.XUILinearLayout>
+
+    <TextView
+        android:id="@+id/habit"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center_vertical|left"
+        android:text="拍照"
+        android:textColor="@color/N_stretchTextColor"
+        android:textSize="13dp" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2" />
+
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginRight="30dp"
+        android:src="@mipmap/check" />
+
+</com.xuexiang.xui.widget.layout.XUILinearLayout>

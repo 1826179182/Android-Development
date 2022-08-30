@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-2dp"
+        app:cardElevation="0dp"
+        app:strokeColor="#EAEFF5"
+        app:strokeWidth="1.5dp">
+
+        <com.xuexiang.xui.widget.layout.XUILinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.xuexiang.xui.widget.layout.XUILinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center|bottom"
+                    android:text="Aug"
+                    android:textSize="17dp" />
+
+                <com.xuexiang.xui.widget.imageview.nine.GridImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="0.2"
+                    android:src="@mipmap/circle" />
+
+                <com.xuexiang.xui.widget.imageview.nine.GridImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.5" />
+            </com.xuexiang.xui.widget.layout.XUILinearLayout>
+
+            <com.xuexiang.xui.widget.layout.XUILinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginVertical="20dp"
+                android:layout_weight="0.03"
+                android:background="#C1CADD" />
+
+            <com.xuexiang.xui.widget.layout.XUILinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="7"
+                android:orientation="vertical">
+
+                <com.xuexiang.xui.widget.layout.XUILinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="5dp">
+
+                    <com.xuexiang.xui.widget.alpha.XUIAlphaTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Mon" />
+
+                    <com.xuexiang.xui.widget.alpha.XUIAlphaTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Tue" />
+
+                    <com.xuexiang.xui.widget.alpha.XUIAlphaTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Wed" />
+
+                    <com.xuexiang.xui.widget.alpha.XUIAlphaTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Thu" />
+
+                    <com.xuexiang.xui.widget.alpha.XUIAlphaTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Fri" />
+
+                    <com.xuexiang.xui.widget.alpha.XUIAlphaTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Sat" />
+
+                    <com.xuexiang.xui.widget.alpha.XUIAlphaTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Sun" />
+                </com.xuexiang.xui.widget.layout.XUILinearLayout>
+
+                <com.necer.calendar.WeekCalendar
+                    android:id="@+id/weekCalendar"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+
+                    app:calendarHeight="220dp"
+                    app:defaultCalendar="week"
+                    app:defaultCheckedSolarTextColor="@color/checked_bg"
+                    app:defaultUnCheckedSolarTextColor="#8690A5"
+                    app:lunarDistance="0dp"
+                    app:showHoliday="false"
+                    app:showLunar="false"
+                    app:solarTextBold="true"
+                    app:solarTextSize="15dp"
+                    app:todayCheckedBackground="@color/checked_bg"
+                    app:todayCheckedSolarTextColor="@color/checked_bg"
+                    app:todayUnCheckedSolarTextColor="#8690A5" />
+            </com.xuexiang.xui.widget.layout.XUILinearLayout>
+        </com.xuexiang.xui.widget.layout.XUILinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <com.xuexiang.xui.widget.layout.XUIFrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView_daily_charts1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </com.xuexiang.xui.widget.layout.XUIFrameLayout>
+</LinearLayout>

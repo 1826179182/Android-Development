@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.xuexiang.xui.widget.layout.XUILinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/xui_btn_green_select_color"
+    android:orientation="vertical"
+    tools:context=".home.Planting">
+
+    <com.hjq.bar.TitleBar
+        android:id="@+id/title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/xui_btn_green_select_color"
+        app:leftIcon="@mipmap/arrow_left"
+        app:leftIconWidth="35dp"
+        app:rightTitle="植物图鉴"
+        app:rightTitleColor="#ffffff"
+        app:rightTitleSize="13dp"
+        app:title="@string/planting"
+        app:titleColor="#ffffff" />
+
+    <com.xuexiang.xui.widget.layout.XUILinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="-2dp"
+        android:orientation="vertical">
+
+        <com.xuexiang.xui.widget.layout.XUILinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="4"
+            android:orientation="vertical">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="40dp"
+                android:layout_marginTop="100dp"
+                android:layout_marginBottom="40dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="0dp"
+                app:cardUseCompatPadding="true">
+
+                <com.xuexiang.xui.widget.layout.XUIFrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <com.xuexiang.xui.widget.layout.XUILinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:background="#B2EBFF"
+                            android:gravity="center"
+                            android:text="神秘种子"
+                            android:textColor="@color/white"
+                            android:textSize="20dp" />
+
+                        <com.airbnb.lottie.LottieAnimationView
+                            android:id="@+id/plant"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_weight="2"
+                            app:lottie_autoPlay="true"
+                            app:lottie_fileName="planting.json"
+                            app:lottie_loop="true" />
+
+                        <com.xuexiang.xui.widget.layout.XUILinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <com.airbnb.lottie.LottieAnimationView
+                                android:layout_width="match_parent"
+                                android:layout_height="18dp"
+                                android:layout_marginTop="10dp"
+                                app:lottie_autoPlay="true"
+                                app:lottie_fileName="dividing_line.json"
+                                app:lottie_loop="false" />
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="100dp"
+                                android:layout_height="40dp"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="-35dp"
+                                app:cardBackgroundColor="#4DB6AC"
+                                app:cardCornerRadius="10dp"
+                                app:cardElevation="0dp"
+                                app:cardUseCompatPadding="true">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:text="今日任务"
+                                    android:textColor="@color/white" />
+                            </androidx.cardview.widget.CardView>
+
+                            <TextView
+                                android:id="@+id/plant_task"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center"
+                                android:text=""
+                                android:textSize="13dp" />
+                        </com.xuexiang.xui.widget.layout.XUILinearLayout>
+                    </com.xuexiang.xui.widget.layout.XUILinearLayout>
+
+                    <ImageView
+                        android:id="@+id/question"
+                        android:layout_width="16dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="right"
+                        android:layout_margin="15dp"
+                        android:src="@mipmap/question" />
+                </com.xuexiang.xui.widget.layout.XUIFrameLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </com.xuexiang.xui.widget.layout.XUILinearLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:elevation="0dp"
+            app:cardBackgroundColor="@color/xui_btn_green_select_color">
+
+            <com.xuexiang.xui.widget.layout.XUILinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="40dp"
+                android:orientation="horizontal">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="0dp"
+                    app:cardUseCompatPadding="false">
+
+                    <com.xuexiang.xui.widget.layout.XUIButton
+                        android:id="@+id/my_garden"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="#A5D6A7"
+                        android:text="我的植物园"
+                        android:textColor="@color/white"
+                        android:textSize="16dp" />
+                </androidx.cardview.widget.CardView>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.2" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="0dp"
+                    app:cardUseCompatPadding="false">
+
+                    <com.xuexiang.xui.widget.layout.XUIButton
+                        android:id="@+id/start_plant"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="#FFA1A1"
+                        android:text="开始种植"
+                        android:textColor="@color/white"
+                        android:textSize="16dp" />
+                </androidx.cardview.widget.CardView>
+            </com.xuexiang.xui.widget.layout.XUILinearLayout>
+        </androidx.cardview.widget.CardView>
+    </com.xuexiang.xui.widget.layout.XUILinearLayout>
+</com.xuexiang.xui.widget.layout.XUILinearLayout>

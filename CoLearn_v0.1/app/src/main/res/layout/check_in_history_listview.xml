@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.xuexiang.xui.widget.layout.XUILinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <com.xuexiang.xui.widget.layout.XUIFrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp">
+
+        <com.xuexiang.xui.widget.layout.XUILinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:text="打卡日期"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/check_in_date"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="2022-01-01"
+                android:textSize="13dp" />
+        </com.xuexiang.xui.widget.layout.XUILinearLayout>
+
+        <ImageView
+            android:id="@+id/up_and_down"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginRight="20dp"
+            android:src="@mipmap/down" />
+    </com.xuexiang.xui.widget.layout.XUIFrameLayout>
+
+    <com.xuexiang.xui.widget.layout.ExpandableLayout
+        android:id="@+id/check_in_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        app:el_duration="500"
+        app:el_expanded="false">
+
+        <com.xuexiang.xui.widget.layout.XUILinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.xuexiang.xui.widget.layout.XUILinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="50dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="打卡时间"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/check_in_time"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="50dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|right"
+                    android:text="00:00" />
+            </com.xuexiang.xui.widget.layout.XUILinearLayout>
+
+            <com.xuexiang.xui.widget.layout.XUILinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="50dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="制定目标数"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/todo_number"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="50dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|right"
+                    android:text="5" />
+            </com.xuexiang.xui.widget.layout.XUILinearLayout>
+
+            <com.xuexiang.xui.widget.layout.XUILinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="50dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="完成目标数"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/has_done_number"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="50dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|right"
+                    android:text="5" />
+            </com.xuexiang.xui.widget.layout.XUILinearLayout>
+
+            <com.xuexiang.xui.widget.layout.XUILinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="50dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="当日心情"
+                    android:textColor="@color/black" />
+
+                <ImageView
+                    android:id="@+id/expressions"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="150dp"
+                    android:layout_weight="1"
+                    android:src="@mipmap/happy_light" />
+            </com.xuexiang.xui.widget.layout.XUILinearLayout>
+
+            <com.xuexiang.xui.widget.layout.XUILinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#EDEEF4" />
+        </com.xuexiang.xui.widget.layout.XUILinearLayout>
+
+    </com.xuexiang.xui.widget.layout.ExpandableLayout>
+
+</com.xuexiang.xui.widget.layout.XUILinearLayout>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.d.lib.slidelayout.SlideLayout
+        android:id="@+id/sl_slide"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Content view -->
+        <com.xuexiang.xui.widget.layout.XUILinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/white"
+            android:orientation="horizontal">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/habit_icon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="40dp"
+                app:cardBackgroundColor="#BBDEFB"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="0dp"
+                app:cardUseCompatPadding="false">
+
+                <com.xuexiang.xui.widget.imageview.IconImageView
+                    android:id="@+id/habit_icon_res"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/reading" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/habit"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical|left"
+                android:text="拍照"
+                android:textColor="@color/N_stretchTextColor"
+                android:textSize="13dp" />
+        </com.xuexiang.xui.widget.layout.XUILinearLayout>
+        <!-- Slide view -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <com.xuexiang.xui.widget.layout.XUIButton
+                android:id="@+id/edit_habit"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:background="@color/checked_bg"
+                android:gravity="center"
+                android:text="编辑"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
+
+            <com.xuexiang.xui.widget.layout.XUIButton
+                android:id="@+id/delete_habit"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:background="@color/xui_config_color_red"
+                android:gravity="center"
+                android:text="删除"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
+        </LinearLayout>
+    </com.d.lib.slidelayout.SlideLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:src="#EDEEF4" />
+</LinearLayout>

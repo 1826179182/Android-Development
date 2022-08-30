@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.xuexiang.xui.widget.layout.XUIFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".my.Login">
+
+    <com.xuexiang.xui.widget.layout.XUILinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal">
+
+        <com.xuexiang.xui.widget.button.ButtonView
+            android:id="@+id/login_btn"
+            style="@style/ButtonView.Blue"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="30dp"
+            android:layout_weight="1"
+            android:text="登录"
+            android:textSize="20dp"
+            app:textRadius="25dp" />
+
+        <com.xuexiang.xui.widget.button.ButtonView
+            android:id="@+id/register_btn"
+            style="@style/ButtonView.Green"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="60dp"
+            android:layout_marginBottom="30dp"
+            android:layout_weight="1"
+            android:text="注册"
+            android:textSize="20dp"
+            app:textRadius="25dp" />
+    </com.xuexiang.xui.widget.layout.XUILinearLayout>
+</com.xuexiang.xui.widget.layout.XUIFrameLayout>

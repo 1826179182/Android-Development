@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">CoLearn</string>
+    <string name="add_event">添加目标</string>
+    <string name="check_in">日常打卡</string>
+    <string name="planting">种植植物</string>
+    <string name="camera">远程监控</string>
+</resources>

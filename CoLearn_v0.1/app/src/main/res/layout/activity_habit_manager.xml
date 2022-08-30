@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.xuexiang.xui.widget.layout.XUIFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8F9FE"
+    android:orientation="vertical"
+    tools:context=".my.HabitManager">
+
+    <com.xuexiang.xui.widget.layout.XUILinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.hjq.bar.TitleBar
+            android:id="@+id/title_bar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            app:leftIcon="@mipmap/arrow_left"
+            app:leftIconWidth="35dp"
+            app:title="目标管理" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/habit_manager_listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@color/black" />
+    </com.xuexiang.xui.widget.layout.XUILinearLayout>
+
+    <ImageView
+        android:id="@+id/question"
+        android:layout_width="16dp"
+        android:layout_height="20dp"
+        android:layout_gravity="right"
+        android:layout_margin="15dp"
+        android:src="@mipmap/question_black" />
+</com.xuexiang.xui.widget.layout.XUIFrameLayout>

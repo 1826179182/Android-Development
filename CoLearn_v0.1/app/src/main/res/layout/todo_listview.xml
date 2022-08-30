@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.xuexiang.xui.widget.layout.XUILinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="@color/white"
+    android:orientation="horizontal">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/habit_icon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="40dp"
+        app:cardBackgroundColor="#BBDEFB"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="0dp"
+        app:cardUseCompatPadding="false">
+
+        <com.xuexiang.xui.widget.imageview.IconImageView
+            android:id="@+id/habit_icon_res"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center"
+            android:src="@mipmap/reading" />
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/habit"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_weight="1"
+        android:gravity="center_vertical|left"
+        android:text="拍照"
+        android:textColor="@color/N_stretchTextColor"
+        android:textSize="13dp" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2" />
+
+    <com.xuexiang.xui.widget.button.SmoothCheckBox
+        android:id="@+id/finish"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginRight="30dp"
+        app:scb_color_checked="@color/xui_config_color_blue"
+        app:scb_stroke_width="2dp" />
+
+
+</com.xuexiang.xui.widget.layout.XUILinearLayout>
