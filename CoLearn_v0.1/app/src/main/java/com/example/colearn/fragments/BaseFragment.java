@@ -111,7 +111,7 @@ public class BaseFragment extends Fragment {
             ChartTransaction(holder, ChartFragType[position]);
         }
 
-        public void ChartTransaction(MyAdapter.MyViewHolder holder) {
+        public void ChartTransaction(MyViewHolder holder) {
             FragmentManager fragmentManager = getChildFragmentManager();
             FragmentTransaction transaction = fragmentManager.beginTransaction();
             switch (pieType) {
@@ -130,7 +130,7 @@ public class BaseFragment extends Fragment {
             transaction.commit();
         }
 
-        public void ChartTransaction(MyAdapter.MyViewHolder holder, int thisType) {
+        public void ChartTransaction(MyViewHolder holder, int thisType) {
             FragmentManager fragmentManager = getChildFragmentManager();
             FragmentTransaction transaction = fragmentManager.beginTransaction();
             switch (thisType) {

@@ -67,7 +67,7 @@ public class FragRadarChart extends SimpleFragment {
         xAxis.setXOffset(0f);
         xAxis.setValueFormatter(new ValueFormatter() {
 
-            private final String[] mActivities = new String[]{"Burger", "Steak", "Salad", "Pasta", "Pizza"};
+            private final String[] mActivities = new String[]{"专注", "低效", "熬夜", "起早", "休息"};
 
             @Override
             public String getFormattedValue(float value) {
@@ -119,7 +119,7 @@ public class FragRadarChart extends SimpleFragment {
             entries2.add(new RadarEntry(val2));
         }
 
-        RadarDataSet set1 = new RadarDataSet(entries1, "Last Week");
+        RadarDataSet set1 = new RadarDataSet(entries1, "上周");
         set1.setColor(Color.rgb(103, 110, 129));
         set1.setFillColor(Color.rgb(103, 110, 129));
         set1.setDrawFilled(true);
@@ -128,7 +128,7 @@ public class FragRadarChart extends SimpleFragment {
         set1.setDrawHighlightCircleEnabled(true);
         set1.setDrawHighlightIndicators(false);
 
-        RadarDataSet set2 = new RadarDataSet(entries2, "This Week");
+        RadarDataSet set2 = new RadarDataSet(entries2, "本周");
         set2.setColor(Color.rgb(121, 162, 175));
         set2.setFillColor(Color.rgb(121, 162, 175));
         set2.setDrawFilled(true);

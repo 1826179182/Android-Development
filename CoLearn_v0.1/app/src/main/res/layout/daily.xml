@@ -115,7 +115,7 @@
                 </com.xuexiang.xui.widget.layout.XUILinearLayout>
 
                 <com.necer.calendar.WeekCalendar
-                    android:id="@+id/weekCalendar"
+                    android:id="@+id/weekCalendar_daily"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
 

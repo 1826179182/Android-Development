@@ -39,13 +39,12 @@ public class Daily extends BaseFragment {
         ChartFragType = new int[]{STYLE_HALF_PIE, STYLE_FULL_PIE};
 
         initChartDataList();
-
-        mWeekCalendar = getActivity().findViewById(R.id.weekCalendar);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mWeekCalendar = view.findViewById(R.id.weekCalendar_daily);
 
         mWeekCalendar.setOnCalendarChangedListener(new OnCalendarChangedListener() {
             @Override

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.RelativeSizeSpan;
+import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import com.example.colearn.R;
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.utils.ColorTemplate;
 
 public class FragPieChart extends SimpleFragment {
 
@@ -61,9 +63,14 @@ public class FragPieChart extends SimpleFragment {
     }
 
     private SpannableString generateCenterText() {
-        SpannableString s = new SpannableString("CoLearn\n2022");
+        SpannableString s = new SpannableString("CoLearn\nPowered by Group4");
         s.setSpan(new RelativeSizeSpan(1.8f), 0, 7, 0);
-        s.setSpan(new ForegroundColorSpan(Color.GRAY), 7, s.length(), 0);
+        s.setSpan(new StyleSpan(Typeface.BOLD), 7, s.length() - 8, 0);
+        s.setSpan(new ForegroundColorSpan(Color.GRAY), 7, s.length() - 8, 0);
+        s.setSpan(new RelativeSizeSpan(.8f), 7, s.length() - 8, 0);
+        s.setSpan(new StyleSpan(Typeface.ITALIC), s.length() - 7, s.length(), 0);
+        s.setSpan(new StyleSpan(Typeface.BOLD), s.length() - 7, s.length(), 0);
+        s.setSpan(new ForegroundColorSpan(ColorTemplate.getHoloBlue()), s.length() - 7, s.length(), 0);
         return s;
     }
 }

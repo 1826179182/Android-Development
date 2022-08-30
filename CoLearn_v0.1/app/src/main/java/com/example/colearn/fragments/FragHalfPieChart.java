@@ -34,7 +34,7 @@ import java.util.ArrayList;
 public class FragHalfPieChart extends SimpleFragment {
 
     protected final String[] parties = new String[]{
-            "阅读", "看手机", "练习书法", "睡觉", "练琴", "打瞌睡"
+            "阅读", "看手机", "练习书法", "练琴", "打瞌睡"
     };
     private Typeface mTfLight;
     private Typeface mTfRegular;
@@ -85,7 +85,7 @@ public class FragHalfPieChart extends SimpleFragment {
         chart.setMaxAngle(180f); // 显示一半
         chart.setRotationAngle(180f);
         chart.setCenterTextOffset(0, -20);//中间文字向上偏移20
-        setData(4, 100);//数据
+        setData(5, 100);//数据
 
         chart.animateXY(1400, 1400, Easing.EaseInOutQuad);
 
@@ -95,7 +95,7 @@ public class FragHalfPieChart extends SimpleFragment {
         l.setOrientation(Legend.LegendOrientation.HORIZONTAL);
         l.setDrawInside(false);
         l.setXEntrySpace(7f);
-        l.setYEntrySpace(0f);
+        l.setYEntrySpace(2f);
         l.setYOffset(0f);
 
         // entry label styling
@@ -139,6 +139,7 @@ public class FragHalfPieChart extends SimpleFragment {
         s.setSpan(new ForegroundColorSpan(Color.GRAY), 7, s.length() - 8, 0);
         s.setSpan(new RelativeSizeSpan(.8f), 7, s.length() - 8, 0);
         s.setSpan(new StyleSpan(Typeface.ITALIC), s.length() - 7, s.length(), 0);
+        s.setSpan(new StyleSpan(Typeface.BOLD), s.length() - 7, s.length(), 0);
         s.setSpan(new ForegroundColorSpan(ColorTemplate.getHoloBlue()), s.length() - 7, s.length(), 0);
         return s;
     }
