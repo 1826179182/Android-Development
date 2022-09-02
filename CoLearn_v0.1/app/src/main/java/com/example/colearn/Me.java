@@ -60,7 +60,7 @@ public class Me extends androidx.fragment.app.Fragment implements View.OnClickLi
                 break;
             case R.id.share_app:
                 intent.setAction(Intent.ACTION_SEND);
-                intent.putExtra(Intent.EXTRA_TEXT, "点点，助力儿童的健康成长！");
+                intent.putExtra(Intent.EXTRA_TEXT, "CoLearn，助力儿童的健康成长！");
                 intent.setType("text/plain");
                 startActivity(intent);
                 break;
