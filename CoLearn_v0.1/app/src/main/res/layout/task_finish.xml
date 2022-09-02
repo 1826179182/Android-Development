@@ -22,7 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="CoLearn"
+                android:text="点点"
                 android:textColor="@color/white"
                 android:textSize="20dp" />
         </com.xuexiang.xui.widget.layout.XUILinearLayout>

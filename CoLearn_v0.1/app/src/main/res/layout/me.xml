@@ -213,7 +213,7 @@
                             android:layout_height="match_parent"
                             android:layout_marginLeft="15dp"
                             android:gravity="center"
-                            android:text="分享CoLearn"
+                            android:text="分享点点"
                             android:textSize="13dp" />
 
                         <View
