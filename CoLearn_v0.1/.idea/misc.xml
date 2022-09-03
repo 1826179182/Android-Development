@@ -3,11 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Android/Project/Android-Development/CoLearn_v0.1/app/src/main/res/layout/activity_personal_information.xml" value="0.38315217391304346" />
-        <entry key="..\:/Android/Project/Android-Development/CoLearn_v0.1/app/src/main/res/layout/daily.xml" value="0.22685185185185186" />
-        <entry key="..\:/Android/Project/Android-Development/CoLearn_v0.1/app/src/main/res/layout/home.xml" value="0.31302083333333336" />
-        <entry key="..\:/Android/Project/Android-Development/CoLearn_v0.1/app/src/main/res/layout/me.xml" value="0.31302083333333336" />
-        <entry key="..\:/Android/Project/Android-Development/CoLearn_v0.1/app/src/main/res/layout/task_finish.xml" value="0.38315217391304346" />
         <entry key="..\:/Android/Project/CoLearn2/app/src/main/res/layout/achievement.xml" value="0.35104166666666664" />
         <entry key="..\:/Android/Project/CoLearn2/app/src/main/res/layout/cardview.xml" value="0.35208333333333336" />
         <entry key="..\:/Android/Project/CoLearn2/app/src/main/res/layout/chart.xml" value="0.35208333333333336" />
@@ -74,6 +69,8 @@
         <entry key="..\:/Users/86186/AndroidStudioProjects/CoLearn/app/src/main/res/layout/view_agenda_drawable_event.xml" value="0.246875" />
         <entry key="..\:/Users/86186/AndroidStudioProjects/CoLearn/app/src/main/res/layout/wallpaper_item.xml" value="0.26145833333333335" />
         <entry key="..\:/Users/86186/AndroidStudioProjects/CoLearn/app/src/main/res/layout/weekly.xml" value="1.1924342105263157" />
+        <entry key="..\:/Users/86186/CoLearn/CoLearn_v0.1/app/src/main/res/layout/activity_login.xml" value="0.12715298885511653" />
+        <entry key="..\:/Users/86186/CoLearn/CoLearn_v0.1/app/src/main/res/layout/activity_login_or_register.xml" value="0.26145833333333335" />
         <entry key="..\:/Users/86186/Desktop/CoLearn_v0.1/app/src/main/res/layout/chart.xml" value="0.26145833333333335" />
         <entry key="..\:/Users/86186/Desktop/CoLearn_v0.1/app/src/main/res/layout/daily.xml" value="0.26145833333333335" />
         <entry key="..\:/Users/86186/Desktop/CoLearn_v0.1/app/src/main/res/layout/home.xml" value="0.26145833333333335" />

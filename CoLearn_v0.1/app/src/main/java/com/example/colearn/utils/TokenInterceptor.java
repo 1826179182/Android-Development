@@ -23,7 +23,10 @@ public class TokenInterceptor implements Interceptor {
 
         Request request;
         if (token == null) {
-            request = chain.request();
+//            request = chain.request();
+            request = chain.request()
+                    .newBuilder()
+                    .build();
         } else {
             request = chain.request()
                     .newBuilder()

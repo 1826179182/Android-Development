@@ -39,4 +39,9 @@
             android:textSize="20dp"
             app:textRadius="25dp" />
     </com.xuexiang.xui.widget.layout.XUILinearLayout>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@mipmap/logo"
+        android:layout_marginBottom="300dp"/>
 </com.xuexiang.xui.widget.layout.XUIFrameLayout>

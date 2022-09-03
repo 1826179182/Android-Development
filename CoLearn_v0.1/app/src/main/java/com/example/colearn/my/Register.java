@@ -95,6 +95,7 @@ public class Register extends AppCompatActivity {
     }
 
     private void registerRequest() throws NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
+        Log.d(TAG, "registerRequest: start request");
         if (binding.password.getText().toString().equals(binding.confirmPassword.getText().toString())) {
             //构建Retrofit实例
             Retrofit retrofit = new Retrofit.Builder()
@@ -107,6 +108,7 @@ public class Register extends AppCompatActivity {
             //创建网络请求接口对象实例
             CoLearnRequestInterface request = retrofit.create(CoLearnRequestInterface.class);
             //对发送请求进行封装
+            System.out.println(AESUtil.encryptECB(binding.password.getText().toString().getBytes(StandardCharsets.UTF_8)));
             Call<Data<JSON>> call = request.register(binding.account.getText().toString()
                     , AESUtil.encryptECB(binding.password.getText().toString().getBytes(StandardCharsets.UTF_8)));
             //步骤7:发送网络请求(异步)
