@@ -237,40 +237,42 @@ public class Home extends androidx.fragment.app.Fragment implements View.OnClick
             public void onCalendarChange(BaseCalendar baseCalendar, int year, int month, LocalDate localDate, DateChangeBehavior dateChangeBehavior) {
                 switch (month) {
                     case 1:
-                        binding.month.setText("Jan");
+                        binding.month.setText("一月");
                         break;
                     case 2:
-                        binding.month.setText("Feb");
+                        binding.month.setText("二月");
                         break;
                     case 3:
-                        binding.month.setText("Mar");
+                        binding.month.setText("三月");
                         break;
                     case 4:
-                        binding.month.setText("Apr");
+                        binding.month.setText("四月");
                         break;
                     case 5:
-                        binding.month.setText("May");
+                        binding.month.setText("五月");
                         break;
                     case 6:
-                        binding.month.setText("Jun");
+                        binding.month.setText("六月");
                         break;
                     case 7:
-                        binding.month.setText("Jul");
+                        binding.month.setText("七月");
                         break;
                     case 8:
-                        binding.month.setText("Aug");
+                        binding.month.setText("八月");
                         break;
                     case 9:
-                        binding.month.setText("Sep");
+                        binding.month.setText("九月");
                         break;
                     case 10:
-                        binding.month.setText("Oct");
+                        binding.month.setText("十月");
                         break;
                     case 11:
-                        binding.month.setText("Nov");
+                        binding.month.setText("十一月");
+                        binding.month.setTextSize(16);
                         break;
                     case 12:
-                        binding.month.setText("Dec");
+                        binding.month.setText("十二月");
+                        binding.month.setTextSize(16);
                         break;
                 }
                 if (!LocalDate.now().equals(localDate)) {

@@ -59,11 +59,7 @@ public class Register extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-
-
                     registerRequest();
-
-
                 } catch (NoSuchPaddingException e) {
                     e.printStackTrace();
                 } catch (IllegalBlockSizeException e) {

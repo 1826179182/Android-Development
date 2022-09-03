@@ -29,7 +29,7 @@
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:gravity="center|bottom"
-                    android:text="Aug"
+                    android:text="八月"
                     android:textSize="17dp" />
 
                 <com.xuexiang.xui.widget.imageview.nine.GridImageView
@@ -69,49 +69,49 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="Mon" />
+                        android:text="周一" />
 
                     <com.xuexiang.xui.widget.alpha.XUIAlphaTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="Tue" />
+                        android:text="周二" />
 
                     <com.xuexiang.xui.widget.alpha.XUIAlphaTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="Wed" />
+                        android:text="周三" />
 
                     <com.xuexiang.xui.widget.alpha.XUIAlphaTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="Thu" />
+                        android:text="周四" />
 
                     <com.xuexiang.xui.widget.alpha.XUIAlphaTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="Fri" />
+                        android:text="周五" />
 
                     <com.xuexiang.xui.widget.alpha.XUIAlphaTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="Sat" />
+                        android:text="周六" />
 
                     <com.xuexiang.xui.widget.alpha.XUIAlphaTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
-                        android:text="Sun" />
+                        android:text="周日" />
                 </com.xuexiang.xui.widget.layout.XUILinearLayout>
 
                 <com.necer.calendar.WeekCalendar

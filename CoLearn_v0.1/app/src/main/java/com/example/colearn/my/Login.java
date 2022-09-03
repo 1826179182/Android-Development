@@ -57,10 +57,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-
                     loginRequest();
-
-
                 } catch (NoSuchPaddingException e) {
                     e.printStackTrace();
                 } catch (IllegalBlockSizeException e) {
