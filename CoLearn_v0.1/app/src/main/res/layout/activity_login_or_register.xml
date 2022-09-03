@@ -43,5 +43,5 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@mipmap/logo"
-        android:layout_marginBottom="300dp"/>
+        android:layout_marginBottom="250dp"/>
 </com.xuexiang.xui.widget.layout.XUIFrameLayout>

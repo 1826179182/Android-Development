@@ -96,6 +96,7 @@ public class Register extends AppCompatActivity {
 
     private void registerRequest() throws NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
         Log.d(TAG, "registerRequest: start request");
+
         if (binding.password.getText().toString().equals(binding.confirmPassword.getText().toString())) {
             //构建Retrofit实例
             Retrofit retrofit = new Retrofit.Builder()

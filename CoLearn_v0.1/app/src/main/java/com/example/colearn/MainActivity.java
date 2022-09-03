@@ -21,6 +21,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     public final static String baseUrl = "http://47.104.134.68:8989/";
 
+
     private Context mContext = this;
     private ArrayList<Fragment> mFragments = new ArrayList<>();
     private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
