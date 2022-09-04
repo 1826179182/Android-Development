@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
 
+import com.example.colearn.components.User;
 import com.example.colearn.databinding.MeBinding;
 import com.example.colearn.my.DataSynchronize;
 import com.example.colearn.my.HabitManager;
@@ -50,7 +51,7 @@ public class Me extends androidx.fragment.app.Fragment implements View.OnClickLi
         Intent intent = new Intent();
         switch (v.getId()) {
             case R.id.avatar:
-                if (Math.random() >= 0.5) {
+                if (User.getUser()!=null) {
                     intent.setClass(getContext(), PersonalInformation.class);
                     startActivity(intent);
                 } else {

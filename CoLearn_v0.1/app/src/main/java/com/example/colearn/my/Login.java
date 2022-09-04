@@ -4,21 +4,26 @@ import static com.example.colearn.MainActivity.baseUrl;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.example.colearn.CoLearnRequestInterface;
 import com.example.colearn.R;
 import com.example.colearn.components.Data;
+import com.example.colearn.components.User;
 import com.example.colearn.databinding.ActivityLoginBinding;
-import com.example.colearn.utils.AESUtil;
 import com.example.colearn.utils.IEditTextChangeListener;
 import com.example.colearn.utils.OkHttpUtil;
+import com.example.colearn.utils.RSAUtils;
+import com.example.colearn.utils.SPUtils;
 import com.example.colearn.utils.WorksSizeCheckUtil;
 import com.gyf.immersionbar.ImmersionBar;
+import com.xuexiang.xui.widget.popupwindow.bar.CookieBar;
 
 import java.nio.charset.StandardCharsets;
 import java.security.InvalidKeyException;
@@ -58,15 +63,7 @@ public class Login extends AppCompatActivity {
             public void onClick(View v) {
                 try {
                     loginRequest();
-                } catch (NoSuchPaddingException e) {
-                    e.printStackTrace();
-                } catch (IllegalBlockSizeException e) {
-                    e.printStackTrace();
-                } catch (NoSuchAlgorithmException e) {
-                    e.printStackTrace();
-                } catch (BadPaddingException e) {
-                    e.printStackTrace();
-                } catch (InvalidKeyException e) {
+                }  catch (Exception e) {
                     e.printStackTrace();
                 }
             }
@@ -92,7 +89,8 @@ public class Login extends AppCompatActivity {
         });
     }
 
-    private void loginRequest() throws NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
+    private void loginRequest() throws Exception {
+        Log.d(TAG, "loginRequest: start login");
         //构建Retrofit实例
         Retrofit retrofit = new Retrofit.Builder()
                 .client(OkHttpUtil.getOkHttpClient())
@@ -105,22 +103,44 @@ public class Login extends AppCompatActivity {
         CoLearnRequestInterface request = retrofit.create(CoLearnRequestInterface.class);
         //对发送请求进行封装
         Call<Data<JSON>> call = request.login(binding.account.getText().toString()
-                , AESUtil.encryptECB(binding.password.getText().toString().getBytes(StandardCharsets.UTF_8)));
+                , RSAUtils.encrypt(binding.password.getText().toString()));
         //步骤7:发送网络请求(异步)
         call.enqueue(new Callback<Data<JSON>>() {
             //请求成功时回调
             @Override
             public void onResponse(Call<Data<JSON>> call, Response<Data<JSON>> response) {
                 //步骤8：请求处理,输出结果
-                Object body = response.body();
+                Data body = response.body();
                 if (body == null) return;
                 Log.d(TAG, "返回的数据：" + response.body().toString());
+                if (body.getCode()==200){
+                    JSONObject data = JSONObject.parseObject(body.getData().toString());
+                    Log.d(TAG, "onResponse: login success! token:" + data.get("token"));
+                    User.setUser(new User());
+                    User.getUser().setId((String) data.get("id"));
+                    User.getUser().setNickname((String) data.get("username"));
+                    User.getUser().setGender((String) data.get("gender"));
+                    SPUtils.putString("token", (String) data.get("token"),Login.this);
+                }else {
+                    CookieBar.builder(Login.this)
+                            .setTitle("登录失败")
+                            .setMessage(body.getMsg())
+                            .setBackgroundColor(R.color.error)
+                            .setLayoutGravity(Gravity.TOP)
+                            .show();
+                }
             }
 
             //请求失败时回调
             @Override
             public void onFailure(Call<Data<JSON>> call, Throwable throwable) {
                 Log.d(TAG, "post回调失败：" + throwable.getMessage() + "," + throwable.toString());
+                CookieBar.builder(Login.this)
+                        .setTitle("登录失败")
+                        .setMessage("网络错误！请稍后再试。")
+                        .setBackgroundColor(R.color.error)
+                        .setLayoutGravity(Gravity.TOP)
+                        .show();
             }
         });
     }

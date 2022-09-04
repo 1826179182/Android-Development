@@ -13,12 +13,14 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.colearn.CoLearnRequestInterface;
 import com.example.colearn.R;
 import com.example.colearn.components.Data;
+import com.example.colearn.components.User;
 import com.example.colearn.databinding.ActivityPersonalInformationBinding;
 import com.example.colearn.utils.GlideEngine;
 import com.example.colearn.utils.OkHttpUtil;
@@ -76,9 +78,14 @@ public class PersonalInformation extends AppCompatActivity implements View.OnCli
             @Override
             public void onResponse(Call<Data<JSON>> call, Response<Data<JSON>> response) {
                 //步骤8：请求处理,输出结果
-                Object body = response.body();
+                Data body = response.body();
                 if (body == null) return;
                 Log.d(TAG, "返回的数据：" + response.body().toString());
+                if(body.getCode() == 200){
+                    User.getUser().setGender(changeResult);
+                }else {
+                    
+                }
             }
 
             //请求失败时回调
@@ -110,6 +117,12 @@ public class PersonalInformation extends AppCompatActivity implements View.OnCli
                 finish();
             }
         });
+        if (User.getUser() != null){
+            User user = User.getUser();
+            binding.nickname.setText(user.getNickname());
+            binding.gender.setText(user.getGender());
+            binding.id.setText(user.getId());
+        }
         binding.changeAvatar.setOnClickListener(this::onClick);
         binding.changeGender.setOnClickListener(this::onClick);
         binding.changeNickname.setOnClickListener(this::onClick);
@@ -200,7 +213,6 @@ public class PersonalInformation extends AppCompatActivity implements View.OnCli
 //            Log.i(TAG, "文件大小: " + media.getSize());
             imageUrl = media.getRealPath();
             //mImageList.add(); // 接收已选图片地址，用于接口上传图片
-            System.out.println("ddddddddddddddddddddddddddddddddddddd");
             Glide.with(this).load(imageUrl).apply(requestOptions).into(binding.avatar);
 
         }

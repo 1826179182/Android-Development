@@ -2,12 +2,19 @@ package com.example.colearn.components;
 
 
 public class User {
-    private static User user;
+    private static User user = null;
     private String id;
     private String account;
     private String password;
     private String nickname;
     private String gender;
+
+    public static void setUser(User user) {
+        User.user = user;
+    }
+
+    public User(){}
+
     public User(String id, String account, String password, String nickname, String gender) {
         this.id = id;
         this.account = account;

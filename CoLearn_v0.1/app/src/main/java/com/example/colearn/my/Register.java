@@ -1,10 +1,14 @@
 package com.example.colearn.my;
 
 import static com.example.colearn.MainActivity.baseUrl;
-
+import static com.example.colearn.utils.RSAUtils.decrypt;
+import static com.example.colearn.utils.RSAUtils.encrypt;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 
@@ -15,16 +19,19 @@ import com.example.colearn.CoLearnRequestInterface;
 import com.example.colearn.R;
 import com.example.colearn.components.Data;
 import com.example.colearn.databinding.ActivityRegisterBinding;
-import com.example.colearn.utils.AESUtil;
 import com.example.colearn.utils.IEditTextChangeListener;
 import com.example.colearn.utils.OkHttpUtil;
+import com.example.colearn.utils.RSAUtils;
 import com.example.colearn.utils.WorksSizeCheckUtil;
 import com.gyf.immersionbar.ImmersionBar;
 import com.xuexiang.xui.widget.popupwindow.ViewTooltip;
+import com.xuexiang.xui.widget.popupwindow.bar.CookieBar;
 
-import java.nio.charset.StandardCharsets;
+import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
@@ -70,6 +77,10 @@ public class Register extends AppCompatActivity {
                     e.printStackTrace();
                 } catch (InvalidKeyException e) {
                     e.printStackTrace();
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
             }
         });
@@ -94,7 +105,7 @@ public class Register extends AppCompatActivity {
         });
     }
 
-    private void registerRequest() throws NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
+    private void registerRequest() throws Exception {
         Log.d(TAG, "registerRequest: start request");
 
         if (binding.password.getText().toString().equals(binding.confirmPassword.getText().toString())) {
@@ -108,25 +119,47 @@ public class Register extends AppCompatActivity {
                     .build();
             //创建网络请求接口对象实例
             CoLearnRequestInterface request = retrofit.create(CoLearnRequestInterface.class);
+
             //对发送请求进行封装
-            System.out.println(AESUtil.encryptECB(binding.password.getText().toString().getBytes(StandardCharsets.UTF_8)));
+            String temp = RSAUtils.encrypt(binding.password.getText().toString());
+            System.out.println(temp);
+            System.out.println(RSAUtils.decrypt(temp));
             Call<Data<JSON>> call = request.register(binding.account.getText().toString()
-                    , AESUtil.encryptECB(binding.password.getText().toString().getBytes(StandardCharsets.UTF_8)));
+                    , RSAUtils.encrypt(binding.password.getText().toString()));
             //步骤7:发送网络请求(异步)
             call.enqueue(new Callback<Data<JSON>>() {
                 //请求成功时回调
                 @Override
                 public void onResponse(Call<Data<JSON>> call, Response<Data<JSON>> response) {
                     //步骤8：请求处理,输出结果
-                    Object body = response.body();
+                    Data body = response.body();
                     if (body == null) return;
-                    Log.d(TAG, "返回的数据：" + response.body().toString());
+                    Log.d(TAG, "返回的数据：" + body);
+                    if(body.getCode()==200){
+                        Intent intent = new Intent();
+                        intent.setClass(Register.this,Login.class);
+                        startActivity(intent);
+                        finish();
+                    }else {
+                        CookieBar.builder(Register.this)
+                                .setTitle("注册失败")
+                                .setMessage("账号已存在或账号和密码不符合规范。")
+                                .setBackgroundColor(R.color.error)
+                                .setLayoutGravity(Gravity.TOP)
+                                .show();
+                    }
                 }
 
                 //请求失败时回调
                 @Override
                 public void onFailure(Call<Data<JSON>> call, Throwable throwable) {
                     Log.d(TAG, "post回调失败：" + throwable.getMessage() + "," + throwable.toString());
+                    CookieBar.builder(Register.this)
+                            .setTitle("注册失败")
+                            .setMessage("网络错误！请稍后再试。")
+                            .setBackgroundColor(R.color.error)
+                            .setLayoutGravity(Gravity.TOP)
+                            .show();
                 }
             });
 

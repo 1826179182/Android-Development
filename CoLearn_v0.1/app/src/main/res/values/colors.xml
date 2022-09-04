@@ -18,4 +18,5 @@
     <color name="title_bg_deep_blue">#0182C3</color>
     <color name="title_bg_deep_sky_blue">#0974A2</color>
     <color name="title_bg_water_blue">#37BFFD</color>
+    <color name="error">#FC7466</color>
 </resources>
