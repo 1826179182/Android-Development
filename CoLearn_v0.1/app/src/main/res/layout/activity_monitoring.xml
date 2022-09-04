@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.xuexiang.xui.widget.layout.XUILinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".my.Monitoring"
+    android:orientation="vertical">
+    <com.hjq.bar.TitleBar
+        android:id="@+id/title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:leftIcon="@mipmap/arrow_left"
+        app:leftIconWidth="35dp"
+        app:title="远程监控" />
+<ImageView
+    android:layout_width="match_parent"
+    android:layout_height="540dp"
+    android:src="@mipmap/video"/>
+    <com.xuexiang.xui.widget.layout.XUILinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:background="@color/design_default_color_background">
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_weight="1"
+            android:layout_height="60dp"
+            android:src="@mipmap/pause"
+            android:layout_gravity="center|left" />
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:src="@mipmap/chat"
+            android:layout_gravity="center|right" />
+    </com.xuexiang.xui.widget.layout.XUILinearLayout>
+</com.xuexiang.xui.widget.layout.XUILinearLayout>
