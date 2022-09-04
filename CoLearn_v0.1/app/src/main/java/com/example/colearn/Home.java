@@ -36,7 +36,9 @@ import com.necer.listener.OnCalendarChangedListener;
 
 import org.joda.time.LocalDate;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import me.samlss.timomenu.TimoMenu;
@@ -79,73 +81,8 @@ public class Home extends androidx.fragment.app.Fragment implements View.OnClick
         return todoAdapter;
     }
 
-    public static void updateAllTodoList(int month, LocalDate localDate) {
-        String todoStr = SPUtils.getString("todoList", null, todoAdapter.getContext());
-        todoAdapter.getTodoList().removeAll(todoAdapter.getTodoList());
-        if (todoStr != null) {
-            Log.d(TAG, "init: " + JSONArray.parseArray(todoStr));
-            AllTodoList = JSONObject.parseArray(todoStr, Habit.class);
-            Log.d(TAG, "onCalendarChange: " + AllTodoList.size());
-            Log.d(TAG, "init: allList" + AllTodoList);
-            for (Habit habit : AllTodoList) {
-                Log.d(TAG, "updateAllTodoList: " + habit.getTodoDate());
-                if (habit.getTodoDate().equals("无")) {
-                    todoAdapter.add(habit);
-                } else {
-                    if (Integer.parseInt(habit.getTodoDate().split(" ")[0].split("-")[0]) == month
-                            && Integer.parseInt(habit.getTodoDate().split(" ")[0].split("-")[1]) == localDate.getDayOfMonth()) {
-                        todoAdapter.add(habit);
-                    }
-                }
-                todoAdapter.notifyDataSetChanged();
-            }
 
-            Log.d(TAG, "init: " + todoAdapter.getTodoList());
 
-        }
-    }
-
-    public static void changeWallpaper() {
-        binding.wallpaper.setBackgroundResource(wallPaper.getWallpaper());
-        switch (wallPaper.getTitleBarColor()) {
-            case "sky_blue":
-                ImmersionBar.with(activity)
-                        .fitsSystemWindows(true)  //使用该属性,必须指定状态栏颜色
-                        .statusBarDarkFont(true, 0f)
-                        .statusBarColor(R.color.title_bg_sky_blue)
-                        .init();
-                break;
-            case "rain_green":
-                ImmersionBar.with(activity)
-                        .fitsSystemWindows(true)  //使用该属性,必须指定状态栏颜色
-                        .statusBarDarkFont(true, 0f)
-                        .statusBarColor(R.color.title_bg_rain_green)
-                        .init();
-                break;
-            case "deep_blue":
-                ImmersionBar.with(activity)
-                        .fitsSystemWindows(true)  //使用该属性,必须指定状态栏颜色
-                        .statusBarDarkFont(true, 0f)
-                        .statusBarColor(R.color.title_bg_deep_blue)
-                        .init();
-                break;
-            case "deep_sky_blue":
-                ImmersionBar.with(activity)
-                        .fitsSystemWindows(true)  //使用该属性,必须指定状态栏颜色
-                        .statusBarDarkFont(true, 0f)
-                        .statusBarColor(R.color.title_bg_deep_sky_blue)
-                        .init();
-                break;
-            case "water_blue":
-                ImmersionBar.with(activity)
-                        .fitsSystemWindows(true)  //使用该属性,必须指定状态栏颜色
-                        .statusBarDarkFont(true, 0f)
-                        .statusBarColor(R.color.title_bg_water_blue)
-                        .init();
-                break;
-        }
-        Message msg = new Message();
-    }
 
     @Nullable
     @Override
@@ -281,9 +218,7 @@ public class Home extends androidx.fragment.app.Fragment implements View.OnClick
                 } else {
                     binding.backToday.setExpanded(false);
                 }
-
                 updateAllTodoList(month, localDate);
-
             }
 
         });
@@ -294,10 +229,12 @@ public class Home extends androidx.fragment.app.Fragment implements View.OnClick
                 .setTimoMenuListener(new TimoMenuListener() {
                     @Override
                     public void onShow() {
+
                     }
 
                     @Override
                     public void onDismiss() {
+
                     }
                 })
                 .setTimoItemClickListener(new OnTimoItemClickListener() {
@@ -331,4 +268,86 @@ public class Home extends androidx.fragment.app.Fragment implements View.OnClick
                 .build();
     }
 
+    public static void updateAllTodoList(int month, LocalDate localDate) {
+        String todoStr = SPUtils.getString("todoList", null, todoAdapter.getContext());
+        todoAdapter.getTodoList().removeAll(todoAdapter.getTodoList());
+        if (todoStr != null) {
+            Log.d(TAG, "init: " + JSONArray.parseArray(todoStr));
+            AllTodoList = JSONObject.parseArray(todoStr, Habit.class);
+            Log.d(TAG, "onCalendarChange: " + AllTodoList.size());
+            Log.d(TAG, "init: allList" + AllTodoList);
+            for (Habit habit : AllTodoList) {
+                Log.d(TAG, "updateAllTodoList: " + habit.getTodoDate());
+                if (habit.getTodoDate().equals("无") || habit.getFrequency().equals("每天")) {
+                    todoAdapter.add(habit);
+                } else {
+                    if (Integer.parseInt(habit.getTodoDate().split(" ")[0].split("-")[0]) == month
+                            && Integer.parseInt(habit.getTodoDate().split(" ")[0].split("-")[1]) == localDate.getDayOfMonth()) {
+                        todoAdapter.add(habit);
+                    }
+                }
+                todoAdapter.notifyDataSetChanged();
+            }
+
+            Log.d(TAG, "init: " + todoAdapter.getTodoList());
+
+        }
+    }
+
+    public static void changeWallpaper() {
+        binding.wallpaper.setBackgroundResource(wallPaper.getWallpaper());
+        switch (wallPaper.getTitleBarColor()) {
+            case "sky_blue":
+                ImmersionBar.with(activity)
+                        .fitsSystemWindows(true)  //使用该属性,必须指定状态栏颜色
+                        .statusBarDarkFont(true, 0f)
+                        .statusBarColor(R.color.title_bg_sky_blue)
+                        .init();
+                break;
+            case "rain_green":
+                ImmersionBar.with(activity)
+                        .fitsSystemWindows(true)  //使用该属性,必须指定状态栏颜色
+                        .statusBarDarkFont(true, 0f)
+                        .statusBarColor(R.color.title_bg_rain_green)
+                        .init();
+                break;
+            case "deep_blue":
+                ImmersionBar.with(activity)
+                        .fitsSystemWindows(true)  //使用该属性,必须指定状态栏颜色
+                        .statusBarDarkFont(true, 0f)
+                        .statusBarColor(R.color.title_bg_deep_blue)
+                        .init();
+                break;
+            case "deep_sky_blue":
+                ImmersionBar.with(activity)
+                        .fitsSystemWindows(true)  //使用该属性,必须指定状态栏颜色
+                        .statusBarDarkFont(true, 0f)
+                        .statusBarColor(R.color.title_bg_deep_sky_blue)
+                        .init();
+                break;
+            case "water_blue":
+                ImmersionBar.with(activity)
+                        .fitsSystemWindows(true)  //使用该属性,必须指定状态栏颜色
+                        .statusBarDarkFont(true, 0f)
+                        .statusBarColor(R.color.title_bg_water_blue)
+                        .init();
+                break;
+        }
+        Message msg = new Message();
+    }
+
+    private static void addHabit(Habit habit, int month, LocalDate localDate){
+
+/*
+        if (habit.getTodoDate().equals("无") || habit.getFrequency().equals("每天")) {
+            todoAdapter.add(habit);
+        } else if(habit.getFrequency().equals("每周") && habit.getTodoDate())
+        }
+ */
+    }
+    public static String getWeek(Date date){
+        SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
+        String week = sdf.format(date);
+        return week;
+    }
 }

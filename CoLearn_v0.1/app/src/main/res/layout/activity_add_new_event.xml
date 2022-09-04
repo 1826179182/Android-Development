@@ -274,7 +274,7 @@
                             android:layout_marginRight="7dp"
                             android:layout_weight="5"
                             android:gravity="center_vertical|right"
-                            android:text="每天"
+                            android:text="只提醒一次"
                             android:textColor="#B3B8C1"
                             android:textSize="12dp" />
 

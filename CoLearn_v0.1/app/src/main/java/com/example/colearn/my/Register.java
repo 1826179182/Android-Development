@@ -123,7 +123,7 @@ public class Register extends AppCompatActivity {
             //对发送请求进行封装
             String temp = RSAUtils.encrypt(binding.password.getText().toString());
             System.out.println(temp);
-            System.out.println(RSAUtils.decrypt(temp));
+            System.out.println("解密"+RSAUtils.decrypt(temp));
             Call<Data<JSON>> call = request.register(binding.account.getText().toString()
                     , RSAUtils.encrypt(binding.password.getText().toString()));
             //步骤7:发送网络请求(异步)
