@@ -26,6 +26,7 @@ import com.example.colearn.home.AddEvent;
 import com.example.colearn.home.ChangeWallpaper;
 import com.example.colearn.home.CheckIn;
 import com.example.colearn.home.Planting;
+import com.example.colearn.my.Monitoring;
 import com.example.colearn.utils.MenuHelper;
 import com.example.colearn.utils.SPUtils;
 import com.gyf.immersionbar.ImmersionBar;
@@ -314,6 +315,10 @@ public class Home extends androidx.fragment.app.Fragment implements View.OnClick
                                 break;
                             case 2:
                                 intent.setClass(getContext(), Planting.class);
+                                startActivity(intent);
+                                break;
+                            case 3:
+                                intent.setClass(getContext(), Monitoring.class);
                                 startActivity(intent);
                                 break;
                         }
