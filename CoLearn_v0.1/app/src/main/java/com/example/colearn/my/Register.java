@@ -1,7 +1,6 @@
 package com.example.colearn.my;
 
 import static com.example.colearn.MainActivity.baseUrl;
-import static com.example.colearn.utils.RSAUtils.decrypt;
 import static com.example.colearn.utils.RSAUtils.encrypt;
 import android.content.Intent;
 import android.graphics.Color;
@@ -19,6 +18,7 @@ import com.example.colearn.CoLearnRequestInterface;
 import com.example.colearn.R;
 import com.example.colearn.components.Data;
 import com.example.colearn.databinding.ActivityRegisterBinding;
+import com.example.colearn.utils.ButtonClickUtils;
 import com.example.colearn.utils.IEditTextChangeListener;
 import com.example.colearn.utils.OkHttpUtil;
 import com.example.colearn.utils.RSAUtils;
@@ -65,6 +65,8 @@ public class Register extends AppCompatActivity {
         binding.registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (ButtonClickUtils.isFastClick()) { return; }
+
                 try {
                     registerRequest();
                 } catch (NoSuchPaddingException e) {
@@ -123,7 +125,7 @@ public class Register extends AppCompatActivity {
             //对发送请求进行封装
             String temp = RSAUtils.encrypt(binding.password.getText().toString());
             System.out.println(temp);
-            System.out.println("解密"+RSAUtils.decrypt(temp));
+//            System.out.println("解密"+RSAUtils.decrypt(temp));
             Call<Data<JSON>> call = request.register(binding.account.getText().toString()
                     , RSAUtils.encrypt(binding.password.getText().toString()));
             //步骤7:发送网络请求(异步)
