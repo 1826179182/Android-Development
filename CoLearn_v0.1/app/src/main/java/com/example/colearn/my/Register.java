@@ -1,6 +1,7 @@
 package com.example.colearn.my;
 
 import static com.example.colearn.MainActivity.baseUrl;
+import static com.example.colearn.utils.RSAUtils.decrypt;
 import static com.example.colearn.utils.RSAUtils.encrypt;
 import android.content.Intent;
 import android.graphics.Color;
@@ -121,6 +122,8 @@ public class Register extends AppCompatActivity {
 
             //对发送请求进行封装
             String temp = RSAUtils.encrypt(binding.password.getText().toString());
+            System.out.println(temp);
+            System.out.println("解密"+RSAUtils.decrypt(temp));
             Call<Data<JSON>> call = request.register(binding.account.getText().toString()
                     , RSAUtils.encrypt(binding.password.getText().toString()));
             //步骤7:发送网络请求(异步)
