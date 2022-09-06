@@ -2,7 +2,6 @@ package com.example.colearn.utils;
 
 import org.apache.commons.codec.binary.Base64;
 
-import org.apache.commons.io.FileUtils;
 //import sun.misc.BASE64Decoder;
 //import java.util.Base64;
 import org.apache.commons.codec.binary.Base64;
@@ -149,7 +148,7 @@ public class RSAUtils {
         byte[] decoded = Base64.decodeBase64(privateKey);
         PrivateKey priKey = KeyFactory.getInstance("RSA").generatePrivate(new X509EncodedKeySpec(decoded));
         //RSA解密
-        Cipher cipher = Cipher.getInstance("RSA");
+        Cipher cipher = Cipher.getInstance(RSA_ALGORITHM,"RSA");
         cipher.init(Cipher.DECRYPT_MODE,priKey);
         String outStr=new String(cipher.doFinal(inputByte));
         return outStr;

@@ -46,7 +46,7 @@ public class AddNewEvent extends AppCompatActivity implements View.OnClickListen
     private ActivityAddNewEventBinding binding;
     private int imageRes;
     private String habitType;
-    private String[] freList = {"只提醒一次", "每天", "每周", "每月", "每年"};
+    private String[] freList = {"只提醒一次", "每天", "每周", "每月"};
     private int constellationSelectOption = 0;
 
     @Override
@@ -360,7 +360,7 @@ public class AddNewEvent extends AppCompatActivity implements View.OnClickListen
                         SPUtils.putString("todoList", JSON.toJSONString(Home.getAllTodoList()), getContext());
 
                         Log.d(TAG, "onClick: SPU:" + SPUtils.getString("todoList", JSON.toJSONString(Home.getAllTodoList()), getContext()));
-
+                        Home.updateAllTodoList(Home.selectDate.getMonthOfYear(),Home.selectDate);
                         AddEvent.activity.finish();
                         finish();
                     } else {

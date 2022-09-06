@@ -27,9 +27,11 @@ import com.xuexiang.xui.widget.button.SmoothCheckBox;
 import com.xuexiang.xui.widget.imageview.IconImageView;
 import com.xuexiang.xui.widget.layout.XUIButton;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -84,6 +86,9 @@ public class TodoListAdapter extends ArrayAdapter {
         habitIconRes = view.findViewById(R.id.habit_icon_res);
         habitName = view.findViewById(R.id.habit);
         finish = view.findViewById(R.id.finish);
+        if (!Home.selectDate.toString().equals(new SimpleDateFormat("yyyy-MM-dd").format(new Date()).toString())){
+            finish.setVisibility(View.INVISIBLE);
+        }
 
         habitIcon.setCardBackgroundColor(todoListItems.get(position).getHabitIcon());
         habitIconRes.setImageResource(todoListItems.get(position).getHabitIconRes());
@@ -98,30 +103,29 @@ public class TodoListAdapter extends ArrayAdapter {
                         public void run() {
                             try {
                                 Thread.sleep(850);
-                                Habit hasDoneHabit = todoListItems.remove(position);
-
+                                Habit hasDoneHabit;
+                                if (todoListItems.get(position).getFrequency().equals("只提醒一次")){
+                                    hasDoneHabit = todoListItems.remove(position);
+                                }else {
+                                    hasDoneHabit = todoListItems.get(position);
+                                }
                                 for (int i = 0; i < Home.getAllTodoList().size(); i++) {
-                                    if (Home.getAllTodoList().get(i).getHabitName().equals(hasDoneHabit.getHabitName())) {
+                                    if (Home.getAllTodoList().get(i).getHabitName().equals(hasDoneHabit.getHabitName()) && Home.getAllTodoList().get(i).getFrequency().equals("只提醒一次")) {
                                         Home.getAllTodoList().remove(i);
                                     }
                                 }
 
-                                SPUtils.putString("todoList", JSON.toJSONString(Home.getAllTodoList()), getContext());
-
-                                LocalTime time = LocalTime.now(); // get the current time
-                                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
-                                hasDoneHabit.setFinishTime(time.format(formatter));
+                                hasDoneHabit.setFinishTime(new SimpleDateFormat("yyyy-MM-dd HH:mm").format(new Date()));
                                 hasDoneHabit.setStatue(Habit.DONE);
                                 HasDoneListAdapter.getDoneListItems().add(hasDoneHabit);
-
+                                SPUtils.putString("todoList", JSON.toJSONString(Home.getAllTodoList()), getContext());
                                 SPUtils.putString(LocalDate.now() + "hasDoneList", JSON.toJSONString(HasDoneListAdapter.getDoneListItems()), getContext());
-
                                 Message msg = new Message();
                                 notifyDataSetChanged.sendMessage(msg);
+
                             } catch (Exception e) {
                                 e.printStackTrace();
                             }
-
                         }
                     });
                     executorService.execute(changeDate);
@@ -133,6 +137,7 @@ public class TodoListAdapter extends ArrayAdapter {
 
     private synchronized void DateChange() {
         Home.getTodoAdapter().notifyDataSetChanged();
+        Home.updateAllTodoList(Home.selectDate.getMonthOfYear(),Home.selectDate);
         CustomDialog.show(new OnBindView<CustomDialog>(R.layout.task_finish) {
             @Override
             public void onBind(final CustomDialog dialog, View v) {

@@ -40,6 +40,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.BlockingDeque;
 
 import me.samlss.timomenu.TimoMenu;
 import me.samlss.timomenu.animation.ScaleItemAnimation;
@@ -50,6 +51,8 @@ import me.samlss.timomenu.view.TimoItemView;
 
 public class Home extends androidx.fragment.app.Fragment implements View.OnClickListener {
     private static final String TAG = "Home";
+
+    public static LocalDate selectDate;
 
     private static WallPaper wallPaper;
     private static List<CheckInRecord> checkInRecords = new ArrayList<>();
@@ -139,7 +142,6 @@ public class Home extends androidx.fragment.app.Fragment implements View.OnClick
     private void init(View view) {
         activity = getActivity();
         String wallpaperStr = SPUtils.getString("wallpaper", null, getContext());
-        System.out.println(wallpaperStr);
         if (wallpaperStr != null) {
             wallPaper = JSONArray.parseObject(wallpaperStr, WallPaper.class);
         } else {
@@ -173,6 +175,7 @@ public class Home extends androidx.fragment.app.Fragment implements View.OnClick
         binding.weekCalendar.setOnCalendarChangedListener(new OnCalendarChangedListener() {
             @Override
             public void onCalendarChange(BaseCalendar baseCalendar, int year, int month, LocalDate localDate, DateChangeBehavior dateChangeBehavior) {
+                selectDate = localDate;
                 switch (month) {
                     case 1:
                         binding.month.setText("一月");
@@ -229,7 +232,6 @@ public class Home extends androidx.fragment.app.Fragment implements View.OnClick
                 .setTimoMenuListener(new TimoMenuListener() {
                     @Override
                     public void onShow() {
-
                     }
 
                     @Override
@@ -274,21 +276,12 @@ public class Home extends androidx.fragment.app.Fragment implements View.OnClick
         if (todoStr != null) {
             Log.d(TAG, "init: " + JSONArray.parseArray(todoStr));
             AllTodoList = JSONObject.parseArray(todoStr, Habit.class);
-            Log.d(TAG, "onCalendarChange: " + AllTodoList.size());
             Log.d(TAG, "init: allList" + AllTodoList);
             for (Habit habit : AllTodoList) {
                 Log.d(TAG, "updateAllTodoList: " + habit.getTodoDate());
-                if (habit.getTodoDate().equals("无") || habit.getFrequency().equals("每天")) {
-                    todoAdapter.add(habit);
-                } else {
-                    if (Integer.parseInt(habit.getTodoDate().split(" ")[0].split("-")[0]) == month
-                            && Integer.parseInt(habit.getTodoDate().split(" ")[0].split("-")[1]) == localDate.getDayOfMonth()) {
-                        todoAdapter.add(habit);
-                    }
-                }
+                addHabit(habit,month,localDate);
                 todoAdapter.notifyDataSetChanged();
             }
-
             Log.d(TAG, "init: " + todoAdapter.getTodoList());
 
         }
@@ -336,18 +329,41 @@ public class Home extends androidx.fragment.app.Fragment implements View.OnClick
         Message msg = new Message();
     }
 
-    private static void addHabit(Habit habit, int month, LocalDate localDate){
-
-/*
+    private static void addHabit(Habit habit, int month, LocalDate selectDate){
+        System.out.println(habit.getFinishTime().split(" ")[0]);
+        System.out.println(selectDate.toString());
+        System.out.println(!habit.getFinishTime().split(" ")[0].equals(selectDate.toString()));
         if (habit.getTodoDate().equals("无") || habit.getFrequency().equals("每天")) {
-            todoAdapter.add(habit);
-        } else if(habit.getFrequency().equals("每周") && habit.getTodoDate())
+            if (!habit.getFinishTime().split(" ")[0].equals(selectDate.toString())){
+                todoAdapter.add(habit);
+            }
+        } else if(habit.getFrequency().equals("每周") && habit.getTodoDate().split(" ")[1].equals(changeDayOfWeek(selectDate.getDayOfWeek()))){
+            if (!habit.getFinishTime().split(" ")[0].equals(selectDate.toString())){
+                todoAdapter.add(habit);
+            }
+        } else if(habit.getFrequency().equals("每月") && Integer.parseInt(habit.getTodoDate().split(" ")[0].split("-")[1])==(selectDate.getDayOfMonth())){
+            if (!habit.getFinishTime().split(" ")[0].equals(selectDate.toString())){
+                todoAdapter.add(habit);
+            }
+        } else {
+            if (Integer.parseInt(habit.getTodoDate().split(" ")[0].split("-")[0]) == month
+                    && Integer.parseInt(habit.getTodoDate().split(" ")[0].split("-")[1]) == selectDate.getDayOfMonth()) {
+                todoAdapter.add(habit);
+            }
         }
- */
+
     }
-    public static String getWeek(Date date){
-        SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
-        String week = sdf.format(date);
-        return week;
+
+    private static String changeDayOfWeek(int day){
+        switch (day){
+            case 1: return "周一";
+            case 2: return "周二";
+            case 3: return "周三";
+            case 4: return "周四";
+            case 5: return "周五";
+            case 6: return "周六";
+            case 7: return "周日";
+        }
+        return "";
     }
 }

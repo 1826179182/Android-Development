@@ -8,14 +8,13 @@ public class Habit {
     private String habitName = "";
     private String habitType;
     private String todoDate = "无";
-
-    ;
-    private String finishTime;
+    private String finishTime = "";
     private int statue;
     private int habitIcon;
     private int habitIconRes;
     private String frequency = "只提醒一次";
     private String remindTime = "无";
+
     public Habit(String habitName, String habitType, String finishTime, int habitIcon, int habitIconRes, String todoDate, String frequency, String remindTime, int statue) {
         this.habitName = habitName;
         this.habitType = habitType;

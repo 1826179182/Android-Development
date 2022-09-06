@@ -52,7 +52,7 @@ public class HasDoneListAdapter extends ArrayAdapter {
         habitIcon.setCardBackgroundColor(doneListItems.get(position).getHabitIcon());
         habitIconRes.setImageResource(doneListItems.get(position).getHabitIconRes());
         habitName.setText(doneListItems.get(position).getHabitName());
-        finishTime.setText(doneListItems.get(position).getFinishTime());
+        finishTime.setText(doneListItems.get(position).getFinishTime().split(" ")[1]);
         return view;
     }
 

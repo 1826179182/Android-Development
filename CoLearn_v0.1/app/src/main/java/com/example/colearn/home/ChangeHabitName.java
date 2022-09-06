@@ -60,14 +60,10 @@ public class ChangeHabitName extends AppCompatActivity {
                     Intent intent = new Intent();
                     if (msg.equals("edit")) {
                         newHabit = EditHabit.getNewHabit();
-                        Log.d(TAG, "edit: " + newHabit);
                         newHabit.setHabitName(habitName);
-                        Log.d(TAG, "edit: after" + newHabit);
-                        Log.d(TAG, "edit: " + EditHabit.getNewHabit());
                         EditHabit.update();
                     } else {
                         newHabit = AddEvent.getNewHabit();
-                        Log.d(TAG, "add: " + newHabit);
                         newHabit.setHabitName(habitName);
                         intent.setClass(ChangeHabitName.this, AddNewEvent.class);
                         startActivity(intent);

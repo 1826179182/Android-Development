@@ -53,7 +53,7 @@ public class EditHabit extends AppCompatActivity implements View.OnClickListener
     private static String habitType;
     private int position;
 
-    private String[] freList = {"只提醒一次", "每天", "每周", "每月", "每年"};
+    private String[] freList = {"只提醒一次", "每天", "每周", "每月"};
     private int constellationSelectOption = 0;
 
     public static Habit getNewHabit() {
