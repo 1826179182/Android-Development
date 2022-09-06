@@ -32,7 +32,7 @@ public class TokenInterceptor implements Interceptor {
         } else {
             request = chain.request()
                     .newBuilder()
-                    .addHeader("token", token)
+                    .addHeader("Authorization", token)
                     .build();
         }
         return chain.proceed(request);

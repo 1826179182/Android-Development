@@ -64,8 +64,6 @@ public class MenuHelper {
                                                                  int highlightTextColorRes) {
         return new TimoItemViewParameter.Builder()
                 .setWidth(itemWidth)
-                .setImageHeight(130)
-                .setImageWidth(130)
                 .setImagePadding(new Rect(0, 10, 0, 10))
                 .setTextPadding(new Rect(0, 0, 0, 0))
                 .setNormalImageRes(normalImageRes)

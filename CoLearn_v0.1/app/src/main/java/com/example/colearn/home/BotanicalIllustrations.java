@@ -11,6 +11,7 @@ import com.airbnb.lottie.LottieAnimationView;
 import com.example.colearn.R;
 import com.example.colearn.components.Plant;
 import com.example.colearn.databinding.ActivityBotanicalIllustrationsBinding;
+import com.example.colearn.my.HabitManager;
 import com.gyf.immersionbar.ImmersionBar;
 import com.hjq.bar.OnTitleBarListener;
 import com.hjq.bar.TitleBar;
@@ -21,8 +22,9 @@ import com.zhpan.bannerview.BaseViewHolder;
 import java.util.ArrayList;
 import java.util.List;
 
-public class botanicalIllustrations extends AppCompatActivity {
+public class BotanicalIllustrations extends AppCompatActivity {
     private static ActivityBotanicalIllustrationsBinding binding;
+    private MultiViewTypesAdapter multiViewTypesAdapter;
     private List<Plant> plants = new ArrayList<>();
 
     private BannerViewPager<Plant> mViewPager;
@@ -59,10 +61,10 @@ public class botanicalIllustrations extends AppCompatActivity {
         plants.add(new Plant(7));
         plants.add(new Plant(8));
         plants.add(new Plant(9));
-
+        multiViewTypesAdapter = new MultiViewTypesAdapter();
         mViewPager = findViewById(R.id.banner_view);
         mViewPager.setLifecycleRegistry(getLifecycle())
-                .setAdapter(new MultiViewTypesAdapter())
+                .setAdapter(multiViewTypesAdapter)
                 .create();
         mViewPager.refreshData(plants);
     }
@@ -75,8 +77,11 @@ public class botanicalIllustrations extends AppCompatActivity {
             LottieAnimationView lottie = holder.itemView.findViewById(R.id.plant);
             TextView statue = holder.itemView.findViewById(R.id.acquire_statue);
             for (Plant e : Planting.getPlants()) {
-                if (e.getId() == plant.getId())
+                if (e.getId() == plant.getId()){
                     statue.setText("已获得");
+                }else{
+                    statue.setText("未获得");
+                }
             }
             lottie.setAnimation("plant_" + plant.getId() + ".json");
             lottie.setOnClickListener(new View.OnClickListener() {

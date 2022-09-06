@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/xui_btn_green_select_color"
     android:orientation="vertical"
-    tools:context=".home.botanicalIllustrations">
+    tools:context=".home.BotanicalIllustrations">
 
     <com.hjq.bar.TitleBar
         android:id="@+id/title_bar"

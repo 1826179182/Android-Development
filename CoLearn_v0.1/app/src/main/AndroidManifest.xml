@@ -46,7 +46,7 @@
             android:name=".home.MyGarden"
             android:exported="false" />
         <activity
-            android:name=".home.botanicalIllustrations"
+            android:name=".home.BotanicalIllustrations"
             android:exported="false" />
         <activity
             android:name=".home.Planting"

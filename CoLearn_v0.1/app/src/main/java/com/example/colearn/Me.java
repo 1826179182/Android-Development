@@ -15,6 +15,7 @@ import com.example.colearn.my.DataSynchronize;
 import com.example.colearn.my.HabitManager;
 import com.example.colearn.my.LoginOrRegister;
 import com.example.colearn.my.PersonalInformation;
+import com.example.colearn.utils.ButtonClickUtils;
 import com.xuexiang.xui.widget.toast.XToast;
 
 public class Me extends androidx.fragment.app.Fragment implements View.OnClickListener {
@@ -48,16 +49,17 @@ public class Me extends androidx.fragment.app.Fragment implements View.OnClickLi
 
     @Override
     public void onClick(View v) {
+        if (ButtonClickUtils.isFastClick()) { return; }
+
         Intent intent = new Intent();
         switch (v.getId()) {
             case R.id.avatar:
                 if (User.getUser()!=null) {
                     intent.setClass(getContext(), PersonalInformation.class);
-                    startActivity(intent);
                 } else {
                     intent.setClass(getContext(), LoginOrRegister.class);
-                    startActivity(intent);
                 }
+                startActivity(intent);
                 break;
             case R.id.share_app:
                 intent.setAction(Intent.ACTION_SEND);

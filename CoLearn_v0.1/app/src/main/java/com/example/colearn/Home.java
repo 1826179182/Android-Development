@@ -27,6 +27,7 @@ import com.example.colearn.home.ChangeWallpaper;
 import com.example.colearn.home.CheckIn;
 import com.example.colearn.home.Planting;
 import com.example.colearn.my.Monitoring;
+import com.example.colearn.utils.ButtonClickUtils;
 import com.example.colearn.utils.MenuHelper;
 import com.example.colearn.utils.SPUtils;
 import com.gyf.immersionbar.ImmersionBar;
@@ -43,6 +44,11 @@ import java.util.List;
 import java.util.concurrent.BlockingDeque;
 
 import me.samlss.timomenu.TimoMenu;
+import me.samlss.timomenu.animation.BombItemAnimation;
+import me.samlss.timomenu.animation.BounceInDownItemAnimation;
+import me.samlss.timomenu.animation.BounceItemAnimation;
+import me.samlss.timomenu.animation.FlipItemAnimation;
+import me.samlss.timomenu.animation.RotateItemAnimation;
 import me.samlss.timomenu.animation.ScaleItemAnimation;
 import me.samlss.timomenu.interfaces.OnTimoItemClickListener;
 import me.samlss.timomenu.interfaces.TimoMenuListener;
@@ -102,6 +108,9 @@ public class Home extends androidx.fragment.app.Fragment implements View.OnClick
 
     @Override
     public void onClick(View v) {
+
+        if (ButtonClickUtils.isFastClick()) { return; }
+
         Intent intent = new Intent();
         switch (v.getId()) {
             case R.id.up_and_down:
@@ -135,6 +144,10 @@ public class Home extends androidx.fragment.app.Fragment implements View.OnClick
                 break;
             case R.id.more_func:
                 mTimoMenu.show();
+                break;
+            case R.id.camera:
+                intent.setClass(getContext(), Monitoring.class);
+                startActivity(intent);
                 break;
         }
     }
@@ -171,7 +184,7 @@ public class Home extends androidx.fragment.app.Fragment implements View.OnClick
         binding.backToday.setOnClickListener(this::onClick);
         binding.upAndDown.setOnClickListener(this::onClick);
         binding.moreFunc.setOnClickListener(this::onClick);
-
+        binding.camera.setOnClickListener(this::onClick);
         binding.weekCalendar.setOnCalendarChangedListener(new OnCalendarChangedListener() {
             @Override
             public void onCalendarChange(BaseCalendar baseCalendar, int year, int month, LocalDate localDate, DateChangeBehavior dateChangeBehavior) {
@@ -265,8 +278,8 @@ public class Home extends androidx.fragment.app.Fragment implements View.OnClick
                     }
                 })
                 .setMenuMargin(new Rect(100, 20, 100, 20))
-                .setMenuPadding(new Rect(30, 10, 30, 10))
-                .addRow(ScaleItemAnimation.create(), MenuHelper.getTopList(itemViewWidth))
+                .setMenuPadding(new Rect(25, 10, 25, 10))
+                .addRow(FlipItemAnimation.create(), MenuHelper.getTopList(itemViewWidth))
                 .build();
     }
 
@@ -330,28 +343,26 @@ public class Home extends androidx.fragment.app.Fragment implements View.OnClick
     }
 
     private static void addHabit(Habit habit, int month, LocalDate selectDate){
-        System.out.println(habit.getFinishTime().split(" ")[0]);
-        System.out.println(selectDate.toString());
-        System.out.println(!habit.getFinishTime().split(" ")[0].equals(selectDate.toString()));
-        if (habit.getTodoDate().equals("无") || habit.getFrequency().equals("每天")) {
-            if (!habit.getFinishTime().split(" ")[0].equals(selectDate.toString())){
-                todoAdapter.add(habit);
-            }
-        } else if(habit.getFrequency().equals("每周") && habit.getTodoDate().split(" ")[1].equals(changeDayOfWeek(selectDate.getDayOfWeek()))){
-            if (!habit.getFinishTime().split(" ")[0].equals(selectDate.toString())){
-                todoAdapter.add(habit);
-            }
-        } else if(habit.getFrequency().equals("每月") && Integer.parseInt(habit.getTodoDate().split(" ")[0].split("-")[1])==(selectDate.getDayOfMonth())){
-            if (!habit.getFinishTime().split(" ")[0].equals(selectDate.toString())){
-                todoAdapter.add(habit);
-            }
-        } else {
-            if (Integer.parseInt(habit.getTodoDate().split(" ")[0].split("-")[0]) == month
-                    && Integer.parseInt(habit.getTodoDate().split(" ")[0].split("-")[1]) == selectDate.getDayOfMonth()) {
-                todoAdapter.add(habit);
+        if(!selectDate.isBefore(LocalDate.now())){
+            if (habit.getTodoDate().equals("无") || habit.getFrequency().equals("每天")) {
+                if (!habit.getFinishTime().split(" ")[0].equals(selectDate.toString())){
+                    todoAdapter.add(habit);
+                }
+            } else if(habit.getFrequency().equals("每周") && habit.getTodoDate().split(" ")[1].equals(changeDayOfWeek(selectDate.getDayOfWeek()))){
+                if (!habit.getFinishTime().split(" ")[0].equals(selectDate.toString())){
+                    todoAdapter.add(habit);
+                }
+            } else if(habit.getFrequency().equals("每月") && Integer.parseInt(habit.getTodoDate().split(" ")[0].split("-")[1])==(selectDate.getDayOfMonth())){
+                if (!habit.getFinishTime().split(" ")[0].equals(selectDate.toString())){
+                    todoAdapter.add(habit);
+                }
+            } else {
+                if (Integer.parseInt(habit.getTodoDate().split(" ")[0].split("-")[0]) == month
+                        && Integer.parseInt(habit.getTodoDate().split(" ")[0].split("-")[1]) == selectDate.getDayOfMonth()) {
+                    todoAdapter.add(habit);
+                }
             }
         }
-
     }
 
     private static String changeDayOfWeek(int day){

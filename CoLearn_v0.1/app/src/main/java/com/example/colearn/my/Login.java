@@ -17,6 +17,7 @@ import com.example.colearn.R;
 import com.example.colearn.components.Data;
 import com.example.colearn.components.User;
 import com.example.colearn.databinding.ActivityLoginBinding;
+import com.example.colearn.utils.ButtonClickUtils;
 import com.example.colearn.utils.IEditTextChangeListener;
 import com.example.colearn.utils.OkHttpUtil;
 import com.example.colearn.utils.RSAUtils;
@@ -61,6 +62,8 @@ public class Login extends AppCompatActivity {
         binding.loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (ButtonClickUtils.isFastClick()) { return; }
+
                 try {
                     loginRequest();
                 }  catch (Exception e) {

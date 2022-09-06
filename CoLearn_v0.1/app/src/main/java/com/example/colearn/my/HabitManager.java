@@ -24,6 +24,7 @@ import com.example.colearn.Home;
 import com.example.colearn.R;
 import com.example.colearn.adapter.HasDoneListAdapter;
 import com.example.colearn.components.Habit;
+import com.example.colearn.utils.ButtonClickUtils;
 import com.example.colearn.utils.SPUtils;
 import com.gyf.immersionbar.ImmersionBar;
 import com.hjq.bar.OnTitleBarListener;
@@ -129,6 +130,8 @@ public class HabitManager extends AppCompatActivity implements View.OnTouchListe
             edit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    if (ButtonClickUtils.isFastClick()) { return; }
+
                     Intent intent = new Intent();
                     intent.setClass(getApplicationContext(), EditHabit.class);
                     intent.putExtra("position", position);
@@ -141,6 +144,8 @@ public class HabitManager extends AppCompatActivity implements View.OnTouchListe
             delete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    if (ButtonClickUtils.isFastClick()) { return; }
+
                     MyViewHolder myViewHolder = (MyViewHolder) mRecyclerView.findViewHolderForAdapterPosition(position);
                     slideLayout = myViewHolder.itemView.findViewById(R.id.sl_slide);
                     slideLayout.close();

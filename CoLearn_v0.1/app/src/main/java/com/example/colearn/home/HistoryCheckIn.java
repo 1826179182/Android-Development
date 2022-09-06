@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.colearn.Home;
 import com.example.colearn.R;
 import com.example.colearn.components.CheckInRecord;
+import com.example.colearn.utils.ButtonClickUtils;
 import com.gyf.immersionbar.ImmersionBar;
 import com.hjq.bar.OnTitleBarListener;
 import com.hjq.bar.TitleBar;
@@ -109,6 +110,8 @@ public class HistoryCheckIn extends AppCompatActivity {
             upAndDown.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    if (ButtonClickUtils.isFastClick()) { return; }
+
                     MyViewHolder myViewHolder = (MyViewHolder) mRecyclerView.findViewHolderForAdapterPosition(position);
                     if (myViewHolder != null) {
                         expandableLayout = ((ExpandableLayout) myViewHolder.itemView.findViewById(R.id.check_in_detail));

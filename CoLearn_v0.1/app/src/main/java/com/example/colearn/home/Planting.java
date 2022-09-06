@@ -30,9 +30,9 @@ import com.xuexiang.xui.widget.popupwindow.ViewTooltip;
 
 import org.joda.time.LocalDate;
 
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Planting extends AppCompatActivity implements View.OnClickListener, View.OnTouchListener {
@@ -69,7 +69,7 @@ public class Planting extends AppCompatActivity implements View.OnClickListener,
             public void onRightClick(TitleBar titleBar) {
                 OnTitleBarListener.super.onRightClick(titleBar);
                 Intent intent = new Intent();
-                intent.setClass(Planting.this, botanicalIllustrations.class);
+                intent.setClass(Planting.this, BotanicalIllustrations.class);
                 startActivity(intent);
             }
 
@@ -110,7 +110,7 @@ public class Planting extends AppCompatActivity implements View.OnClickListener,
                         LottieAnimationView plant = v.findViewById(R.id.plant);
                         Plant newPlant = plants.get(plants.size() - 1);
                         newPlant.setState(Plant.PLANT);
-                        newPlant.setFinishTime(LocalDate.now().toString() + ' ' + LocalTime.now().format(DateTimeFormatter.ofPattern("hh:mm")));
+                        newPlant.setFinishTime(new SimpleDateFormat( "yyyy-MM-dd HH:mm").format(new Date()));
                         plant.setAnimation("plant_" + newPlant.getId() + ".json");
                         SPUtils.putString("plants", JSON.toJSONString(plants), getApplicationContext());
                         SPUtils.putInt(LocalDate.now() + "_plant_task_finish?", 1, getApplicationContext());
