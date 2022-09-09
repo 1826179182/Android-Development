@@ -48,5 +48,8 @@ public interface CoLearnRequestInterface {
     @POST("list/savePlantsList")
     Call<ResponseBody> savePlantsList(@Field("savePlantsList") JSONArray plantsList);
 
+    @FormUrlEncoded
+    @POST("insight/daily")
+    Call<Data<JSON>> getDailyAcitvities(@Field("account") String account,@Field("data") String date);
 
 }

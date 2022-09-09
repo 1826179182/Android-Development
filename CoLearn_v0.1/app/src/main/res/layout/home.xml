@@ -83,49 +83,49 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="周日" />
+                            android:text="日" />
 
                         <com.xuexiang.xui.widget.alpha.XUIAlphaTextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="周一" />
+                            android:text="一" />
 
                         <com.xuexiang.xui.widget.alpha.XUIAlphaTextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="周二" />
+                            android:text="二" />
 
                         <com.xuexiang.xui.widget.alpha.XUIAlphaTextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="周三" />
+                            android:text="三" />
 
                         <com.xuexiang.xui.widget.alpha.XUIAlphaTextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="周四" />
+                            android:text="四" />
 
                         <com.xuexiang.xui.widget.alpha.XUIAlphaTextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="周五" />
+                            android:text="五" />
 
                         <com.xuexiang.xui.widget.alpha.XUIAlphaTextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="周六" />
+                            android:text="六" />
                     </com.xuexiang.xui.widget.layout.XUILinearLayout>
 
                     <com.necer.calendar.WeekCalendar

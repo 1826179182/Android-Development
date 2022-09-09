@@ -222,11 +222,11 @@ public class Home extends androidx.fragment.app.Fragment implements View.OnClick
                         break;
                     case 11:
                         binding.month.setText("十一月");
-                        binding.month.setTextSize(16);
+                        binding.month.setTextSize(15);
                         break;
                     case 12:
                         binding.month.setText("十二月");
-                        binding.month.setTextSize(16);
+                        binding.month.setTextSize(15);
                         break;
                 }
                 if (!LocalDate.now().equals(localDate)) {

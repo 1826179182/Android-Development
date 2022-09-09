@@ -44,11 +44,10 @@ dependencies {
     implementation 'androidx.viewpager2:viewpager2:1.0.0'
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
-    implementation 'androidx.appcompat:appcompat:1.3.0'
-    implementation 'com.google.android.material:material:1.4.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.constraintlayout:constraintlayout-core:1.0.4'
     implementation 'com.google.firebase:firebase-crashlytics-buildtools:2.7.1'
+    implementation 'com.google.guava:guava:27.0.1-android'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
@@ -59,10 +58,10 @@ dependencies {
     //XUI
     implementation 'com.github.xuexiangjys:XUI:1.1.9'
 
-    implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation 'androidx.appcompat:appcompat:1.4.2'
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
-    implementation 'com.google.android.material:material:1.4.0'
-    implementation 'com.github.bumptech.glide:glide:4.12.0'
+    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'com.github.bumptech.glide:glide:4.13.2'
 
     //日历
     implementation 'com.necer.ncalendar:ncalendar:5.0.2'
@@ -89,11 +88,11 @@ dependencies {
 
     //retrofit2网络请求
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
-//解析器
+    //解析器
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-//快速解析json
+    //快速解析json
     implementation 'com.alibaba:fastjson:1.2.76'
-//通过注解绑定控件
+    //通过注解绑定控件
     implementation 'com.jakewharton:butterknife:10.2.3'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
 
@@ -107,7 +106,11 @@ dependencies {
     //base64
     implementation 'commons-codec:commons-codec:1.15'
 
-    // https://mvnrepository.com/artifact/commons-io/commons-io
     implementation group: 'commons-io', name: 'commons-io', version: '2.11.0'
+
+    // smart refresh
+    implementation 'io.github.scwang90:refresh-layout-kernel:2.0.5'
+    implementation 'io.github.scwang90:refresh-header-classics:2.0.5'
+    implementation 'io.github.scwang90:refresh-footer-classics:2.0.5'
 
 }

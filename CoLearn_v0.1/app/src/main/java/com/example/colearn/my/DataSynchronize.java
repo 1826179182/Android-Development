@@ -1,6 +1,7 @@
 package com.example.colearn.my;
 
 import static com.example.colearn.MainActivity.baseUrl;
+import static com.xuexiang.xui.XUI.getContext;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -20,6 +21,7 @@ import com.example.colearn.components.Data;
 import com.example.colearn.components.Habit;
 import com.example.colearn.databinding.ActivityDataSynchronizeBinding;
 import com.example.colearn.utils.OkHttpUtil;
+import com.example.colearn.utils.SPUtils;
 import com.gyf.immersionbar.ImmersionBar;
 
 import java.util.List;
@@ -177,6 +179,39 @@ public class DataSynchronize extends AppCompatActivity implements View.OnClickLi
             //请求失败时回调
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable throwable) {
+                Log.d(TAG, "post回调失败：" + throwable.getMessage() + "," + throwable.toString());
+            }
+        });
+    }
+
+
+    public static void getDailyAcitvities(){
+        //构建Retrofit实例
+        Retrofit retrofit = new Retrofit.Builder()
+                .client(OkHttpUtil.getOkHttpClient())
+                //设置网络请求BaseUrl地址
+                .baseUrl(baseUrl)
+                //设置数据解析器
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        //创建网络请求接口对象实例
+        CoLearnRequestInterface request = retrofit.create(CoLearnRequestInterface.class);
+        //对发送请求进行封装
+        Call<Data<JSON>> call = request.getDailyAcitvities(SPUtils.getString("account",null,getContext()),"");
+        //步骤:发送网络请求(异步)
+        call.enqueue(new Callback<Data<JSON>>() {
+            //请求成功时回调
+            @Override
+            public void onResponse(Call<Data<JSON>> call, Response<Data<JSON>> response) {
+                //步骤8：请求处理,输出结果
+                Object body = response.body();
+                if (body == null) return;
+                Log.d(TAG, "返回的数据：" + response.body().toString());
+            }
+
+            //请求失败时回调
+            @Override
+            public void onFailure(Call<Data<JSON>> call, Throwable throwable) {
                 Log.d(TAG, "post回调失败：" + throwable.getMessage() + "," + throwable.toString());
             }
         });
