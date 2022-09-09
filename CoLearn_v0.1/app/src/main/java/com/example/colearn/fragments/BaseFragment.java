@@ -25,11 +25,13 @@ import java.util.ArrayList;
 
 public class BaseFragment extends Fragment {
 
-    //    private ListView list_2;
-    //    private List<Habit> hasDoneList = new ArrayList<>();
 
-    //    private static boolean hasChanged = false;
+    public Context mContext;
     private static int layoutId;
+
+    public RecyclerView mRecyclerView;
+    public ArrayList<ChartData> chartDataList;
+
     public final int STYLE_HALF_PIE = 0;
     public final int STYLE_FULL_PIE = 1;
     public final int STYLE_BAR = 2;
@@ -38,15 +40,13 @@ public class BaseFragment extends Fragment {
     public int thisLayout;
     public int thisRecyclerViewLayout;
     public int[] ChartFragType;
-    private RecyclerView mRecyclerView;
-    private Context mContext;
-    private ArrayList<ChartData> chartDataList;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 //        initChartDataList();
     }
+
 
     public void initChartDataList() {
         this.chartDataList = new ArrayList<>();
@@ -61,7 +61,6 @@ public class BaseFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(thisLayout, null);
         mRecyclerView = view.findViewById(thisRecyclerViewLayout);
-//        mRecyclerView.setHasFixedSize(true);
         Activity thisActivity = getActivity();
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(thisActivity);
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
