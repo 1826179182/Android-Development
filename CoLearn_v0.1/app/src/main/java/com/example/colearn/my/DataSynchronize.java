@@ -24,6 +24,7 @@ import com.gyf.immersionbar.ImmersionBar;
 
 import java.util.List;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -63,12 +64,12 @@ public class DataSynchronize extends AppCompatActivity implements View.OnClickLi
 
         List<Habit> allTodoList = Home.getAllTodoList();
         //对发送请求进行封装
-        Call<Data<JSON>> call = request.saveTodoList(JSONArray.parseArray(JSON.toJSONString(allTodoList)));
+        Call<ResponseBody> call = request.saveTodoList(JSONArray.parseArray(JSON.toJSONString(allTodoList)));
         //步骤:发送网络请求(异步)
-        call.enqueue(new Callback<Data<JSON>>() {
+        call.enqueue(new Callback<ResponseBody>() {
             //请求成功时回调
             @Override
-            public void onResponse(Call<Data<JSON>> call, Response<Data<JSON>> response) {
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 //步骤8：请求处理,输出结果
                 Object body = response.body();
                 if (body == null) return;
@@ -77,7 +78,7 @@ public class DataSynchronize extends AppCompatActivity implements View.OnClickLi
 
             //请求失败时回调
             @Override
-            public void onFailure(Call<Data<JSON>> call, Throwable throwable) {
+            public void onFailure(Call<ResponseBody> call, Throwable throwable) {
                 Log.d(TAG, "post回调失败：" + throwable.getMessage() + "," + throwable.toString());
             }
         });
@@ -97,12 +98,12 @@ public class DataSynchronize extends AppCompatActivity implements View.OnClickLi
 
         List<CheckInRecord> checkInRecords = Home.getCheckInRecords();
         //对发送请求进行封装
-        Call<Data<JSON>> call = request.saveTodoList(JSONArray.parseArray(JSON.toJSONString(checkInRecords)));
+        Call<ResponseBody> call = request.saveTodoList(JSONArray.parseArray(JSON.toJSONString(checkInRecords)));
         //步骤:发送网络请求(异步)
-        call.enqueue(new Callback<Data<JSON>>() {
+        call.enqueue(new Callback<ResponseBody>() {
             //请求成功时回调
             @Override
-            public void onResponse(Call<Data<JSON>> call, Response<Data<JSON>> response) {
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 //步骤8：请求处理,输出结果
                 Object body = response.body();
                 if (body == null) return;
@@ -111,7 +112,7 @@ public class DataSynchronize extends AppCompatActivity implements View.OnClickLi
 
             //请求失败时回调
             @Override
-            public void onFailure(Call<Data<JSON>> call, Throwable throwable) {
+            public void onFailure(Call<ResponseBody> call, Throwable throwable) {
                 Log.d(TAG, "post回调失败：" + throwable.getMessage() + "," + throwable.toString());
             }
         });
@@ -129,12 +130,12 @@ public class DataSynchronize extends AppCompatActivity implements View.OnClickLi
         //创建网络请求接口对象实例
         CoLearnRequestInterface request = retrofit.create(CoLearnRequestInterface.class);
         //对发送请求进行封装
-        Call<Data<JSON>> call = request.getTodoList();
+        Call<ResponseBody> call = request.getTodoList();
         //步骤:发送网络请求(异步)
-        call.enqueue(new Callback<Data<JSON>>() {
+        call.enqueue(new Callback<ResponseBody>() {
             //请求成功时回调
             @Override
-            public void onResponse(Call<Data<JSON>> call, Response<Data<JSON>> response) {
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 //步骤8：请求处理,输出结果
                 Object body = response.body();
                 if (body == null) return;
@@ -143,7 +144,7 @@ public class DataSynchronize extends AppCompatActivity implements View.OnClickLi
 
             //请求失败时回调
             @Override
-            public void onFailure(Call<Data<JSON>> call, Throwable throwable) {
+            public void onFailure(Call<ResponseBody> call, Throwable throwable) {
                 Log.d(TAG, "post回调失败：" + throwable.getMessage() + "," + throwable.toString());
             }
         });
@@ -161,12 +162,12 @@ public class DataSynchronize extends AppCompatActivity implements View.OnClickLi
         //创建网络请求接口对象实例
         CoLearnRequestInterface request = retrofit.create(CoLearnRequestInterface.class);
         //对发送请求进行封装
-        Call<Data<JSON>> call = request.getCheckInList();
+        Call<ResponseBody> call = request.getCheckInList();
         //步骤:发送网络请求(异步)
-        call.enqueue(new Callback<Data<JSON>>() {
+        call.enqueue(new Callback<ResponseBody>() {
             //请求成功时回调
             @Override
-            public void onResponse(Call<Data<JSON>> call, Response<Data<JSON>> response) {
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 //步骤8：请求处理,输出结果
                 Object body = response.body();
                 if (body == null) return;
@@ -175,7 +176,7 @@ public class DataSynchronize extends AppCompatActivity implements View.OnClickLi
 
             //请求失败时回调
             @Override
-            public void onFailure(Call<Data<JSON>> call, Throwable throwable) {
+            public void onFailure(Call<ResponseBody> call, Throwable throwable) {
                 Log.d(TAG, "post回调失败：" + throwable.getMessage() + "," + throwable.toString());
             }
         });

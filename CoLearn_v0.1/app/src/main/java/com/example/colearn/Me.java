@@ -1,8 +1,13 @@
 package com.example.colearn;
 
+import static com.luck.picture.lib.thread.PictureThreadUtils.runOnUiThread;
+
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,14 +18,34 @@ import com.example.colearn.components.User;
 import com.example.colearn.databinding.MeBinding;
 import com.example.colearn.my.DataSynchronize;
 import com.example.colearn.my.HabitManager;
+import com.example.colearn.my.Login;
 import com.example.colearn.my.LoginOrRegister;
 import com.example.colearn.my.PersonalInformation;
 import com.example.colearn.utils.ButtonClickUtils;
+import com.example.colearn.utils.SPUtils;
+import com.google.gson.Gson;
+import com.xuexiang.xui.widget.popupwindow.bar.CookieBar;
 import com.xuexiang.xui.widget.toast.XToast;
 
 public class Me extends androidx.fragment.app.Fragment implements View.OnClickListener {
 
-    private MeBinding binding;
+    private static MeBinding binding;
+    public static Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            if(User.getUser()!=null){
+                binding.loginStatue.setVisibility(View.GONE);
+                binding.dataSynchronize.setVisibility(View.VISIBLE);
+                binding.exit.setVisibility(View.VISIBLE);
+            } else {
+                binding.loginStatue.setVisibility(View.VISIBLE);
+                binding.dataSynchronize.setVisibility(View.GONE);
+                binding.exit.setVisibility(View.GONE);
+            }
+        }
+    };
+
 
     @Nullable
     @Override
@@ -32,11 +57,21 @@ public class Me extends androidx.fragment.app.Fragment implements View.OnClickLi
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         init(view);
     }
 
     private void init(View view) {
+        if(User.getUser()!=null){
+            binding.loginStatue.setVisibility(View.GONE);
+            binding.dataSynchronize.setVisibility(View.VISIBLE);
+            binding.exit.setVisibility(View.VISIBLE);
+        } else {
+            binding.loginStatue.setVisibility(View.VISIBLE);
+            binding.dataSynchronize.setVisibility(View.GONE);
+            binding.exit.setVisibility(View.GONE);
+        }
+
+
         binding.avatar.setOnClickListener(this::onClick);
         binding.settings.setOnClickListener(this::onClick);
         binding.shareApp.setOnClickListener(this::onClick);
@@ -45,6 +80,11 @@ public class Me extends androidx.fragment.app.Fragment implements View.OnClickLi
         binding.privacy.setOnClickListener(this::onClick);
         binding.exit.setOnClickListener(this::onClick);
         binding.dataSynchronize.setOnClickListener(this::onClick);
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+            }
+        });
     }
 
     @Override
@@ -83,7 +123,15 @@ public class Me extends androidx.fragment.app.Fragment implements View.OnClickLi
                 startActivity(intent);
                 break;
             case R.id.exit:
-                System.out.println();
+                User.setUser(null);
+                CookieBar.builder(getActivity())
+                        .setMessage("退出登录成功！")
+                        .setBackgroundColor(R.color.checked_bg)
+                        .setLayoutGravity(Gravity.TOP)
+                        .show();
+                SPUtils.putString("user",null,getContext());
+                Message msg =new Message();
+                Me.mHandler.sendMessage(msg);
                 break;
             case R.id.data_synchronize:
                 intent.setClass(getContext(), DataSynchronize.class);

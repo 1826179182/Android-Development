@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.example.colearn.components.Data;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -20,32 +21,32 @@ public interface CoLearnRequestInterface {
 
     @FormUrlEncoded
     @POST("login")
-    Call<Data<JSON>> login(@Field("account") String account, @Field("password") String password);
+    Call<ResponseBody> login(@Field("account") String account, @Field("password") String password);
 
     @FormUrlEncoded
     @POST("users/{path}")
-    Call<Data<JSON>> changeInfo(@Field("changeResult") String changeResult, @Path("path") String path);
+    Call<ResponseBody> changeInfo(@Field("changeResult") String changeResult, @Path("path") String path);
 
     @GET("list/getTodoList")
-    Call<Data<JSON>> getTodoList();
+    Call<ResponseBody> getTodoList();
 
     @GET("list/getCheckInList")
-    Call<Data<JSON>> getCheckInList();
+    Call<ResponseBody> getCheckInList();
 
     @GET("list/getPlantsList")
-    Call<Data<JSON>> getPlantsList();
+    Call<ResponseBody> getPlantsList();
 
     @FormUrlEncoded
     @POST("list/saveTodoList")
-    Call<Data<JSON>> saveTodoList(@Field("todoList") JSONArray todoList);
+    Call<ResponseBody> saveTodoList(@Field("todoList") JSONArray todoList);
 
     @FormUrlEncoded
     @POST("list/saveCheckInList")
-    Call<Data<JSON>> saveCheckInList(@Field("saveCheckInList") JSONArray checkInList);
+    Call<ResponseBody> saveCheckInList(@Field("saveCheckInList") JSONArray checkInList);
 
     @FormUrlEncoded
     @POST("list/savePlantsList")
-    Call<Data<JSON>> savePlantsList(@Field("savePlantsList") JSONArray plantsList);
+    Call<ResponseBody> savePlantsList(@Field("savePlantsList") JSONArray plantsList);
 
 
 }

@@ -1,6 +1,8 @@
 package com.example.colearn.components;
 
-public class Data<T> {
+import java.io.Serializable;
+
+public class Data<T> implements Serializable {
     private int code;
     private String msg;
     private T data;

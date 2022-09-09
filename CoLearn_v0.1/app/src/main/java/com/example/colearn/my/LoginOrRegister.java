@@ -13,7 +13,7 @@ import com.gyf.immersionbar.ImmersionBar;
 
 public class LoginOrRegister extends AppCompatActivity implements View.OnClickListener {
     private static ActivityLoginOrRegisterBinding binding;
-
+    public static LoginOrRegister loginOrRegister;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +23,8 @@ public class LoginOrRegister extends AppCompatActivity implements View.OnClickLi
     }
 
     private void init() {
+        loginOrRegister = this;
+
         ImmersionBar.with(this)
                 .fitsSystemWindows(true)  //使用该属性,必须指定状态栏颜色
                 .statusBarDarkFont(true, 0f)

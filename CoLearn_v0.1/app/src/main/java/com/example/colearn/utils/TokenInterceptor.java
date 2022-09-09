@@ -19,7 +19,7 @@ public class TokenInterceptor implements Interceptor {
     @Override
     public Response intercept(Chain chain) throws IOException {
 
-        token = SPUtils.getString("token", "", getContext());
+        token = SPUtils.getString("token", null, getContext());
 
         Request request;
         if (token == null) {

@@ -137,6 +137,7 @@ public class Register extends AppCompatActivity {
                     Data body = response.body();
                     if (body == null) return;
                     Log.d(TAG, "返回的数据：" + body);
+                    System.out.println(body.getClass());
                     if(body.getCode()==200){
                         Intent intent = new Intent();
                         intent.setClass(Register.this,Login.class);

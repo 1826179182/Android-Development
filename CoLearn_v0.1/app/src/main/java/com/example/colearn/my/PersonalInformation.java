@@ -38,8 +38,10 @@ import com.xuexiang.xui.widget.picker.widget.OptionsPickerView;
 import com.xuexiang.xui.widget.picker.widget.builder.OptionsPickerBuilder;
 import com.xuexiang.xui.widget.picker.widget.listener.OnOptionsSelectListener;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -71,17 +73,21 @@ public class PersonalInformation extends AppCompatActivity implements View.OnCli
         //创建网络请求接口对象实例
         CoLearnRequestInterface request = retrofit.create(CoLearnRequestInterface.class);
         //对发送请求进行封装
-        Call<Data<JSON>> call = request.changeInfo(changeResult, path);
+        Call<ResponseBody> call = request.changeInfo(changeResult, path);
         //步骤7:发送网络请求(异步)
-        call.enqueue(new Callback<Data<JSON>>() {
+        call.enqueue(new Callback<ResponseBody>() {
             //请求成功时回调
             @Override
-            public void onResponse(Call<Data<JSON>> call, Response<Data<JSON>> response) {
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 //步骤8：请求处理,输出结果
-                Data body = response.body();
+                ResponseBody body = response.body();
                 if (body == null) return;
-                Log.d(TAG, "返回的数据：" + response.body().toString());
-                if(body.getCode() == 200){
+                try {
+                    Log.d(TAG, "返回的数据：" + response.body().string());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                if(response.code() == 200){
                     User.getUser().setGender(changeResult);
                 }else {
                     
@@ -90,7 +96,7 @@ public class PersonalInformation extends AppCompatActivity implements View.OnCli
 
             //请求失败时回调
             @Override
-            public void onFailure(Call<Data<JSON>> call, Throwable throwable) {
+            public void onFailure(Call<ResponseBody> call, Throwable throwable) {
                 Log.d(TAG, "post回调失败：" + throwable.getMessage() + "," + throwable.toString());
             }
         });

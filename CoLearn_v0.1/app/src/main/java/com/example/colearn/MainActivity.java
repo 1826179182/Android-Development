@@ -2,23 +2,32 @@ package com.example.colearn;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.example.colearn.components.User;
 import com.example.colearn.entity.TabEntity;
+import com.example.colearn.my.Login;
+import com.example.colearn.utils.SPUtils;
 import com.example.colearn.utils.ViewFindUtils;
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
+import com.google.gson.Gson;
 import com.gyf.immersionbar.ImmersionBar;
 import com.kongzue.dialogx.DialogX;
+import com.luck.picture.lib.utils.SpUtils;
 
 import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity {
+    private final static String TAG = "MainActivity";
     public final static String baseUrl = "http://47.104.134.68:8989/";
 
 
@@ -34,8 +43,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
+        String userStr = SPUtils.getString("user", null, this);
+        User.setUser(JSONObject.parseObject(userStr, User.class));
         DialogX.init(this);
-
         for (String title : mTitles) {
             if ("主页".equals(title)) {
                 mTabEntities.add(new TabEntity(title, R.mipmap.home_selected, R.mipmap.home_unselected));
