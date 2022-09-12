@@ -3,11 +3,33 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android/Project/Android-Development/CoLearn_v0.1/app/src/main/res/layout/achievement.xml" value="0.296875" />
+        <entry key="..\:/Android/Project/Android-Development/CoLearn_v0.1/app/src/main/res/layout/acquire_plant_layout.xml" value="0.5588541666666667" />
+        <entry key="..\:/Android/Project/Android-Development/CoLearn_v0.1/app/src/main/res/layout/activity_add_event.xml" value="0.5588541666666667" />
+        <entry key="..\:/Android/Project/Android-Development/CoLearn_v0.1/app/src/main/res/layout/activity_change_habit_icon.xml" value="0.5588541666666667" />
+        <entry key="..\:/Android/Project/Android-Development/CoLearn_v0.1/app/src/main/res/layout/activity_check_in.xml" value="0.5588541666666667" />
+        <entry key="..\:/Android/Project/Android-Development/CoLearn_v0.1/app/src/main/res/layout/activity_edit_habit.xml" value="0.5588541666666667" />
+        <entry key="..\:/Android/Project/Android-Development/CoLearn_v0.1/app/src/main/res/layout/activity_history_check_in.xml" value="0.5588541666666667" />
+        <entry key="..\:/Android/Project/Android-Development/CoLearn_v0.1/app/src/main/res/layout/activity_login.xml" value="0.5588541666666667" />
+        <entry key="..\:/Android/Project/Android-Development/CoLearn_v0.1/app/src/main/res/layout/activity_personal_information.xml" value="0.5588541666666667" />
+        <entry key="..\:/Android/Project/Android-Development/CoLearn_v0.1/app/src/main/res/layout/activity_register.xml" value="0.5588541666666667" />
+        <entry key="..\:/Android/Project/Android-Development/CoLearn_v0.1/app/src/main/res/layout/cardview.xml" value="0.5588541666666667" />
         <entry key="..\:/Android/Project/Android-Development/CoLearn_v0.1/app/src/main/res/layout/chart.xml" value="0.21393034825870647" />
-        <entry key="..\:/Android/Project/Android-Development/CoLearn_v0.1/app/src/main/res/layout/daily.xml" value="0.4245614035087719" />
+        <entry key="..\:/Android/Project/Android-Development/CoLearn_v0.1/app/src/main/res/layout/chart_item.xml" value="0.1675925925925926" />
+        <entry key="..\:/Android/Project/Android-Development/CoLearn_v0.1/app/src/main/res/layout/check_in_history_listview.xml" value="0.5588541666666667" />
+        <entry key="..\:/Android/Project/Android-Development/CoLearn_v0.1/app/src/main/res/layout/check_in_result.xml" value="0.5588541666666667" />
+        <entry key="..\:/Android/Project/Android-Development/CoLearn_v0.1/app/src/main/res/layout/custom_marker_view.xml" value="0.4276041666666667" />
+        <entry key="..\:/Android/Project/Android-Development/CoLearn_v0.1/app/src/main/res/layout/daily.xml" value="0.2814814814814815" />
+        <entry key="..\:/Android/Project/Android-Development/CoLearn_v0.1/app/src/main/res/layout/frag_piechart.xml" value="0.5588541666666667" />
+        <entry key="..\:/Android/Project/Android-Development/CoLearn_v0.1/app/src/main/res/layout/frag_radarchart.xml" value="0.4276041666666667" />
+        <entry key="..\:/Android/Project/Android-Development/CoLearn_v0.1/app/src/main/res/layout/frag_simple_bar.xml" value="0.4276041666666667" />
+        <entry key="..\:/Android/Project/Android-Development/CoLearn_v0.1/app/src/main/res/layout/garden_plant_item.xml" value="0.4276041666666667" />
+        <entry key="..\:/Android/Project/Android-Development/CoLearn_v0.1/app/src/main/res/layout/habit_manage_listview.xml" value="0.4276041666666667" />
         <entry key="..\:/Android/Project/Android-Development/CoLearn_v0.1/app/src/main/res/layout/home.xml" value="0.25" />
         <entry key="..\:/Android/Project/Android-Development/CoLearn_v0.1/app/src/main/res/layout/monthly.xml" value="0.29635416666666664" />
+        <entry key="..\:/Android/Project/Android-Development/CoLearn_v0.1/app/src/main/res/layout/radar_markerview.xml" value="0.4270833333333333" />
         <entry key="..\:/Android/Project/Android-Development/CoLearn_v0.1/app/src/main/res/layout/weekly.xml" value="0.29635416666666664" />
+        <entry key="..\:/Android/Project/Android-Development/CoLearn_v0.1/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.302" />
         <entry key="..\:/Android/Project/CoLearn2/app/src/main/res/layout/achievement.xml" value="0.35104166666666664" />
         <entry key="..\:/Android/Project/CoLearn2/app/src/main/res/layout/cardview.xml" value="0.35208333333333336" />
         <entry key="..\:/Android/Project/CoLearn2/app/src/main/res/layout/chart.xml" value="0.35208333333333336" />
@@ -17,8 +39,6 @@
         <entry key="..\:/Android/Project/CoLearn2/app/src/main/res/layout/monthly.xml" value="0.35208333333333336" />
         <entry key="..\:/Android/Project/CoLearn2/app/src/main/res/layout/wallpaper_item.xml" value="0.35208333333333336" />
         <entry key="..\:/Android/Project/CoLearn2/app/src/main/res/layout/weekly.xml" value="0.35208333333333336" />
-        <entry key="..\:/Users/86186/Android-Development/CoLearn_v0.1/app/src/main/res/layout/activity_personal_information.xml" value="0.1" />
-        <entry key="..\:/Users/86186/Android-Development/CoLearn_v0.1/app/src/main/res/layout/me.xml" value="0.21784420289855072" />
         <entry key="..\:/Users/86186/AndroidStudioProjects/CoLearn/app/src/main/res/drawable/background_item.xml" value="0.1" />
         <entry key="..\:/Users/86186/AndroidStudioProjects/CoLearn/app/src/main/res/drawable/background_main.xml" value="0.1" />
         <entry key="..\:/Users/86186/AndroidStudioProjects/CoLearn/app/src/main/res/drawable/bg_ripple.xml" value="0.1" />

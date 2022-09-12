@@ -17,6 +17,7 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:cardElevation="0dp"
         app:strokeColor="#EAEFF5"
         app:strokeWidth="0.5dp">
 
@@ -62,9 +63,9 @@
             <com.xuexiang.xui.widget.layout.XUILinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:paddingVertical="1dp"
                 android:layout_weight="7"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingVertical="1dp">
 
                 <com.xuexiang.xui.widget.layout.XUILinearLayout
                     android:layout_width="match_parent"
@@ -148,7 +149,7 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="-1dp"
-        android:background="@color/white"/>
+        android:background="@color/white" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/vp"

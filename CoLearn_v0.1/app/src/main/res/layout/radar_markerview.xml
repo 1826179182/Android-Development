@@ -12,15 +12,15 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginLeft="5dp"
         android:layout_marginTop="3dp"
+        android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
+        android:text=""
+        android:textSize="10sp"
+        android:textColor="@android:color/white"
         android:ellipsize="end"
         android:singleLine="true"
-        android:text=""
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@android:color/white"
-        android:textSize="10sp"
         tools:ignore="SmallSp" />
 
 </RelativeLayout>

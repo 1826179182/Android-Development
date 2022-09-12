@@ -22,6 +22,7 @@ import com.example.colearn.R;
 import com.example.colearn.data.ChartData;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class BaseFragment extends Fragment {
 
@@ -44,15 +45,13 @@ public class BaseFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        initChartDataList();
     }
 
-
-    public void initChartDataList() {
-        this.chartDataList = new ArrayList<>();
-        for (int i = 0; i < ChartFragType.length; i++) {
+    public void initChartDataList(List<String> txtData) {
+        for (int i = 0; i < txtData.size(); i++) {
+            this.chartDataList = new ArrayList<>();
             ChartData chartData = new ChartData();
-            chartData.setTxtData("this is txtView + " + i);
+            chartData.setCategory(txtData.get(i));
             this.chartDataList.add(chartData);
         }
     }
@@ -103,10 +102,10 @@ public class BaseFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(MyViewHolder holder, int position) {
+
             Log.d("Daily.java", "time:" + position);
-            ChartData chartData = chartDataList.get(position);
+//            ChartData chartData = chartDataList.get(position);
 //            holder.textView.setText(chartData.getTxtData());
-//            ChartTransaction(holder);
             ChartTransaction(holder, ChartFragType[position]);
         }
 

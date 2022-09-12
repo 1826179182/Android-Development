@@ -8,23 +8,25 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:layout_marginHorizontal="10dp"
-        android:padding="10dp"
+        android:layout_margin="10dp"
         app:cardBackgroundColor="#ffffff"
-        app:cardCornerRadius="20dp"
-        app:cardUseCompatPadding="true"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="0dp"
         app:strokeColor="#EAEFF5"
         app:strokeWidth="1.5dp">
 
         <TextView
             android:id="@+id/cardTxt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="这是标题"
+            android:textSize="18sp" />
 
         <FrameLayout
             android:id="@+id/daily_pie_chart"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="250dp" />
 
     </com.google.android.material.card.MaterialCardView>
 </LinearLayout>
