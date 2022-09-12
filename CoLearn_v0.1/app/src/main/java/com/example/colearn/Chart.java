@@ -15,6 +15,7 @@ import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.example.colearn.chart.Achievement;
 import com.example.colearn.chart.Daily;
 import com.example.colearn.chart.Monthly;
 import com.example.colearn.chart.Weekly;

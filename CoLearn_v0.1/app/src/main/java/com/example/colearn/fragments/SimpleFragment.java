@@ -103,11 +103,6 @@ public abstract class SimpleFragment extends Fragment {
         return d;
     }
 
-    /**
-     * generates less data (1 DataSet, 4 values)
-     *
-     * @return PieData
-     */
     protected PieData generatePieData() {
 
         int count = 4;
@@ -125,10 +120,18 @@ public abstract class SimpleFragment extends Fragment {
 //        }
 
         PieDataSet ds1 = new PieDataSet(entries1, "活动占比");
-        ds1.setColors(ColorTemplate.VORDIPLOM_COLORS);
+        ds1.setColors(ColorTemplate.JOYFUL_COLORS);
         ds1.setSliceSpace(2f);
-        ds1.setValueTextColor(Color.WHITE);
+        ds1.setValueTextColor(Color.BLACK);
         ds1.setValueTextSize(12f);
+        // 描述线
+        ds1.setXValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
+        ds1.setValueLinePart1Length(0.3f);
+        // 数据线
+        ds1.setYValuePosition(PieDataSet.ValuePosition.OUTSIDE_SLICE);
+        ds1.setValueLinePart2Length(0.6f);
+
+        ds1.setValueLineColor(Color.RED);
 
         PieData d = new PieData(ds1);
         d.setValueTypeface(tfLight);

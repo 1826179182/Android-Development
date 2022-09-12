@@ -23,7 +23,7 @@ import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.listener.ChartTouchListener;
 import com.github.mikephil.charting.listener.OnChartGestureListener;
 
-public class FragBarChart extends SimpleFragment implements OnChartGestureListener {
+public class FragBarChart extends SimpleFragment {
 
     private BarChart chart;
 
@@ -37,9 +37,10 @@ public class FragBarChart extends SimpleFragment implements OnChartGestureListen
         View v = inflater.inflate(R.layout.frag_simple_bar, container, false);
 
         // create a new chart object
+//        chart.fitScreen();
         chart = new BarChart(getActivity());
         chart.getDescription().setEnabled(false);
-        chart.setOnChartGestureListener(this);
+//        chart.setOnChartGestureListener(this);
 
         MyMarkerView mv = new MyMarkerView(getActivity(), R.layout.custom_marker_view);
         mv.setChartView(chart); // For bounds control
@@ -47,7 +48,7 @@ public class FragBarChart extends SimpleFragment implements OnChartGestureListen
 
         chart.setDrawGridBackground(false);
         chart.setDrawBarShadow(false);
-        chart.setBackgroundColor(Color.rgb(26, 41, 70));
+        chart.setBackgroundColor(Color.rgb(255, 255, 255));
 
         Typeface tf = Typeface.createFromAsset(context.getAssets(), "OpenSans-Light.ttf");
 
@@ -67,52 +68,11 @@ public class FragBarChart extends SimpleFragment implements OnChartGestureListen
         XAxis xAxis = chart.getXAxis();
         xAxis.setEnabled(false);
 
-        // programmatically add the chart
-        FrameLayout parent = v.findViewById(R.id.parentLayout);
-        parent.addView(chart);
+//        // programmatically add the chart
+//        FrameLayout parent = v.findViewById(R.id.parentLayout);
+//        parent.addView(chart);
 
         return v;
-    }
-
-    @Override
-    public void onChartGestureStart(MotionEvent me, ChartTouchListener.ChartGesture lastPerformedGesture) {
-        Log.i("Gesture", "START");
-    }
-
-    @Override
-    public void onChartGestureEnd(MotionEvent me, ChartTouchListener.ChartGesture lastPerformedGesture) {
-        Log.i("Gesture", "END");
-        chart.highlightValues(null);
-    }
-
-    @Override
-    public void onChartLongPressed(MotionEvent me) {
-        Log.i("LongPress", "Chart long pressed.");
-    }
-
-    @Override
-    public void onChartDoubleTapped(MotionEvent me) {
-        Log.i("DoubleTap", "Chart double-tapped.");
-    }
-
-    @Override
-    public void onChartSingleTapped(MotionEvent me) {
-        Log.i("SingleTap", "Chart single-tapped.");
-    }
-
-    @Override
-    public void onChartFling(MotionEvent me1, MotionEvent me2, float velocityX, float velocityY) {
-        Log.i("Fling", "Chart fling. VelocityX: " + velocityX + ", VelocityY: " + velocityY);
-    }
-
-    @Override
-    public void onChartScale(MotionEvent me, float scaleX, float scaleY) {
-        Log.i("Scale / Zoom", "ScaleX: " + scaleX + ", ScaleY: " + scaleY);
-    }
-
-    @Override
-    public void onChartTranslate(MotionEvent me, float dX, float dY) {
-        Log.i("Translate / Move", "dX: " + dX + ", dY: " + dY);
     }
 
 }

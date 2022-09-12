@@ -1,14 +1,9 @@
-package com.example.colearn.fragments;
+package com.example.colearn.chart;
 
+import android.app.Activity;
+import android.content.Context;
 import android.graphics.Color;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
+import android.graphics.Typeface;
 
 import com.example.colearn.R;
 import com.example.colearn.custom.RadarMarkerView;
@@ -26,23 +21,25 @@ import com.github.mikephil.charting.interfaces.datasets.IRadarDataSet;
 
 import java.util.ArrayList;
 
-
-public class FragRadarChart extends SimpleFragment {
-
+public class RadarChartBase {
+    private Context context;
+    private Activity activity;
     private RadarChart chart;
+    private RadarData radarData;
+    private String[] mLabels;
+    private Typeface tfLight;
 
-    public static Fragment newInstance() {
-        return new FragRadarChart();
+    public RadarChartBase(Context context, Activity activity, RadarChart chart,String[] labels) {
+        this.context = context;
+        this.activity = activity;
+        this.chart = chart;
+        this.mLabels=labels;
+        this.tfLight = Typeface.createFromAsset(context.getAssets(), "OpenSans-Light.ttf");
     }
 
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.frag_radarchart, container, false);
-        Log.d("FragRaderChart", "is Creating");
-
-        chart = v.findViewById(R.id.MPRadarChart);
-
+    public void init() {
         chart.setBackgroundColor(Color.rgb(255, 255, 255));
+
         chart.getDescription().setEnabled(false);
 
         chart.setWebLineWidth(1f);
@@ -51,12 +48,11 @@ public class FragRadarChart extends SimpleFragment {
         chart.setWebColorInner(Color.LTGRAY);
         chart.setWebAlpha(100);
 
-        // create a custom MarkerView (extend MarkerView) and specify the layout
-        // to use for it
-        MarkerView mv = new RadarMarkerView(getContext(), R.layout.radar_markerview);
-        mv.setChartView(chart); // For bounds control
-        chart.setMarker(mv); // Set the marker to the chart
+        MarkerView mv = new RadarMarkerView(context, R.layout.radar_markerview);
+        mv.setChartView(chart);
+        chart.setMarker(mv);
 
+        setData();
 
         chart.animateXY(1400, 1400, Easing.EaseInOutQuad);
 
@@ -67,15 +63,11 @@ public class FragRadarChart extends SimpleFragment {
         xAxis.setYOffset(0f);
         xAxis.setXOffset(0f);
         xAxis.setValueFormatter(new ValueFormatter() {
-
-            private final String[] mActivities = new String[]{"专注", "低效", "熬夜", "起早", "休息"};
-
             @Override
             public String getFormattedValue(float value) {
-                return mActivities[(int) value % mActivities.length];
+                return mLabels[(int) value % mLabels.length];
             }
         });
-        xAxis.setTextColor(Color.WHITE);
 
         YAxis yAxis = chart.getYAxis();
         yAxis.setTypeface(tfLight);
@@ -87,19 +79,14 @@ public class FragRadarChart extends SimpleFragment {
         yAxis.setDrawLabels(false);
 
         Legend l = chart.getLegend();
-        l.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
+        l.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
         l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
         l.setOrientation(Legend.LegendOrientation.HORIZONTAL);
         l.setDrawInside(false);
         l.setTypeface(tfLight);
         l.setXEntrySpace(7f);
-        l.setYEntrySpace(0);
-        l.setTextColor(Color.WHITE);
-        l.setFormSize(6f);
-
-        setData();
-
-        return v;
+        l.setYEntrySpace(5f);
+        l.setTextColor(Color.BLACK);
     }
 
     private void setData() {

@@ -51,7 +51,7 @@ public class ChartAdapter extends RecyclerView.Adapter<ChartAdapter.ChartViewHol
     public void onBindViewHolder(ChartViewHolder holder, int position) {
         Log.d("Daily.java", "time:" + position);
         ChartData chartData = chartDataList.get(position);
-        holder.textView.setText(chartData.getTxtData());
+        holder.textView.setText(chartData.getCdCategory());
     }
 
     public class ChartViewHolder extends RecyclerView.ViewHolder {
