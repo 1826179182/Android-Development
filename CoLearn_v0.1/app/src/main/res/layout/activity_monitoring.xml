@@ -1,69 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.xuexiang.xui.widget.layout.XUILinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.xuexiang.xui.widget.layout.XUIFrameLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".my.Monitoring"
-    android:orientation="vertical"
     android:background="@color/white">
-    <com.hjq.bar.TitleBar
-        android:id="@+id/title_bar"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        app:leftIcon="@mipmap/arrow_left"
-        app:leftIconWidth="35dp"
-        app:title="远程监控" />
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_marginHorizontal="100dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="-40dp"
-        app:cardBackgroundColor="@color/checked_bg"
-        app:cardUseCompatPadding="false"
-        app:cardElevation="0dp"
-        app:cardCornerRadius="40dp">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="实时监控"
-            android:textSize="20dp"
-            android:textColor="@color/white"
-            android:gravity="center_horizontal"/>
-    </androidx.cardview.widget.CardView>
-    <com.xuexiang.xui.widget.layout.XUIFrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="300dp">
-        <xyz.doikki.videoplayer.player.VideoView
-            android:id="@+id/player"
-            android:layout_width="match_parent"
-            android:layout_height="250dp" />
-    </com.xuexiang.xui.widget.layout.XUIFrameLayout>
-        <com.google.android.material.card.MaterialCardView
+        <com.xuexiang.xui.widget.layout.XUILinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginHorizontal="25dp"
-            app:cardBackgroundColor="#ffffff"
-            app:cardCornerRadius="30dp"
-            app:cardElevation="0dp"
-            app:cardUseCompatPadding="true"
-            app:strokeColor="#EAEFF5"
-            app:strokeWidth="1.5dp">
-
-            <com.xuexiang.xui.widget.layout.XUILinearLayout
+            android:orientation="vertical">
+            <xyz.doikki.videoplayer.player.VideoView
+                android:id="@+id/player"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <ListView
-                    android:id="@+id/todolist"
+                android:layout_height="250dp" />
+            <com.flyco.tablayout.SlidingTabLayout
+                android:id="@+id/tl"
+                android:layout_marginTop="-1dp"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@color/white"
+                app:tl_indicator_corner_radius="2dp"
+                app:tl_indicator_height="4dp"
+                app:tl_indicator_width="4dp"
+                app:tl_indicator_margin_bottom="6dp"
+                app:tl_indicator_color="@color/xui_config_color_red"
+                app:tl_textSelectColor="@color/black"
+                app:tl_textUnselectColor="#AAB7CA"/>
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/vp"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="50dp"
-                    android:divider="@null"
-                    android:orientation="horizontal"></ListView>
-            </com.xuexiang.xui.widget.layout.XUILinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-</com.xuexiang.xui.widget.layout.XUILinearLayout>
+                    android:layout_height="match_parent"/>
+        </com.xuexiang.xui.widget.layout.XUILinearLayout>
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@mipmap/arrow_left"
+            android:layout_margin="10dp"/>
+</com.xuexiang.xui.widget.layout.XUIFrameLayout>
