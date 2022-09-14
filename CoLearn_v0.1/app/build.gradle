@@ -113,4 +113,9 @@ dependencies {
     implementation 'io.github.scwang90:refresh-header-classics:2.0.5'
     implementation 'io.github.scwang90:refresh-footer-classics:2.0.5'
 
+    // 必选，内部默认使用系统mediaplayer进行解码
+    implementation 'xyz.doikki.android.dkplayer:dkplayer-java:3.3.7'
+    //可选，包含StandardVideoController的实现
+    implementation 'xyz.doikki.android.dkplayer:dkplayer-ui:3.3.7'
+    implementation 'xyz.doikki.android.dkplayer:player-exo:3.3.7'
 }

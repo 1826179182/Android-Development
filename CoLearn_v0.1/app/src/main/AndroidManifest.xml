@@ -38,6 +38,8 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".my.Monitoring"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".home.ChangeWallpaper"

@@ -14,78 +14,56 @@
         app:leftIcon="@mipmap/arrow_left"
         app:leftIconWidth="35dp"
         app:title="远程监控" />
-    <com.google.android.material.card.MaterialCardView
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginVertical="20dp"
+        android:layout_height="80dp"
+        android:layout_marginHorizontal="100dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="-40dp"
+        app:cardBackgroundColor="@color/checked_bg"
+        app:cardUseCompatPadding="false"
         app:cardElevation="0dp"
-        app:cardUseCompatPadding="true"
-        app:strokeColor="#EAEFF5"
-        app:strokeWidth="1.5dp">
-
-        <com.xuexiang.xui.widget.layout.XUILinearLayout
+        app:cardCornerRadius="40dp">
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_marginTop="15dp"
+            android:text="实时监控"
+            android:textSize="20dp"
+            android:textColor="@color/white"
+            android:gravity="center_horizontal"/>
+    </androidx.cardview.widget.CardView>
+    <com.xuexiang.xui.widget.layout.XUIFrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="300dp">
+        <xyz.doikki.videoplayer.player.VideoView
+            android:id="@+id/player"
+            android:layout_width="match_parent"
+            android:layout_height="250dp" />
+    </com.xuexiang.xui.widget.layout.XUIFrameLayout>
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="25dp"
+            app:cardBackgroundColor="#ffffff"
+            app:cardCornerRadius="30dp"
+            app:cardElevation="0dp"
+            app:cardUseCompatPadding="true"
+            app:strokeColor="#EAEFF5"
+            app:strokeWidth="1.5dp">
 
             <com.xuexiang.xui.widget.layout.XUILinearLayout
-                android:id="@+id/settings"
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
-                android:layout_marginVertical="3dp"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="15dp"
-                    android:gravity="center"
-                    android:text="检测到您的孩子正在"
-                    android:textSize="13dp" />
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-                <View
-                    android:layout_width="0dp"
+                <ListView
+                    android:id="@+id/todolist"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="9" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="阅读书籍"
-                    android:layout_marginRight="20dp" />
+                    android:layout_marginTop="50dp"
+                    android:divider="@null"
+                    android:orientation="horizontal"></ListView>
             </com.xuexiang.xui.widget.layout.XUILinearLayout>
-
-        </com.xuexiang.xui.widget.layout.XUILinearLayout>
-    </com.google.android.material.card.MaterialCardView>
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="10dp"
-        android:layout_marginHorizontal="10dp"
-        app:cardElevation="0dp"
-        app:cardUseCompatPadding="false"
-        app:strokeColor="#EAEFF5"
-        app:strokeWidth="1.5dp">
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="495dp"
-            android:src="@mipmap/video"/>
-    </com.google.android.material.card.MaterialCardView>
-    <com.xuexiang.xui.widget.layout.XUILinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
-        <ImageView
-            android:layout_width="60dp"
-            android:layout_weight="1"
-            android:layout_height="60dp"
-            android:src="@mipmap/pause"
-            android:layout_gravity="center|left" />
-        <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_weight="1"
-            android:src="@mipmap/chat"
-            android:layout_gravity="center|right" />
-    </com.xuexiang.xui.widget.layout.XUILinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 </com.xuexiang.xui.widget.layout.XUILinearLayout>
