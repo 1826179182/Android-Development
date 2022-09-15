@@ -2,32 +2,25 @@ package com.example.colearn;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.example.colearn.components.User;
 import com.example.colearn.entity.TabEntity;
-import com.example.colearn.my.Login;
 import com.example.colearn.utils.SPUtils;
 import com.example.colearn.utils.ViewFindUtils;
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
-import com.google.gson.Gson;
 import com.gyf.immersionbar.ImmersionBar;
 import com.kongzue.dialogx.DialogX;
-import com.luck.picture.lib.utils.SpUtils;
 
 import java.util.ArrayList;
-import java.util.logging.Logger;
 
-import xyz.doikki.videoplayer.BuildConfig;
-import xyz.doikki.videoplayer.exo.ExoMediaPlayerFactory;
+import xyz.doikki.videoplayer.ijk.IjkPlayerFactory;
 import xyz.doikki.videoplayer.player.VideoViewConfig;
 import xyz.doikki.videoplayer.player.VideoViewManager;
 
@@ -55,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 //                .setPlayerFactory(IjkPlayerFactory.create())
 //                .setPlayerFactory(AndroidMediaPlayerFactory.create()) //不推荐使用，兼容性较差
                 /** 硬解，支持格式看手机，请使用CpuInfoActivity检查手机支持的格式，结合 {@link xyz.doikki.dkplayer.widget.videoview.ExoVideoView} 使用更佳 */
-                .setPlayerFactory(ExoMediaPlayerFactory.create())
+                .setPlayerFactory(IjkPlayerFactory.create())
                 // 设置自己的渲染view，内部默认TextureView实现
 //                .setRenderViewFactory(SurfaceRenderViewFactory.create())
                 // 根据手机重力感应自动切换横竖屏，默认false
