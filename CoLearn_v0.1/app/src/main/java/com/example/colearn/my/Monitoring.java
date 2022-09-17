@@ -1,23 +1,17 @@
 package com.example.colearn.my;
 
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import android.media.AudioManager;
-import android.net.Uri;
-import android.os.Bundle;
-import android.provider.MediaStore;
-import android.view.LayoutInflater;
-import android.view.View;
-
-import com.bumptech.glide.Glide;
 import com.example.colearn.R;
-import com.example.colearn.chart.Achievement;
 import com.example.colearn.chart.Daily;
-import com.example.colearn.chart.Monthly;
 import com.example.colearn.chart.Weekly;
 import com.example.colearn.databinding.ActivityMonitoringBinding;
 import com.example.colearn.utils.MyPrepareView;
@@ -30,10 +24,10 @@ import java.util.ArrayList;
 import xyz.doikki.videocontroller.StandardVideoController;
 import xyz.doikki.videocontroller.component.CompleteView;
 import xyz.doikki.videocontroller.component.ErrorView;
-import xyz.doikki.videocontroller.component.PrepareView;
+import xyz.doikki.videoplayer.ijk.IjkPlayerFactory;
 
 
-public class Monitoring extends AppCompatActivity implements OnTabSelectListener , View.OnClickListener {
+public class Monitoring extends AppCompatActivity implements OnTabSelectListener, View.OnClickListener {
     private ArrayList<Fragment> mFragments = new ArrayList<>();
     private static ActivityMonitoringBinding binding;
     private String[] mTitles = {"行为统计", "图表分析"};
@@ -51,12 +45,13 @@ public class Monitoring extends AppCompatActivity implements OnTabSelectListener
                 .init();
 
 
-        binding.player.setUrl("rtsp://wowzaec2demo.streamlock.net/vod/mp4:BigBuckBunny_115k.mp4"); //设置视频地址
+        binding.player.setUrl("rtmp://192.168.1.116:1935/video"); //设置视频地址
+        binding.player.setPlayerFactory(IjkPlayerFactory.create());
 
         StandardVideoController controller = new StandardVideoController(this);
         controller.addDefaultControlComponent("标题", false);
         controller.setEnableOrientation(true);
-        MyPrepareView prepareView  = new MyPrepareView(this);
+        MyPrepareView prepareView = new MyPrepareView(this);
         prepareView.setClickStart();
         controller.addControlComponent(prepareView);
         controller.addControlComponent(new CompleteView(this)); //自动完成播放界面
@@ -112,7 +107,7 @@ public class Monitoring extends AppCompatActivity implements OnTabSelectListener
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
         }
     }
 

@@ -2,24 +2,31 @@ package com.example.colearn;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.example.colearn.pojo.User;
+import com.example.colearn.components.User;
 import com.example.colearn.entity.TabEntity;
+import com.example.colearn.my.Login;
 import com.example.colearn.utils.SPUtils;
 import com.example.colearn.utils.ViewFindUtils;
 import com.flyco.tablayout.CommonTabLayout;
 import com.flyco.tablayout.listener.CustomTabEntity;
 import com.flyco.tablayout.listener.OnTabSelectListener;
+import com.google.gson.Gson;
 import com.gyf.immersionbar.ImmersionBar;
 import com.kongzue.dialogx.DialogX;
+import com.luck.picture.lib.utils.SpUtils;
 
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
+import xyz.doikki.videoplayer.BuildConfig;
 import xyz.doikki.videoplayer.exo.ExoMediaPlayerFactory;
 import xyz.doikki.videoplayer.player.VideoViewConfig;
 import xyz.doikki.videoplayer.player.VideoViewManager;
@@ -72,10 +79,7 @@ public class MainActivity extends AppCompatActivity {
 //        }
 
         String userStr = SPUtils.getString("user", null, this);
-        if (userStr!=null){
-            User.setUser(JSONObject.parseObject(userStr, User.class));
-            System.out.println(User.getUser());
-        }
+        User.setUser(JSONObject.parseObject(userStr, User.class));
         DialogX.init(this);
         for (String title : mTitles) {
             if ("主页".equals(title)) {
