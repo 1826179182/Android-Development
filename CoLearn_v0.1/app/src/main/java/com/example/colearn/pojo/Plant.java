@@ -1,4 +1,4 @@
-package com.example.colearn.components;
+package com.example.colearn.pojo;
 
 import org.joda.time.LocalDate;
 

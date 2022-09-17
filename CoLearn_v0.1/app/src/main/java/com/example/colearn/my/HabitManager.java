@@ -22,8 +22,8 @@ import com.alibaba.fastjson.JSON;
 import com.d.lib.slidelayout.SlideLayout;
 import com.example.colearn.Home;
 import com.example.colearn.R;
-import com.example.colearn.adapter.HasDoneListAdapter;
-import com.example.colearn.components.Habit;
+import com.example.colearn.pojo.Habit;
+import com.example.colearn.pojo.User;
 import com.example.colearn.utils.ButtonClickUtils;
 import com.example.colearn.utils.SPUtils;
 import com.gyf.immersionbar.ImmersionBar;
@@ -33,7 +33,6 @@ import com.xuexiang.xui.widget.imageview.IconImageView;
 import com.xuexiang.xui.widget.layout.XUIButton;
 import com.xuexiang.xui.widget.popupwindow.ViewTooltip;
 
-import java.time.LocalDate;
 import java.util.List;
 
 public class HabitManager extends AppCompatActivity implements View.OnTouchListener {
@@ -150,7 +149,8 @@ public class HabitManager extends AppCompatActivity implements View.OnTouchListe
                     slideLayout = myViewHolder.itemView.findViewById(R.id.sl_slide);
                     slideLayout.close();
                     habitManageList.remove(position);
-                    SPUtils.putString( "todoList", JSON.toJSONString(habitManageList), HabitManager.this);
+                    SPUtils.putString( "todoList".concat(User.getUser() == null ? "" : User.getUser().getAccount())
+                            , JSON.toJSONString(habitManageList), HabitManager.this);
                     habitManagerAdapter.notifyDataSetChanged();
                     Home.getTodoAdapter().notifyDataSetChanged();
                     Home.updateAllTodoList(Home.selectDate.getMonthOfYear(),Home.selectDate);

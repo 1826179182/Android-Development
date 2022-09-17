@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.colearn.R;
-import com.example.colearn.components.Plant;
+import com.example.colearn.pojo.Plant;
 import com.example.colearn.databinding.ActivityMyGargenBinding;
 import com.gyf.immersionbar.ImmersionBar;
 import com.hjq.bar.OnTitleBarListener;

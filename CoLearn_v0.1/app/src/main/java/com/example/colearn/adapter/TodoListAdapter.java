@@ -18,8 +18,9 @@ import androidx.cardview.widget.CardView;
 import com.alibaba.fastjson.JSON;
 import com.example.colearn.Home;
 import com.example.colearn.R;
-import com.example.colearn.components.Habit;
+import com.example.colearn.pojo.Habit;
 import com.example.colearn.home.CheckIn;
+import com.example.colearn.pojo.User;
 import com.example.colearn.utils.SPUtils;
 import com.kongzue.dialogx.dialogs.CustomDialog;
 import com.kongzue.dialogx.interfaces.OnBindView;
@@ -29,8 +30,6 @@ import com.xuexiang.xui.widget.layout.XUIButton;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -118,8 +117,10 @@ public class TodoListAdapter extends ArrayAdapter {
                                 hasDoneHabit.setFinishTime(new SimpleDateFormat("yyyy-MM-dd HH:mm").format(new Date()));
                                 hasDoneHabit.setStatue(Habit.DONE);
                                 HasDoneListAdapter.getDoneListItems().add(hasDoneHabit);
-                                SPUtils.putString("todoList", JSON.toJSONString(Home.getAllTodoList()), getContext());
-                                SPUtils.putString(LocalDate.now() + "hasDoneList", JSON.toJSONString(HasDoneListAdapter.getDoneListItems()), getContext());
+                                SPUtils.putString("todoList".concat(User.getUser() == null ? "" : User.getUser().getAccount())
+                                        , JSON.toJSONString(Home.getAllTodoList()), getContext());
+                                SPUtils.putString(LocalDate.now() + "hasDoneList".concat(User.getUser() == null ? "" : User.getUser().getAccount())
+                                        , JSON.toJSONString(HasDoneListAdapter.getDoneListItems()), getContext());
                                 Message msg = new Message();
                                 notifyDataSetChanged.sendMessage(msg);
 

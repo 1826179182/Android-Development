@@ -1,11 +1,10 @@
 package com.example.colearn.my;
 
 import static com.example.colearn.MainActivity.baseUrl;
-import static com.example.colearn.utils.RSAUtils.encrypt;
+
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Base64;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -16,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.alibaba.fastjson.JSON;
 import com.example.colearn.CoLearnRequestInterface;
 import com.example.colearn.R;
-import com.example.colearn.components.Data;
+import com.example.colearn.pojo.Data;
 import com.example.colearn.databinding.ActivityRegisterBinding;
 import com.example.colearn.utils.ButtonClickUtils;
 import com.example.colearn.utils.IEditTextChangeListener;
@@ -30,8 +29,6 @@ import com.xuexiang.xui.widget.popupwindow.bar.CookieBar;
 import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;

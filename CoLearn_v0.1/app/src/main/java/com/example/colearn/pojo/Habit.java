@@ -1,4 +1,4 @@
-package com.example.colearn.components;
+package com.example.colearn.pojo;
 
 public class Habit {
     public final static int TODO = 1;

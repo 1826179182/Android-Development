@@ -2,7 +2,6 @@ package com.example.colearn.my;
 
 import static com.example.colearn.MainActivity.baseUrl;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
 import android.util.Log;
@@ -12,13 +11,11 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.example.colearn.CoLearnRequestInterface;
 import com.example.colearn.Me;
 import com.example.colearn.R;
-import com.example.colearn.components.Data;
-import com.example.colearn.components.User;
+import com.example.colearn.pojo.User;
 import com.example.colearn.databinding.ActivityLoginBinding;
 import com.example.colearn.utils.ButtonClickUtils;
 import com.example.colearn.utils.IEditTextChangeListener;
@@ -31,13 +28,6 @@ import com.gyf.immersionbar.ImmersionBar;
 import com.xuexiang.xui.widget.popupwindow.bar.CookieBar;
 
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-
-import javax.crypto.BadPaddingException;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -131,6 +121,7 @@ public class Login extends AppCompatActivity {
                     JSONObject data = JSONObject.parseObject(result);
                     Log.d(TAG, "onResponse: login success! token:" + data.get("token"));
                     User.setUser(new User());
+                    User.getUser().setAccount(binding.account.getText().toString());
                     User.getUser().setId((String) data.get("id"));
                     User.getUser().setNickname((String) data.get("username"));
                     User.getUser().setGender((String) data.get("gender"));

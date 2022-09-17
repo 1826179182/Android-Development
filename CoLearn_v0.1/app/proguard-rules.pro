@@ -45,4 +45,4 @@
 -keepattributes EnclosingMethod
 
 # Gson
--keep class com.example.colearn.components.Data.**{*;} # 自定义数据模型的bean目录
+-keep class com.example.colearn.pojo.Data.**{*;} # 自定义数据模型的bean目录

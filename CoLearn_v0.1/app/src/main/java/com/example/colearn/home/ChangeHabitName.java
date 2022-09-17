@@ -3,14 +3,13 @@ package com.example.colearn.home;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.colearn.R;
-import com.example.colearn.components.Habit;
+import com.example.colearn.pojo.Habit;
 import com.example.colearn.databinding.ActivityChangeHabitNameBinding;
 import com.example.colearn.my.EditHabit;
 import com.gyf.immersionbar.ImmersionBar;

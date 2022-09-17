@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 
 import com.example.colearn.R;
-import com.example.colearn.components.Habit;
+import com.example.colearn.pojo.Habit;
 import com.xuexiang.xui.widget.imageview.IconImageView;
 
 import java.util.ArrayList;

@@ -18,9 +18,11 @@ import androidx.fragment.app.FragmentActivity;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.example.colearn.adapter.TodoListAdapter;
-import com.example.colearn.components.CheckInRecord;
-import com.example.colearn.components.Habit;
-import com.example.colearn.components.WallPaper;
+import com.example.colearn.pojo.CheckInRecord;
+import com.example.colearn.pojo.Habit;
+import com.example.colearn.pojo.Plant;
+import com.example.colearn.pojo.User;
+import com.example.colearn.pojo.WallPaper;
 import com.example.colearn.databinding.HomeBinding;
 import com.example.colearn.home.AddEvent;
 import com.example.colearn.home.ChangeWallpaper;
@@ -37,19 +39,11 @@ import com.necer.listener.OnCalendarChangedListener;
 
 import org.joda.time.LocalDate;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.concurrent.BlockingDeque;
 
 import me.samlss.timomenu.TimoMenu;
-import me.samlss.timomenu.animation.BombItemAnimation;
-import me.samlss.timomenu.animation.BounceInDownItemAnimation;
-import me.samlss.timomenu.animation.BounceItemAnimation;
 import me.samlss.timomenu.animation.FlipItemAnimation;
-import me.samlss.timomenu.animation.RotateItemAnimation;
-import me.samlss.timomenu.animation.ScaleItemAnimation;
 import me.samlss.timomenu.interfaces.OnTimoItemClickListener;
 import me.samlss.timomenu.interfaces.TimoMenuListener;
 import me.samlss.timomenu.view.TimoItemView;
@@ -64,6 +58,16 @@ public class Home extends androidx.fragment.app.Fragment implements View.OnClick
     private static List<CheckInRecord> checkInRecords = new ArrayList<>();
     private static TodoListAdapter todoAdapter;
     private static List<Habit> AllTodoList = new ArrayList<>();
+    private static List<Plant> plants = new ArrayList<>();
+
+    public static List<Plant> getPlants() {
+        return plants;
+    }
+
+    public static void setPlants(List<Plant> plants) {
+        Home.plants = plants;
+    }
+
     private static HomeBinding binding;
     private static FragmentActivity activity;
     private ListView list_1;
@@ -162,8 +166,9 @@ public class Home extends androidx.fragment.app.Fragment implements View.OnClick
         }
         changeWallpaper();
 
-
-        String historyCheckInStr = SPUtils.getString("HistoryCheckIn", null, getContext());
+        System.out.println(User.getUser() == null ? "" : User.getUser().getAccount());
+        String historyCheckInStr = SPUtils.getString("HistoryCheckIn".concat(User.getUser() == null ? "" : User.getUser().getAccount())
+                , null, getContext());
         Log.d(TAG, "init: " + historyCheckInStr);
         if (historyCheckInStr != null) {
             List<CheckInRecord> temp = JSONObject.parseArray(historyCheckInStr, CheckInRecord.class);
@@ -283,8 +288,17 @@ public class Home extends androidx.fragment.app.Fragment implements View.OnClick
                 .build();
     }
 
+    public static void setCheckInRecords(List<CheckInRecord> checkInRecords) {
+        Home.checkInRecords = checkInRecords;
+    }
+
+    public static void setAllTodoList(List<Habit> allTodoList) {
+        AllTodoList = allTodoList;
+    }
+
     public static void updateAllTodoList(int month, LocalDate localDate) {
-        String todoStr = SPUtils.getString("todoList", null, todoAdapter.getContext());
+        String todoStr = SPUtils.getString("todoList".concat(User.getUser() == null ? "" : User.getUser().getAccount())
+                , null, todoAdapter.getContext());
         todoAdapter.getTodoList().removeAll(todoAdapter.getTodoList());
         if (todoStr != null) {
             Log.d(TAG, "init: " + JSONArray.parseArray(todoStr));
@@ -342,7 +356,7 @@ public class Home extends androidx.fragment.app.Fragment implements View.OnClick
         Message msg = new Message();
     }
 
-    private static void addHabit(Habit habit, int month, LocalDate selectDate){
+    public static void addHabit(Habit habit, int month, LocalDate selectDate){
         if(!selectDate.isBefore(LocalDate.now())){
             if (habit.getTodoDate().equals("无") || habit.getFrequency().equals("每天")) {
                 if (!habit.getFinishTime().split(" ")[0].equals(selectDate.toString())){

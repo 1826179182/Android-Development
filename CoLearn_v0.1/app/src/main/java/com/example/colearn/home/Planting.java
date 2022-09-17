@@ -14,10 +14,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.airbnb.lottie.LottieAnimationView;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.example.colearn.Home;
 import com.example.colearn.R;
-import com.example.colearn.components.Plant;
-import com.example.colearn.components.Task;
+import com.example.colearn.pojo.Plant;
+import com.example.colearn.pojo.Task;
 import com.example.colearn.databinding.ActivityPlantingBinding;
+import com.example.colearn.pojo.User;
 import com.example.colearn.utils.SPUtils;
 import com.gyf.immersionbar.ImmersionBar;
 import com.hjq.bar.OnTitleBarListener;
@@ -38,7 +40,7 @@ import java.util.List;
 public class Planting extends AppCompatActivity implements View.OnClickListener, View.OnTouchListener {
     private static final String TAG = "Planting";
 
-    private static List<Plant> plants = new ArrayList<>();
+    private static List<Plant> plants;
 
     private static ActivityPlantingBinding binding;
 
@@ -60,6 +62,7 @@ public class Planting extends AppCompatActivity implements View.OnClickListener,
     }
 
     private void init() {
+        plants = Home.getPlants();
 
         binding.startPlant.setOnClickListener(this::onClick);
         binding.myGarden.setOnClickListener(this::onClick);
@@ -80,7 +83,8 @@ public class Planting extends AppCompatActivity implements View.OnClickListener,
             }
         });
         DialogX.init(getApplicationContext());
-        String plantsStr = SPUtils.getString("plants", null, getApplicationContext());
+        String plantsStr = SPUtils.getString("plants".concat(User.getUser() == null ? "" : User.getUser().getAccount())
+                , null, getApplicationContext());
         Log.d(TAG, "plantsStr: " + plantsStr);
         if (plantsStr != null && plants.size() == 0) {
             List<Plant> temp = JSONObject.parseArray(plantsStr, Plant.class);
@@ -91,7 +95,8 @@ public class Planting extends AppCompatActivity implements View.OnClickListener,
         }
 
         binding.plantTask.setText(Task.getTask());
-        int result = SPUtils.getInt(LocalDate.now() + "_plant_task_finish?", -1, getApplicationContext());
+        int result = SPUtils.getInt(LocalDate.now() + "_plant_task_finish?".concat(User.getUser() == null ? "" : User.getUser().getAccount())
+                , -1, getApplicationContext());
         if (result == 1) {
             binding.startPlant.setText("任务已完成");
             binding.startPlant.setClickable(false);
@@ -112,8 +117,10 @@ public class Planting extends AppCompatActivity implements View.OnClickListener,
                         newPlant.setState(Plant.PLANT);
                         newPlant.setFinishTime(new SimpleDateFormat( "yyyy-MM-dd HH:mm").format(new Date()));
                         plant.setAnimation("plant_" + newPlant.getId() + ".json");
-                        SPUtils.putString("plants", JSON.toJSONString(plants), getApplicationContext());
-                        SPUtils.putInt(LocalDate.now() + "_plant_task_finish?", 1, getApplicationContext());
+                        SPUtils.putString("plants".concat(User.getUser() == null ? "" : User.getUser().getAccount())
+                                , JSON.toJSONString(plants), getApplicationContext());
+                        SPUtils.putInt(LocalDate.now() + "_plant_task_finish?".concat(User.getUser() == null ? "" : User.getUser().getAccount())
+                                , 1, getApplicationContext());
                         close.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -162,8 +169,10 @@ public class Planting extends AppCompatActivity implements View.OnClickListener,
                         Plant newPlant = new Plant(randomPlant);
                         newPlant.setState(Plant.GROWING);
                         plants.add(newPlant);
-                        SPUtils.putString("plants", JSON.toJSONString(plants), getApplicationContext());
-                        SPUtils.putInt(LocalDate.now() + "_plant_task_finish?", 0, getApplicationContext());
+                        SPUtils.putString("plants".concat(User.getUser() == null ? "" : User.getUser().getAccount())
+                                , JSON.toJSONString(plants), getApplicationContext());
+                        SPUtils.putInt(LocalDate.now() + "_plant_task_finish?".concat(User.getUser() == null ? "" : User.getUser().getAccount())
+                                , 0, getApplicationContext());
                         binding.startPlant.setText("正在进行中");
                         binding.startPlant.setClickable(false);
 

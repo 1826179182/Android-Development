@@ -2,7 +2,7 @@ package com.example.colearn;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
-import com.example.colearn.components.Data;
+import com.example.colearn.pojo.Data;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -27,6 +27,10 @@ public interface CoLearnRequestInterface {
     @POST("users/{path}")
     Call<ResponseBody> changeInfo(@Field("changeResult") String changeResult, @Path("path") String path);
 
+    @FormUrlEncoded
+    @POST("lists/{path}")
+    Call<ResponseBody> getList(@Path("path") String path);
+
     @GET("list/getTodoList")
     Call<ResponseBody> getTodoList();
 
@@ -35,6 +39,10 @@ public interface CoLearnRequestInterface {
 
     @GET("list/getPlantsList")
     Call<ResponseBody> getPlantsList();
+
+    @FormUrlEncoded
+    @POST("lists/{path}")
+    Call<ResponseBody> saveList(@Field("todoList") JSONArray list, @Path("path") String path);
 
     @FormUrlEncoded
     @POST("list/saveTodoList")
@@ -50,6 +58,6 @@ public interface CoLearnRequestInterface {
 
     @FormUrlEncoded
     @POST("insight/daily")
-    Call<Data<JSON>> getDailyAcitvities(@Field("account") String account,@Field("data") String date);
+    Call<ResponseBody> getDailyAcitvities(@Field("account") String account,@Field("data") String date);
 
 }

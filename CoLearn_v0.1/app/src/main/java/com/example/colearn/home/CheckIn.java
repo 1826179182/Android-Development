@@ -2,6 +2,7 @@ package com.example.colearn.home;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.airbnb.lottie.LottieAnimationView;
@@ -19,9 +21,10 @@ import com.alibaba.fastjson.JSONObject;
 import com.example.colearn.Home;
 import com.example.colearn.R;
 import com.example.colearn.adapter.HasDoneListAdapter;
-import com.example.colearn.components.CheckInRecord;
-import com.example.colearn.components.Habit;
+import com.example.colearn.pojo.CheckInRecord;
+import com.example.colearn.pojo.Habit;
 import com.example.colearn.databinding.ActivityCheckInBinding;
+import com.example.colearn.pojo.User;
 import com.example.colearn.utils.SPUtils;
 import com.gyf.immersionbar.ImmersionBar;
 import com.hjq.bar.OnTitleBarListener;
@@ -38,6 +41,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+@RequiresApi(api = Build.VERSION_CODES.O)
 public class CheckIn extends AppCompatActivity implements View.OnClickListener, View.OnTouchListener {
     private static final String TAG = "CheckIn";
     private static HasDoneListAdapter doneAdapter;
@@ -73,8 +77,10 @@ public class CheckIn extends AppCompatActivity implements View.OnClickListener, 
         init();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     protected void init() {
-        String hasDoneListStr = SPUtils.getString(LocalDate.now() + "hasDoneList", null, getApplicationContext());
+        String hasDoneListStr = SPUtils.getString(LocalDate.now() + "hasDoneList".concat(User.getUser() == null ? "" : User.getUser().getAccount())
+                , null, getApplicationContext());
         Log.d(TAG, "hasDoneListStr: " + hasDoneListStr);
 
         list_2 = findViewById(R.id.done_list);
@@ -115,7 +121,8 @@ public class CheckIn extends AppCompatActivity implements View.OnClickListener, 
             }
         });
 
-        if (SPUtils.getBoolean("Check in" + localDate.toString(), false, this) == true) {
+        if (SPUtils.getBoolean("Check in" + localDate.toString().concat(User.getUser() == null ? "" : User.getUser().getAccount())
+                , false, this) == true) {
             Log.d(TAG, "init: 已打卡");
             binding.confirmBtn.setText("已  打  卡");
             binding.confirmBtn.setBackgroundColor(getResources().getColor(R.color.btn_bg));
@@ -123,6 +130,7 @@ public class CheckIn extends AppCompatActivity implements View.OnClickListener, 
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -148,11 +156,18 @@ public class CheckIn extends AppCompatActivity implements View.OnClickListener, 
                 binding.smileExpressions.setImageResource(R.mipmap.smile_light);
                 break;
             case R.id.confirm_btn:
-                String todoStr = SPUtils.getString("todoList", null, this);
+                String todoStr = SPUtils.getString("todoList".concat(User.getUser() == null ? "" : User.getUser().getAccount())
+                        , null, this);
                 if (todoStr != null) {
                     Log.d(TAG, "init: " + JSONArray.parseArray(todoStr));
                     List<Habit> AllTodoList;
                     AllTodoList = JSONObject.parseArray(todoStr, Habit.class);
+                    for (Habit habit : AllTodoList) {
+                        Home.addHabit(habit,localDate.getMonthValue(),org.joda.time.LocalDate.now());
+                    }
+
+
+/*
                     for (Habit habit : AllTodoList) {
                         Log.d(TAG, "updateAllTodoList: " + habit.getTodoDate());
                         if (habit.getTodoDate().equals("无")) {
@@ -163,6 +178,7 @@ public class CheckIn extends AppCompatActivity implements View.OnClickListener, 
                             }
                         }
                     }
+ */
                     if (todayTodo.size() == 0) {
                         if (expressionsSelected) {
                             CustomDialog.show(new OnBindView<CustomDialog>(R.layout.check_in_result) {
@@ -187,12 +203,14 @@ public class CheckIn extends AppCompatActivity implements View.OnClickListener, 
                                     , LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm"))
                                     , HasDoneListAdapter.getDoneListItems().size() + Home.getAllTodoList().size(), HasDoneListAdapter.getDoneListItems().size(), expression));
 
-                            SPUtils.putString("HistoryCheckIn", JSON.toJSONString(Home.getCheckInRecords()), this);
+                            SPUtils.putString("HistoryCheckIn".concat(User.getUser() == null ? "" : User.getUser().getAccount())
+                                    , JSON.toJSONString(Home.getCheckInRecords()), this);
 
                             binding.confirmBtn.setText("已  打  卡");
                             binding.confirmBtn.setBackgroundColor(getResources().getColor(R.color.btn_bg));
                             binding.confirmBtn.setClickable(false);
-                            SPUtils.putBoolean("Check in" + localDate.toString(), true, this);
+                            SPUtils.putBoolean("Check in" + localDate.toString().concat(User.getUser() == null ? "" : User.getUser().getAccount())
+                                    , true, this);
                         } else {
                             CookieBar.builder(this)
                                     .setTitle("打卡失败")

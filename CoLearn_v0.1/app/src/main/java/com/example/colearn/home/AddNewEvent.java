@@ -22,8 +22,9 @@ import com.bigkoo.pickerview.view.TimePickerView;
 import com.example.colearn.Home;
 import com.example.colearn.R;
 import com.example.colearn.adapter.TodoListAdapter;
-import com.example.colearn.components.Habit;
+import com.example.colearn.pojo.Habit;
 import com.example.colearn.databinding.ActivityAddNewEventBinding;
+import com.example.colearn.pojo.User;
 import com.example.colearn.utils.SPUtils;
 import com.gyf.immersionbar.ImmersionBar;
 import com.hjq.bar.OnTitleBarListener;
@@ -355,11 +356,10 @@ public class AddNewEvent extends AppCompatActivity implements View.OnClickListen
                                 , newHabit.getRemindTime()
                                 , Habit.TODO));
 
-                        Log.d(TAG, "onClick: " + JSON.toJSONString(Home.getAllTodoList()));
 
-                        SPUtils.putString("todoList", JSON.toJSONString(Home.getAllTodoList()), getContext());
+                        SPUtils.putString("todoList".concat(User.getUser() == null ? "" : User.getUser().getAccount())
+                                , JSON.toJSONString(Home.getAllTodoList()), getContext());
 
-                        Log.d(TAG, "onClick: SPU:" + SPUtils.getString("todoList", JSON.toJSONString(Home.getAllTodoList()), getContext()));
                         Home.updateAllTodoList(Home.selectDate.getMonthOfYear(),Home.selectDate);
                         AddEvent.activity.finish();
                         finish();

@@ -20,10 +20,11 @@ import com.bigkoo.pickerview.listener.OnTimeSelectListener;
 import com.bigkoo.pickerview.view.TimePickerView;
 import com.example.colearn.Home;
 import com.example.colearn.R;
-import com.example.colearn.components.Habit;
+import com.example.colearn.pojo.Habit;
 import com.example.colearn.databinding.ActivityEditHabitBinding;
 import com.example.colearn.home.ChangeHabitIcon;
 import com.example.colearn.home.ChangeHabitName;
+import com.example.colearn.pojo.User;
 import com.example.colearn.utils.SPUtils;
 import com.gyf.immersionbar.ImmersionBar;
 import com.hjq.bar.OnTitleBarListener;
@@ -616,11 +617,10 @@ public class EditHabit extends AppCompatActivity implements View.OnClickListener
                 oldHabit.setRemindTime(newHabit.getRemindTime());
                 oldHabit.setStatue(newHabit.getStatue());
                 oldHabit.setFinishTime(newHabit.getFinishTime());
-                Log.d(TAG, "2: " + JSON.toJSONString(Home.getAllTodoList()));
 
-                SPUtils.putString("todoList", JSON.toJSONString(Home.getAllTodoList()), getContext());
+                SPUtils.putString("todoList".concat(User.getUser() == null ? "" : User.getUser().getAccount())
+                        , JSON.toJSONString(Home.getAllTodoList()), getContext());
 
-                Log.d(TAG, "onClick: SPU:" + SPUtils.getString("todoList", JSON.toJSONString(Home.getAllTodoList()), getContext()));
 
                 Home.updateAllTodoList(LocalDate.now().getMonthOfYear(), LocalDate.now());
 

@@ -1,4 +1,4 @@
-package com.example.colearn.components;
+package com.example.colearn.pojo;
 
 import static com.xuexiang.xui.XUI.getContext;
 
@@ -14,7 +14,8 @@ public class Task {
     }
 
     public static boolean hasFinish() {
-        String hasDoneListStr = SPUtils.getString(LocalDate.now() + "hasDoneList", null, getContext());
+        String hasDoneListStr = SPUtils.getString(LocalDate.now() + "hasDoneList".concat(User.getUser() == null ? "" : User.getUser().getAccount())
+                , null, getContext());
         if (hasDoneListStr != null) {
             return JSONObject.parseArray(hasDoneListStr, Habit.class).size() >= 2;
         }

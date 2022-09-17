@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.colearn.Home;
 import com.example.colearn.R;
-import com.example.colearn.components.CheckInRecord;
+import com.example.colearn.pojo.CheckInRecord;
 import com.example.colearn.utils.ButtonClickUtils;
 import com.gyf.immersionbar.ImmersionBar;
 import com.hjq.bar.OnTitleBarListener;
@@ -29,9 +29,13 @@ public class HistoryCheckIn extends AppCompatActivity {
     private static List<CheckInRecord> checkInRecords = new ArrayList<>();
 
     private RecyclerView mRecyclerView;
-    private CheckInHistoryAdapter mMyAdapter;
+    private static CheckInHistoryAdapter mMyAdapter;
 
     private TitleBar titleBar;
+
+    public static CheckInHistoryAdapter getmMyAdapter() {
+        return mMyAdapter;
+    }
 
     public static List<CheckInRecord> getCheckInRecords() {
         return checkInRecords;

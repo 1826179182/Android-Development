@@ -46,7 +46,7 @@ public class Monitoring extends AppCompatActivity implements OnTabSelectListener
         setContentView(binding.getRoot());
         ImmersionBar.with(this)
                 .fitsSystemWindows(true)  //使用该属性,必须指定状态栏颜色
-                .statusBarDarkFont(true, 0f)
+                .statusBarDarkFont(false, 0f)
                 .statusBarColor(R.color.black)
                 .init();
 

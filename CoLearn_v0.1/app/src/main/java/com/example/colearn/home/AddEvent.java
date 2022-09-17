@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import com.example.colearn.R;
-import com.example.colearn.components.Habit;
+import com.example.colearn.pojo.Habit;
 import com.example.colearn.databinding.ActivityAddEventBinding;
 import com.example.colearn.utils.ButtonClickUtils;
 import com.gyf.immersionbar.ImmersionBar;

@@ -16,7 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.alibaba.fastjson.JSONArray;
 import com.example.colearn.Home;
 import com.example.colearn.R;
-import com.example.colearn.components.WallPaper;
+import com.example.colearn.pojo.User;
+import com.example.colearn.pojo.WallPaper;
 import com.example.colearn.databinding.ActivityChangeWallpaperBinding;
 import com.example.colearn.utils.SPUtils;
 import com.gyf.immersionbar.ImmersionBar;
@@ -92,7 +93,8 @@ public class ChangeWallpaper extends AppCompatActivity {
                 public void onClick(View v) {
                     Home.setWallPaper(wallPaper);
                     Home.changeWallpaper();
-                    SPUtils.putString("wallpaper", JSONArray.toJSON(wallPaper).toString(), ChangeWallpaper.this);
+                    SPUtils.putString("wallpaper".concat(User.getUser() == null ? "" : User.getUser().getAccount())
+                            , JSONArray.toJSON(wallPaper).toString(), ChangeWallpaper.this);
                     finish();
                 }
             });

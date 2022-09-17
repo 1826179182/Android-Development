@@ -12,15 +12,12 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.colearn.CoLearnRequestInterface;
 import com.example.colearn.R;
-import com.example.colearn.components.Data;
-import com.example.colearn.components.User;
+import com.example.colearn.pojo.User;
 import com.example.colearn.databinding.ActivityPersonalInformationBinding;
 import com.example.colearn.utils.GlideEngine;
 import com.example.colearn.utils.OkHttpUtil;

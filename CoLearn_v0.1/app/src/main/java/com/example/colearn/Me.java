@@ -14,16 +14,14 @@ import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
 
-import com.example.colearn.components.User;
+import com.example.colearn.pojo.User;
 import com.example.colearn.databinding.MeBinding;
 import com.example.colearn.my.DataSynchronize;
 import com.example.colearn.my.HabitManager;
-import com.example.colearn.my.Login;
 import com.example.colearn.my.LoginOrRegister;
 import com.example.colearn.my.PersonalInformation;
 import com.example.colearn.utils.ButtonClickUtils;
 import com.example.colearn.utils.SPUtils;
-import com.google.gson.Gson;
 import com.xuexiang.xui.widget.popupwindow.bar.CookieBar;
 import com.xuexiang.xui.widget.toast.XToast;
 
