@@ -117,5 +117,5 @@ dependencies {
     implementation 'xyz.doikki.android.dkplayer:dkplayer-java:3.3.7'
     //可选，包含StandardVideoController的实现
     implementation 'xyz.doikki.android.dkplayer:dkplayer-ui:3.3.7'
-    implementation 'xyz.doikki.android.dkplayer:player-exo:3.3.7'
+    implementation 'xyz.doikki.android.dkplayer:player-ijk:3.3.7'
 }

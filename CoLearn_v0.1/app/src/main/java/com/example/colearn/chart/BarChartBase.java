@@ -10,7 +10,6 @@ import androidx.core.content.ContextCompat;
 
 import com.example.colearn.R;
 import com.example.colearn.custom.DayAxisValueFormatter;
-import com.example.colearn.custom.HourXAxisFormatter;
 import com.example.colearn.custom.MyValueFormatter;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.Legend;

@@ -10,7 +10,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.colearn.R;
-import com.example.colearn.fragments.BaseFragment;
 
 
 public class Achievement extends Fragment {

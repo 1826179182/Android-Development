@@ -10,7 +10,6 @@ import android.text.style.RelativeSizeSpan;
 import android.text.style.StyleSpan;
 import android.util.DisplayMetrics;
 import android.view.Display;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
 import com.github.mikephil.charting.animation.Easing;

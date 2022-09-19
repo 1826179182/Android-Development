@@ -9,9 +9,9 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.colearn.R;
-import com.example.colearn.pojo.Habit;
 import com.example.colearn.databinding.ActivityChangeHabitNameBinding;
 import com.example.colearn.my.EditHabit;
+import com.example.colearn.pojo.Habit;
 import com.gyf.immersionbar.ImmersionBar;
 import com.hjq.bar.OnTitleBarListener;
 import com.hjq.bar.TitleBar;

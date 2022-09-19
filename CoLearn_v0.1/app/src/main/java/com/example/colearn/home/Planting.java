@@ -16,9 +16,9 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.example.colearn.Home;
 import com.example.colearn.R;
+import com.example.colearn.databinding.ActivityPlantingBinding;
 import com.example.colearn.pojo.Plant;
 import com.example.colearn.pojo.Task;
-import com.example.colearn.databinding.ActivityPlantingBinding;
 import com.example.colearn.pojo.User;
 import com.example.colearn.utils.SPUtils;
 import com.gyf.immersionbar.ImmersionBar;
@@ -33,7 +33,6 @@ import com.xuexiang.xui.widget.popupwindow.ViewTooltip;
 import org.joda.time.LocalDate;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 

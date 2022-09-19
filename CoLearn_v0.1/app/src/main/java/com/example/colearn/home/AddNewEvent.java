@@ -6,7 +6,6 @@ import static com.kongzue.dialogx.interfaces.BaseDialog.getContext;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -22,8 +21,8 @@ import com.bigkoo.pickerview.view.TimePickerView;
 import com.example.colearn.Home;
 import com.example.colearn.R;
 import com.example.colearn.adapter.TodoListAdapter;
-import com.example.colearn.pojo.Habit;
 import com.example.colearn.databinding.ActivityAddNewEventBinding;
+import com.example.colearn.pojo.Habit;
 import com.example.colearn.pojo.User;
 import com.example.colearn.utils.SPUtils;
 import com.gyf.immersionbar.ImmersionBar;

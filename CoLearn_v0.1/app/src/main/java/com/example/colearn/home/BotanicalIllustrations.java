@@ -9,8 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.example.colearn.R;
-import com.example.colearn.pojo.Plant;
 import com.example.colearn.databinding.ActivityBotanicalIllustrationsBinding;
+import com.example.colearn.pojo.Plant;
 import com.gyf.immersionbar.ImmersionBar;
 import com.hjq.bar.OnTitleBarListener;
 import com.hjq.bar.TitleBar;

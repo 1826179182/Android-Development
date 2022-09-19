@@ -14,12 +14,12 @@ import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
 
-import com.example.colearn.pojo.User;
 import com.example.colearn.databinding.MeBinding;
 import com.example.colearn.my.DataSynchronize;
 import com.example.colearn.my.HabitManager;
 import com.example.colearn.my.LoginOrRegister;
 import com.example.colearn.my.PersonalInformation;
+import com.example.colearn.pojo.User;
 import com.example.colearn.utils.ButtonClickUtils;
 import com.example.colearn.utils.SPUtils;
 import com.xuexiang.xui.widget.popupwindow.bar.CookieBar;

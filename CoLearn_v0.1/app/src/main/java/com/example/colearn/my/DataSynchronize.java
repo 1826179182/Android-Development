@@ -18,20 +18,16 @@ import com.alibaba.fastjson.JSONObject;
 import com.example.colearn.CoLearnRequestInterface;
 import com.example.colearn.Home;
 import com.example.colearn.R;
-import com.example.colearn.home.HistoryCheckIn;
-import com.example.colearn.pojo.CheckInRecord;
-import com.example.colearn.pojo.Data;
-import com.example.colearn.pojo.Habit;
 import com.example.colearn.databinding.ActivityDataSynchronizeBinding;
+import com.example.colearn.pojo.CheckInRecord;
+import com.example.colearn.pojo.Habit;
 import com.example.colearn.pojo.User;
 import com.example.colearn.utils.OkHttpUtil;
 import com.example.colearn.utils.SPUtils;
 import com.gyf.immersionbar.ImmersionBar;
-import com.kongzue.dialogx.interfaces.BaseDialog;
 import com.xuexiang.xui.widget.popupwindow.bar.CookieBar;
 
 import java.io.IOException;
-import java.util.List;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
