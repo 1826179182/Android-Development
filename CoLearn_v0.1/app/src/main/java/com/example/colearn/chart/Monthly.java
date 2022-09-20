@@ -75,7 +75,7 @@ public class Monthly extends Fragment {
             @Override
             public void onItemSelected(MaterialSpinner view, int position, long id, Object item) {
                 currentCategory = position;
-                Log.d("Monthly", String.valueOf(Chart.Year) + "年" + String.valueOf(Chart.Month) + "月");
+                Log.d("Monthly", String.valueOf(Chart.getYear()) + "年" + String.valueOf(Chart.getMonth()) + "月");
                 barChartDataArrayList = geneTestData();
                 barChart.updateDate(barChartDataArrayList.get(position));
             }
@@ -106,7 +106,7 @@ public class Monthly extends Fragment {
     public ArrayList<BarChartData> geneTestData() {
         // test data
         String[] labels = new String[]{"读书", "写字", "练琴", "玩手机", "打瞌睡", "啃手指"};
-        String date = new String(String.valueOf(Chart.Year) + "-" + String.valueOf(Chart.Month) + "-29 20:23:56");
+        String date = new String(String.valueOf(Chart.getYear()) + "-" + String.valueOf(Chart.getMonth()) + "-29 20:23:56");
 
         ArrayList<ArrayList<String>> thisLength = new ArrayList<>();
         for (int i = 0; i < labels.length; i++) {

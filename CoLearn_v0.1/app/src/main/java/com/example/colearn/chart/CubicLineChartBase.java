@@ -31,6 +31,7 @@ import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CubicLineChartBase {
 
@@ -110,13 +111,13 @@ public class CubicLineChartBase {
         chart.invalidate();
     }
 
-    public void updateData(float[] hotSeq){
-        if(hotSeq.length!=24){
-            Log.d("CubicLineChartBase","Data not valid!");
+    public void updateData(List<Float> hotSeq) {
+        if (hotSeq.size() != 24) {
+            Log.d("CubicLineChartBase", "Data not valid!");
         }
         ArrayList<Entry> values = new ArrayList<>();
-        for (int i = 0; i < hotSeq.length; i++) {
-            values.add(new Entry(i, hotSeq[i]));
+        for (int i = 0; i < hotSeq.size(); i++) {
+            values.add(new Entry(i, hotSeq.get(i)));
         }
 
         LineDataSet set1;

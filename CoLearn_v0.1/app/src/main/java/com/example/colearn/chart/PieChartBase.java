@@ -17,6 +17,7 @@ import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class PieChartBase {
     private Context context;
@@ -61,7 +62,7 @@ public class PieChartBase {
         chart.setData(pieData);
     }
 
-    public void updateData(ArrayList<ChartData> chartDataArrayList){
+    public void updateData(List<ChartData> chartDataArrayList){
         mPieData mPieData = new mPieData();
         for (ChartData chardata: chartDataArrayList) {
             mPieData.addEntry(Float.parseFloat(chardata.getCdRatio()),chardata.getCdCategory());

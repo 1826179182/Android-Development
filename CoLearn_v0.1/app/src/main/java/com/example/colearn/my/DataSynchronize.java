@@ -18,6 +18,8 @@ import com.alibaba.fastjson.JSONObject;
 import com.example.colearn.CoLearnRequestInterface;
 import com.example.colearn.Home;
 import com.example.colearn.R;
+import com.example.colearn.chart.Daily;
+import com.example.colearn.data.ChartData;
 import com.example.colearn.databinding.ActivityDataSynchronizeBinding;
 import com.example.colearn.pojo.CheckInRecord;
 import com.example.colearn.pojo.Habit;
@@ -52,6 +54,8 @@ public class DataSynchronize extends AppCompatActivity implements View.OnClickLi
         getList("getTodoList");
         getList("getCheckInHistory");
         getList("getPlantsList");
+        getList("getDailyActivityDetails");
+        getList("getDailyHotSeq");
     }
 
 
@@ -66,6 +70,7 @@ public class DataSynchronize extends AppCompatActivity implements View.OnClickLi
 
     /**
      * 同步list数据
+     *
      * @param path list类型
      */
     private void saveList(String path) {
@@ -81,10 +86,16 @@ public class DataSynchronize extends AppCompatActivity implements View.OnClickLi
         CoLearnRequestInterface request = retrofit.create(CoLearnRequestInterface.class);
         Call<ResponseBody> call = null;
         //对发送请求进行封装
-        switch (path){
-            case "saveTodoList": call = request.saveList(JSONArray.parseArray(JSON.toJSONString(Home.getAllTodoList())),path);break;
-            case "saveCheckInHistory": call = request.saveList(JSONArray.parseArray(JSON.toJSONString(Home.getCheckInRecords())),path);break;
-            case "savePlantsList":  call = request.saveList(JSONArray.parseArray(JSON.toJSONString(Home.getPlants())),path);break;
+        switch (path) {
+            case "saveTodoList":
+                call = request.saveList(JSONArray.parseArray(JSON.toJSONString(Home.getAllTodoList())), path);
+                break;
+            case "saveCheckInHistory":
+                call = request.saveList(JSONArray.parseArray(JSON.toJSONString(Home.getCheckInRecords())), path);
+                break;
+            case "savePlantsList":
+                call = request.saveList(JSONArray.parseArray(JSON.toJSONString(Home.getPlants())), path);
+                break;
         }
 
         //步骤:发送网络请求(异步)
@@ -120,6 +131,7 @@ public class DataSynchronize extends AppCompatActivity implements View.OnClickLi
 
     /**
      * 恢复list数据
+     *
      * @param path list类型
      */
     private void getList(String path) {
@@ -150,15 +162,15 @@ public class DataSynchronize extends AppCompatActivity implements View.OnClickLi
                 }
                 if (body == null) return;
                 Log.d(TAG, "返回的数据：" + result);
-                if(response.code()==200){
-                    switch (path){
+                if (response.code() == 200) {
+                    switch (path) {
                         case "getTodoList":
                             Home.setAllTodoList(JSONObject.parseArray(result, Habit.class));
                             SPUtils.putString("todoList".concat(User.getUser() == null ? "" : User.getUser().getAccount())
                                     , JSON.toJSONString(Home.getAllTodoList()), getContext());
 
                             Home.getTodoAdapter().notifyDataSetChanged();
-                            Home.updateAllTodoList(Home.selectDate.getMonthOfYear(),Home.selectDate);
+                            Home.updateAllTodoList(Home.selectDate.getMonthOfYear(), Home.selectDate);
                             break;
                         case "getCheckInHistory":
                             Home.setCheckInRecords(JSONObject.parseArray(result, CheckInRecord.class));
@@ -169,6 +181,16 @@ public class DataSynchronize extends AppCompatActivity implements View.OnClickLi
                             SPUtils.putString("plants".concat(User.getUser() == null ? "" : User.getUser().getAccount())
                                     , JSON.toJSONString(result), getContext());
                             break;
+                        case "getDailyActivityDetails":
+                            Daily.setChartDataList(JSONObject.parseArray(result, ChartData.class));
+                            SPUtils.putString("DailyActivities".concat(User.getUser() == null ? "" : User.getUser().getAccount())
+                                    , JSON.toJSONString(result), getContext());
+                            break;
+                        case "getDailyHotSeq":
+                            Daily.setHotSeq(JSONObject.parseArray(result, Float.class));
+                            SPUtils.putString("DailyActivities".concat(User.getUser() == null ? "" : User.getUser().getAccount())
+                                    , JSON.toJSONString(result), getContext());
+                            break;
                     }
                     CookieBar.builder(DataSynchronize.this)
                             .setTitle(response.message())
@@ -176,7 +198,7 @@ public class DataSynchronize extends AppCompatActivity implements View.OnClickLi
                             .setBackgroundColor(R.color.error)
                             .setLayoutGravity(Gravity.TOP)
                             .show();
-                }else{
+                } else {
                     CookieBar.builder(DataSynchronize.this)
                             .setTitle(response.message())
                             .setMessage("出了点小问题，请稍后再试。")
@@ -193,7 +215,6 @@ public class DataSynchronize extends AppCompatActivity implements View.OnClickLi
             }
         });
     }
-
 
 
     @Override

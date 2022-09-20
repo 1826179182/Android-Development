@@ -16,13 +16,14 @@ import com.example.colearn.data.ChartData;
 import com.xuexiang.xui.widget.imageview.IconImageView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ChartItemsAdapter extends RecyclerView.Adapter<ChartItemsAdapter.ChartItemsViewHolder> {
 
-    private ArrayList<ChartData> chartDataArrayList;
+    private List<ChartData> chartDataArrayList;
     private Context context;
 
-    public ChartItemsAdapter(Context context, ArrayList<ChartData> chartDataArrayList) {
+    public ChartItemsAdapter(Context context, List<ChartData> chartDataArrayList) {
         this.context = context;
         this.chartDataArrayList = chartDataArrayList;
     }

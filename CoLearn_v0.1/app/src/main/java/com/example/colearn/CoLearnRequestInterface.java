@@ -58,6 +58,6 @@ public interface CoLearnRequestInterface {
 
     @FormUrlEncoded
     @POST("insight/daily")
-    Call<ResponseBody> getDailyAcitvities(@Field("account") String account,@Field("data") String date);
+    Call<ResponseBody> getDailyAcitvities(@Field("account") String account,@Field("year") String year,@Field("month") String month);
 
 }

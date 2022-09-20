@@ -53,8 +53,20 @@ public class Chart extends Fragment implements OnTabSelectListener {
 
     private WeekCalendar mWeekCalendar;
     public static LocalDate selectDate;
-    public static int Year = 2022;
-    public static int Month = 8;
+    private static int Year = 2022;
+    private static int Month = 8;
+
+    public static void setYear(int year) {
+        Year = year;
+    }
+
+    public static void setMonth(int month){
+        Month=month;
+    }
+
+    public static int getYear(){return Year;}
+
+    public static int getMonth(){return Month;}
 
     @Nullable
     @Override
