@@ -403,8 +403,6 @@ public class AddNewEvent extends AppCompatActivity implements View.OnClickListen
                     }
                 })
                         .setType(new boolean[]{false, true, true, false, false, false})// 默认全部显示
-                        .setCancelText("Cancel")//取消按钮文字
-                        .setSubmitText("Sure")//确认按钮文字
                         .setContentTextSize(17)
                         .setItemVisibleCount(5)
                         .setTitleSize(20)//标题文字大小
