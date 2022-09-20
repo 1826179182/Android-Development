@@ -35,6 +35,7 @@ public class BarChartBase implements SeekBar.OnSeekBarChangeListener {
     private BarData barData;
     private String[] mLabels;
     private Typeface tfLight;
+    private Typeface tfRegular;
 
     public BarChartBase(Context context, Activity activity, MyBarChart chart, String[] labels) {
         this.context = context;
@@ -42,7 +43,7 @@ public class BarChartBase implements SeekBar.OnSeekBarChangeListener {
         this.chart = chart;
         this.mLabels = labels;
         this.tfLight = Typeface.createFromAsset(context.getAssets(), "OpenSans-Light.ttf");
-
+        this.tfLight = Typeface.createFromAsset(context.getAssets(), "OpenSans-Regular.ttf");
     }
 
     public void init() {
@@ -129,13 +130,6 @@ public class BarChartBase implements SeekBar.OnSeekBarChangeListener {
 
         BarDataSet set1;
 
-//        if (chart.getData() != null && chart.getData().getDataSetCount() > 0) {
-//            set1 = (BarDataSet) chart.getData().getDataSetByIndex(0);
-//            set1.setValues(values);
-//            chart.getData().notifyDataChanged();
-//            chart.notifyDataSetChanged();
-//
-//        } else {
         set1 = new BarDataSet(values, year + "年" + month + "月");
 
         set1.setDrawIcons(false);
@@ -166,8 +160,8 @@ public class BarChartBase implements SeekBar.OnSeekBarChangeListener {
         dataSets.add(set1);
 
         BarData data = new BarData(dataSets);
-        data.setValueTextSize(10f);
-        data.setValueTypeface(tfLight);
+        data.setValueTextSize(5f);
+        data.setValueTypeface(tfRegular);
         data.setBarWidth(0.9f);
 
         chart.setData(data);

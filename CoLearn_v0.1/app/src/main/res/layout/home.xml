@@ -165,6 +165,7 @@
                 android:orientation="horizontal">
 
                 <com.xuexiang.xui.widget.layout.XUILinearLayout
+                    android:id="@+id/add_event_layout"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -190,6 +191,7 @@
                 </com.xuexiang.xui.widget.layout.XUILinearLayout>
 
                 <com.xuexiang.xui.widget.layout.XUILinearLayout
+                    android:id="@+id/clock_in_layout"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -215,6 +217,7 @@
                 </com.xuexiang.xui.widget.layout.XUILinearLayout>
 
                 <com.xuexiang.xui.widget.layout.XUILinearLayout
+                    android:id="@+id/planting_layout"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -240,6 +243,7 @@
                 </com.xuexiang.xui.widget.layout.XUILinearLayout>
 
                 <com.xuexiang.xui.widget.layout.XUILinearLayout
+                    android:id="@+id/camera_layout"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"

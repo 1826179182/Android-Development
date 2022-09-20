@@ -53,8 +53,8 @@ public class Chart extends Fragment implements OnTabSelectListener {
 
     private WeekCalendar mWeekCalendar;
     public static LocalDate selectDate;
-    public static int Year = 0;
-    public static int Month = 0;
+    public static int Year = 2022;
+    public static int Month = 8;
 
     @Nullable
     @Override
@@ -119,10 +119,8 @@ public class Chart extends Fragment implements OnTabSelectListener {
                 Log.d(Oscillator.TAG, "   当前页面选中 " + localDate);
                 Log.d(Oscillator.TAG, "   dateChangeBehavior " + dateChangeBehavior);
                 Log.e(Oscillator.TAG, "baseCalendar::" + baseCalendar);
-
                 Year = year;
                 Month = month;
-//                Log.e(Oscillator.TAG, "test static:" + String.valueOf(Year) + "年" + String.valueOf(Month) + "月");
                 switch (month) {
                     case 1:
                         chartMonth.setText("一月");

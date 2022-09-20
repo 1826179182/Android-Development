@@ -95,8 +95,6 @@ public class Home extends androidx.fragment.app.Fragment implements View.OnClick
     }
 
 
-
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -113,7 +111,9 @@ public class Home extends androidx.fragment.app.Fragment implements View.OnClick
     @Override
     public void onClick(View v) {
 
-        if (ButtonClickUtils.isFastClick()) { return; }
+        if (ButtonClickUtils.isFastClick()) {
+            return;
+        }
 
         Intent intent = new Intent();
         switch (v.getId()) {
@@ -130,15 +130,15 @@ public class Home extends androidx.fragment.app.Fragment implements View.OnClick
                 binding.weekCalendar.jumpDate(LocalDate.now().toString());
                 todoAdapter.notifyDataSetChanged();
                 break;
-            case R.id.add_event:
+            case R.id.add_event_layout:
                 intent.setClass(getContext(), AddEvent.class);
                 startActivity(intent);
                 break;
-            case R.id.clock_in:
+            case R.id.clock_in_layout:
                 intent.setClass(getContext(), CheckIn.class);
                 startActivity(intent);
                 break;
-            case R.id.planting:
+            case R.id.planting_layout:
                 intent.setClass(getContext(), Planting.class);
                 startActivity(intent);
                 break;
@@ -149,7 +149,7 @@ public class Home extends androidx.fragment.app.Fragment implements View.OnClick
             case R.id.more_func:
                 mTimoMenu.show();
                 break;
-            case R.id.camera:
+            case R.id.camera_layout:
                 intent.setClass(getContext(), Monitoring.class);
                 startActivity(intent);
                 break;
@@ -181,15 +181,15 @@ public class Home extends androidx.fragment.app.Fragment implements View.OnClick
         todoAdapter = new TodoListAdapter(getContext(), R.layout.todo_listview, todoList);
         list_1.setAdapter(todoAdapter);
 
-        binding.addEvent.setOnClickListener(this::onClick);
-        binding.clockIn.setOnClickListener(this::onClick);
-        binding.planting.setOnClickListener(this::onClick);
+        binding.addEventLayout.setOnClickListener(this::onClick);
+        binding.clockInLayout.setOnClickListener(this::onClick);
+        binding.plantingLayout.setOnClickListener(this::onClick);
 
         binding.wallpaper.setOnClickListener(this::onClick);
         binding.backToday.setOnClickListener(this::onClick);
         binding.upAndDown.setOnClickListener(this::onClick);
         binding.moreFunc.setOnClickListener(this::onClick);
-        binding.camera.setOnClickListener(this::onClick);
+        binding.cameraLayout.setOnClickListener(this::onClick);
         binding.weekCalendar.setOnCalendarChangedListener(new OnCalendarChangedListener() {
             @Override
             public void onCalendarChange(BaseCalendar baseCalendar, int year, int month, LocalDate localDate, DateChangeBehavior dateChangeBehavior) {
@@ -306,7 +306,7 @@ public class Home extends androidx.fragment.app.Fragment implements View.OnClick
             Log.d(TAG, "init: allList" + AllTodoList);
             for (Habit habit : AllTodoList) {
                 Log.d(TAG, "updateAllTodoList: " + habit.getTodoDate());
-                addHabit(habit,month,localDate);
+                addHabit(habit, month, localDate);
                 todoAdapter.notifyDataSetChanged();
             }
             Log.d(TAG, "init: " + todoAdapter.getTodoList());
@@ -356,18 +356,18 @@ public class Home extends androidx.fragment.app.Fragment implements View.OnClick
         Message msg = new Message();
     }
 
-    public static void addHabit(Habit habit, int month, LocalDate selectDate){
-        if(!selectDate.isBefore(LocalDate.now())){
+    public static void addHabit(Habit habit, int month, LocalDate selectDate) {
+        if (!selectDate.isBefore(LocalDate.now())) {
             if (habit.getTodoDate().equals("无") || habit.getFrequency().equals("每天")) {
-                if (!habit.getFinishTime().split(" ")[0].equals(selectDate.toString())){
+                if (!habit.getFinishTime().split(" ")[0].equals(selectDate.toString())) {
                     todoAdapter.add(habit);
                 }
-            } else if(habit.getFrequency().equals("每周") && habit.getTodoDate().split(" ")[1].equals(changeDayOfWeek(selectDate.getDayOfWeek()))){
-                if (!habit.getFinishTime().split(" ")[0].equals(selectDate.toString())){
+            } else if (habit.getFrequency().equals("每周") && habit.getTodoDate().split(" ")[1].equals(changeDayOfWeek(selectDate.getDayOfWeek()))) {
+                if (!habit.getFinishTime().split(" ")[0].equals(selectDate.toString())) {
                     todoAdapter.add(habit);
                 }
-            } else if(habit.getFrequency().equals("每月") && Integer.parseInt(habit.getTodoDate().split(" ")[0].split("-")[1])==(selectDate.getDayOfMonth())){
-                if (!habit.getFinishTime().split(" ")[0].equals(selectDate.toString())){
+            } else if (habit.getFrequency().equals("每月") && Integer.parseInt(habit.getTodoDate().split(" ")[0].split("-")[1]) == (selectDate.getDayOfMonth())) {
+                if (!habit.getFinishTime().split(" ")[0].equals(selectDate.toString())) {
                     todoAdapter.add(habit);
                 }
             } else {
@@ -379,15 +379,22 @@ public class Home extends androidx.fragment.app.Fragment implements View.OnClick
         }
     }
 
-    private static String changeDayOfWeek(int day){
-        switch (day){
-            case 1: return "周一";
-            case 2: return "周二";
-            case 3: return "周三";
-            case 4: return "周四";
-            case 5: return "周五";
-            case 6: return "周六";
-            case 7: return "周日";
+    private static String changeDayOfWeek(int day) {
+        switch (day) {
+            case 1:
+                return "周一";
+            case 2:
+                return "周二";
+            case 3:
+                return "周三";
+            case 4:
+                return "周四";
+            case 5:
+                return "周五";
+            case 6:
+                return "周六";
+            case 7:
+                return "周日";
         }
         return "";
     }
