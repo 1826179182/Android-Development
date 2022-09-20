@@ -57,57 +57,41 @@ public class Daily extends Fragment {
         // load PieChart
         pieChart = new PieChartBase(mContext, view.findViewById(R.id.daily_chart_pie));
 
-        // generate data
-        mPieData mPieData = new mPieData();
-//        mPieData.setPieChartDataLabel("今日活动项目");
-        mPieData.addEntry(12.1f, "读书");
-        mPieData.addEntry(24.1f, "玩手机");
-        mPieData.addEntry(35.9f, "写字");
-        mPieData.addEntry(27.9f, "练琴");
-
-        // set data and show
-        pieChart.setPieData(mPieData.generateData());
-        pieChart.init();
+        // test data
+        String[] labels = new String[]{"读书", "写字", "练琴", "玩手机", "打瞌睡", "啃手指"};
+        String[] ratio = new String[]{"0.1", "0.2", "0.1", "0.1", "0.1", "0.4"};
+        String[] length = new String[]{"1.4", "0.9", "0.6", "2.2", "0.5", "0.1"};
+        int[] imgIds = new int[]{R.mipmap.reading, R.mipmap.swim, R.mipmap.do_homework,
+                R.mipmap.guitar, R.mipmap.badminton, R.mipmap.food_jt};
 
 
         chartDataArrayList = new ArrayList<>();
-        ChartData chartData = new ChartData();
-        chartData.setCategory("读书");
-        chartData.setImgResId(R.mipmap.reading);
-        chartData.setCdRatio("0.21");
-        chartData.setCdLength("1.4");
-        chartDataArrayList.add(chartData);
 
-        ChartData chartData2 = new ChartData();
-        chartData2.setCategory("写字");
-        chartData2.setImgResId(R.mipmap.basketball);
-        chartData2.setCdRatio("0.41");
-        chartData2.setCdLength("2.5");
-        chartDataArrayList.add(chartData2);
+        for(int i=0;i<6;i++){
+            ChartData chartData = new ChartData();
+            chartData.setCategory(labels[i]);
+            chartData.setImgResId(imgIds[i]);
+            chartData.setCdRatio(ratio[i]);
+            chartData.setCdLength(length[i]);
+            chartDataArrayList.add(chartData);
+        }
 
         recyclerView_pie = view.findViewById(R.id.dialy_pie_recycleview);
         recyclerView_pie.setLayoutManager(new LinearLayoutManager(mContext));
         recyclerView_pie.setAdapter(new ChartItemsAdapter(mContext, chartDataArrayList));
 
-
-        //cubicchart
+        //cubicChart
         cubicLineChart = new CubicLineChartBase(mContext, getActivity(), view.findViewById(R.id.daily_chart_cubicline));
         cubicLineChart.init();
+        cubicLineChart.updateData(new float[]{1,2,3,4,5,6,7,8,9,9,9,9,9,9,9,9,9,9,9,9,1,2,3,4});
         RefreshLayout refreshLayout = view.findViewById(R.id.smartRefreshLayout_d);
         refreshLayout.setRefreshHeader(new ClassicsHeader(mContext));
         refreshLayout.setRefreshFooter(new ClassicsFooter(mContext));
+
         refreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(RefreshLayout refreshlayout) {
-                mPieData mPieData = new mPieData();
-                mPieData.setPieChartDataLabel("今日活动项目");
-                mPieData.addEntry(52.1f, "读书");
-                mPieData.addEntry(4.1f, "玩手机");
-                mPieData.addEntry(15.9f, "写字");
-                mPieData.addEntry(27.9f, "练琴");
-
-                // set data and show
-                pieChart.setPieData(mPieData.generateData());
+                pieChart.updateData(chartDataArrayList);
                 pieChart.init();
                 refreshlayout.finishRefresh(2000/*,false*/);//传入false表示刷新失败
             }

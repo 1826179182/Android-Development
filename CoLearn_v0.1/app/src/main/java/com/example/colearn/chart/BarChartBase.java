@@ -140,7 +140,7 @@ public class BarChartBase implements SeekBar.OnSeekBarChangeListener {
             chart.notifyDataSetChanged();
 
         } else {
-            set1 = new BarDataSet(values, "The year 2017");
+            set1 = new BarDataSet(values, "2022年");
 
             set1.setDrawIcons(false);
 

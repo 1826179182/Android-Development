@@ -8,8 +8,6 @@ public class WallPaper {
     public WallPaper() {
     }
 
-    ;
-
     public WallPaper(int wallpaper, String wallpaperName, String titleBarColor) {
         this.wallpaper = wallpaper;
         this.wallpaperName = wallpaperName;

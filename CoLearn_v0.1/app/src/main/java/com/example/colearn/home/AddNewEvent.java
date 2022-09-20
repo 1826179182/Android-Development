@@ -464,7 +464,7 @@ public class AddNewEvent extends AppCompatActivity implements View.OnClickListen
                         .isCenterLabel(false) //是否只显示中间选中项的label文字，false则每项item全部都带有label。
                         .setCancelText("取消")
                         .setSubmitText("确认")
-                        .isDialog(false)//是否显示为对话框样式
+                        .isDialog(true)//是否显示为对话框样式
                         .build();
                 pvTime.show();
                 break;

@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -106,17 +107,16 @@ public class CubicLineChartBase {
 
         // don't forget to refresh the drawing
 
-        setData(24, 20);
         chart.invalidate();
     }
 
-    private void setData(int count, float range) {
-
+    public void updateData(float[] hotSeq){
+        if(hotSeq.length!=24){
+            Log.d("CubicLineChartBase","Data not valid!");
+        }
         ArrayList<Entry> values = new ArrayList<>();
-
-        for (int i = 0; i < count; i++) {
-            float val = (float) (Math.random() * (range + 1)) + 20;
-            values.add(new Entry(i, val));
+        for (int i = 0; i < hotSeq.length; i++) {
+            values.add(new Entry(i, hotSeq[i]));
         }
 
         LineDataSet set1;
@@ -129,7 +129,7 @@ public class CubicLineChartBase {
             chart.notifyDataSetChanged();
         } else {
             // create a dataset and give it a type
-            set1 = new LineDataSet(values, "DataSet 1");
+            set1 = new LineDataSet(values, "dataset_1");
 
             set1.setMode(LineDataSet.Mode.CUBIC_BEZIER);
             set1.setCubicIntensity(0.2f);

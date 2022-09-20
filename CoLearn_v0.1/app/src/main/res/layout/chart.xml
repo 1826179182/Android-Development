@@ -22,6 +22,7 @@
         app:strokeWidth="0.5dp">
 
         <com.xuexiang.xui.widget.layout.XUILinearLayout
+            android:id="@+id/daily_month_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -32,7 +33,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/month"
+                    android:id="@+id/chartMonth"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
@@ -67,64 +68,68 @@
                 android:orientation="vertical"
                 android:paddingVertical="1dp">
 
-                <com.xuexiang.xui.widget.layout.XUILinearLayout
+                <!--                <com.xuexiang.xui.widget.layout.XUILinearLayout-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:orientation="horizontal"-->
+                <!--                    android:paddingTop="5dp">-->
+
+                <!--                    <com.xuexiang.xui.widget.alpha.XUIAlphaTextView-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_weight="1"-->
+                <!--                        android:gravity="center"-->
+                <!--                        android:text="日" />-->
+
+                <!--                    <com.xuexiang.xui.widget.alpha.XUIAlphaTextView-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_weight="1"-->
+                <!--                        android:gravity="center"-->
+                <!--                        android:text="一" />-->
+
+                <!--                    <com.xuexiang.xui.widget.alpha.XUIAlphaTextView-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_weight="1"-->
+                <!--                        android:gravity="center"-->
+                <!--                        android:text="二" />-->
+
+                <!--                    <com.xuexiang.xui.widget.alpha.XUIAlphaTextView-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_weight="1"-->
+                <!--                        android:gravity="center"-->
+                <!--                        android:text="三" />-->
+
+                <!--                    <com.xuexiang.xui.widget.alpha.XUIAlphaTextView-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_weight="1"-->
+                <!--                        android:gravity="center"-->
+                <!--                        android:text="四" />-->
+
+                <!--                    <com.xuexiang.xui.widget.alpha.XUIAlphaTextView-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_weight="1"-->
+                <!--                        android:gravity="center"-->
+                <!--                        android:text="五" />-->
+
+                <!--                    <com.xuexiang.xui.widget.alpha.XUIAlphaTextView-->
+                <!--                        android:layout_width="match_parent"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_weight="1"-->
+                <!--                        android:gravity="center"-->
+                <!--                        android:text="六" />-->
+                <!--                </com.xuexiang.xui.widget.layout.XUILinearLayout>-->
+
+                <com.necer.view.WeekBar
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingTop="5dp">
-
-                    <com.xuexiang.xui.widget.alpha.XUIAlphaTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="日" />
-
-                    <com.xuexiang.xui.widget.alpha.XUIAlphaTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="一" />
-
-                    <com.xuexiang.xui.widget.alpha.XUIAlphaTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="二" />
-
-                    <com.xuexiang.xui.widget.alpha.XUIAlphaTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="三" />
-
-                    <com.xuexiang.xui.widget.alpha.XUIAlphaTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="四" />
-
-                    <com.xuexiang.xui.widget.alpha.XUIAlphaTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="五" />
-
-                    <com.xuexiang.xui.widget.alpha.XUIAlphaTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:text="六" />
-                </com.xuexiang.xui.widget.layout.XUILinearLayout>
+                    android:layout_height="wrap_content" />
 
                 <com.necer.calendar.WeekCalendar
-                    android:id="@+id/weekCalendar_daily"
+                    android:id="@+id/weekCalendar_chart"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
 

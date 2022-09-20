@@ -4,9 +4,11 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.util.Log;
 
 import com.example.colearn.R;
 import com.example.colearn.custom.RadarMarkerView;
+import com.example.colearn.data.ChartData;
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.RadarChart;
 import com.github.mikephil.charting.components.Legend;
@@ -26,14 +28,13 @@ public class RadarChartBase {
     private Activity activity;
     private RadarChart chart;
     private RadarData radarData;
-    private String[] mLabels;
+    private ArrayList<String> mLabels;
     private Typeface tfLight;
 
-    public RadarChartBase(Context context, Activity activity, RadarChart chart,String[] labels) {
+    public RadarChartBase(Context context, Activity activity, RadarChart chart) {
         this.context = context;
         this.activity = activity;
         this.chart = chart;
-        this.mLabels=labels;
         this.tfLight = Typeface.createFromAsset(context.getAssets(), "OpenSans-Light.ttf");
     }
 
@@ -52,8 +53,6 @@ public class RadarChartBase {
         mv.setChartView(chart);
         chart.setMarker(mv);
 
-        setData();
-
         chart.animateXY(1400, 1400, Easing.EaseInOutQuad);
 
         XAxis xAxis = chart.getXAxis();
@@ -62,12 +61,6 @@ public class RadarChartBase {
         xAxis.setTextColor(Color.BLACK);
         xAxis.setYOffset(0f);
         xAxis.setXOffset(0f);
-        xAxis.setValueFormatter(new ValueFormatter() {
-            @Override
-            public String getFormattedValue(float value) {
-                return mLabels[(int) value % mLabels.length];
-            }
-        });
 
         YAxis yAxis = chart.getYAxis();
         yAxis.setTypeface(tfLight);
@@ -89,11 +82,17 @@ public class RadarChartBase {
         l.setTextColor(Color.BLACK);
     }
 
-    private void setData() {
+    public void updateData(ArrayList<ChartData> chartDataArrayList_lastW, ArrayList<ChartData> chartDataArrayList_thisW) {
+        setData(chartDataArrayList_lastW, chartDataArrayList_thisW);
+    }
+
+    private void setData(ArrayList<ChartData> chartDataArrayList_lastW, ArrayList<ChartData> chartDataArrayList_thisW) {
+
+        mLabels = new ArrayList<>();
 
         float mul = 80;
         float min = 20;
-        int cnt = 5;
+        int cnt = chartDataArrayList_lastW.size();
 
         ArrayList<RadarEntry> entries1 = new ArrayList<>();
         ArrayList<RadarEntry> entries2 = new ArrayList<>();
@@ -101,12 +100,23 @@ public class RadarChartBase {
         // NOTE: The order of the entries when being added to the entries array determines their position around the center of
         // the chart.
         for (int i = 0; i < cnt; i++) {
-            float val1 = (float) (Math.random() * mul) + min;
+            mLabels.add(chartDataArrayList_lastW.get(i).getCdCategory());
+
+//            float val1 = (float) (Math.random() * mul) + min;
+            float val1 = Float.parseFloat(chartDataArrayList_lastW.get(i).getCdRatio());
             entries1.add(new RadarEntry(val1));
 
-            float val2 = (float) (Math.random() * mul) + min;
+//            float val2 = (float) (Math.random() * mul) + min;
+            float val2 = Float.parseFloat(chartDataArrayList_thisW.get(i).getCdRatio());
             entries2.add(new RadarEntry(val2));
         }
+
+        chart.getXAxis().setValueFormatter(new ValueFormatter() {
+            @Override
+            public String getFormattedValue(float value) {
+                return mLabels.get((int) value % mLabels.size());
+            }
+        });
 
         RadarDataSet set1 = new RadarDataSet(entries1, "上周");
         set1.setColor(Color.rgb(103, 110, 129));

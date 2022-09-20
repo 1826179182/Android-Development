@@ -54,38 +54,45 @@ public class Weekly extends Fragment {
         // load HalfPieChart
         halfPieChart = new HalfPieChartBase(mContext, getActivity(), view.findViewById(R.id.weekly_chart_halfpie));
 
-        // generate data
-        mPieData mHalfPieData = new mPieData();
-        mHalfPieData.setPieChartDataLabel("今日活动项目");
-        mHalfPieData.addEntry(12.1f, "读书");
-        mHalfPieData.addEntry(24.1f, "玩手机");
-        mHalfPieData.addEntry(35.9f, "写字");
-        mHalfPieData.addEntry(27.9f, "练琴");
 
-        // set data and show
-        halfPieChart.setHalfPieData(mHalfPieData.generateData());
-        halfPieChart.init();
+        // test data
+        String[] labels = new String[]{"读书", "写字", "练琴", "玩手机", "打瞌睡", "啃手指"};
+        String[] ratio = new String[]{"0.1", "0.2", "0.1", "0.1", "0.1", "0.4"};
+        String[] length = new String[]{"1.4", "0.9", "0.6", "2.2", "0.5", "0.1"};
+        String[] ratio2 = new String[]{"32", "46", "77", "22", "38", "64"};
+        int[] imgIds = new int[]{R.mipmap.reading, R.mipmap.swim, R.mipmap.do_homework,
+                R.mipmap.guitar, R.mipmap.badminton, R.mipmap.food_jt};
 
 
         chartDataArrayList = new ArrayList<>();
-        ChartData chartData = new ChartData();
-        chartData.setCategory("读书");
-        chartData.setImgResId(R.mipmap.reading);
-        chartData.setCdRatio("0.21");
-        chartData.setCdLength("1.4");
-        chartDataArrayList.add(chartData);
+        for(int i=0;i<6;i++){
+            ChartData chartData = new ChartData();
+            chartData.setCategory(labels[i]);
+            chartData.setImgResId(imgIds[i]);
+            chartData.setCdRatio(ratio[i]);
+            chartData.setCdLength(length[i]);
+            chartDataArrayList.add(chartData);
+        }
 
-        ChartData chartData2 = new ChartData();
-        chartData2.setCategory("写字");
-        chartData2.setImgResId(R.mipmap.basketball);
-        chartData2.setCdRatio("0.41");
-        chartData2.setCdLength("2.5");
-        chartDataArrayList.add(chartData2);
+        // set data and show
+        halfPieChart.init();
+        halfPieChart.updateData(chartDataArrayList);
 
+
+        ArrayList<ChartData> chartDataArrayList2 = new ArrayList<>();
+        for(int i=0;i<6;i++){
+            ChartData chartData = new ChartData();
+            chartData.setCategory(labels[i]);
+            chartData.setImgResId(imgIds[i]);
+            chartData.setCdRatio(ratio2[i]);
+            chartData.setCdLength(length[i]);
+            chartDataArrayList2.add(chartData);
+        }
 
         //radarchart
-        radarChart = new RadarChartBase(mContext, getActivity(), view.findViewById(R.id.weekly_chart_radar), new String[]{"读书", "玩手机", "写字", "练琴", "睡觉"});
+        radarChart = new RadarChartBase(mContext, getActivity(), view.findViewById(R.id.weekly_chart_radar));
         radarChart.init();
+        radarChart.updateData(chartDataArrayList,chartDataArrayList2);
 
         RefreshLayout refreshLayout = view.findViewById(R.id.smartRefreshLayout_w);
         refreshLayout.setRefreshHeader(new ClassicsHeader(mContext));

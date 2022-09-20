@@ -8,11 +8,15 @@ import android.text.style.ForegroundColorSpan;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.StyleSpan;
 
+import com.example.colearn.data.ChartData;
+import com.example.colearn.data.mPieData;
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.utils.ColorTemplate;
+
+import java.util.ArrayList;
 
 public class PieChartBase {
     private Context context;
@@ -57,7 +61,16 @@ public class PieChartBase {
         chart.setData(pieData);
     }
 
-    public void setPieData(PieData pieData) {
+    public void updateData(ArrayList<ChartData> chartDataArrayList){
+        mPieData mPieData = new mPieData();
+        for (ChartData chardata: chartDataArrayList) {
+            mPieData.addEntry(Float.parseFloat(chardata.getCdRatio()),chardata.getCdCategory());
+        }
+        setPieData(mPieData.generateData());
+        chart.notifyDataSetChanged();
+    }
+
+    private void setPieData(PieData pieData) {
         this.pieData = pieData;
     }
 
