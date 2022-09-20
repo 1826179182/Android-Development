@@ -159,6 +159,7 @@ public class CubicLineChartBase {
             // set data
             chart.setData(data);
         }
+        chart.invalidate();
     }
 
     public void setPinched() {

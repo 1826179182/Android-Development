@@ -68,6 +68,7 @@ public class PieChartBase {
         }
         setPieData(mPieData.generateData());
         chart.notifyDataSetChanged();
+        chart.invalidate();
     }
 
     private void setPieData(PieData pieData) {

@@ -89,6 +89,7 @@ public class HalfPieChartBase {
         setHalfPieData(mPieData.generateData());
         chart.notifyDataSetChanged();
         chart.setData(this.halfPieData);
+        chart.invalidate();
     }
 
     private void setHalfPieData(PieData halfPieData) {

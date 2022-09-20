@@ -7,16 +7,16 @@ public class ChartData {
     private String cdLength;
     private String cdRatio;
 
-
-    public ChartData() {}
+    public ChartData() {
+    }
 
     public void setImgResId(int resId) {
         cdImgResId = resId;
     }
 
 
-    public void setCategory(String category){
-        cdCategory=category;
+    public void setCategory(String category) {
+        cdCategory = category;
     }
 
 
@@ -32,7 +32,7 @@ public class ChartData {
         return cdImgResId;
     }
 
-    public String getCdCategory(){
+    public String getCdCategory() {
         return cdCategory;
     }
 
