@@ -3,14 +3,11 @@ package com.example.colearn.custom;
 import com.github.mikephil.charting.charts.BarLineChartBase;
 import com.github.mikephil.charting.formatter.ValueFormatter;
 
-/**
- * Created by philipp on 02/06/16.
- */
 public class DayAxisValueFormatter extends ValueFormatter
 {
 
     private final String[] mMonths = new String[]{
-            "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+            "1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"
     };
 
     private final BarLineChartBase<?> chart;
@@ -29,41 +26,12 @@ public class DayAxisValueFormatter extends ValueFormatter
         int month = determineMonth(days);
         String monthName = mMonths[month % mMonths.length];
         String yearName = String.valueOf(year);
+        int dayOfMonth = determineDayOfMonth(days, month + 12 * (year - 2016));
 
         if (chart.getVisibleXRange() > 30 * 6) {
-
-            return monthName + "\n" + yearName;
+            return monthName + " " + dayOfMonth;
         } else {
-
-            int dayOfMonth = determineDayOfMonth(days, month + 12 * (year - 2016));
-
-            String appendix = "th";
-
-            switch (dayOfMonth) {
-                case 1:
-                    appendix = "st";
-                    break;
-                case 2:
-                    appendix = "nd";
-                    break;
-                case 3:
-                    appendix = "rd";
-                    break;
-                case 21:
-                    appendix = "st";
-                    break;
-                case 22:
-                    appendix = "nd";
-                    break;
-                case 23:
-                    appendix = "rd";
-                    break;
-                case 31:
-                    appendix = "st";
-                    break;
-            }
-
-            return dayOfMonth == 0 ? "" : dayOfMonth + appendix + "\r\t" + monthName;
+            return dayOfMonth == 0 ? "" : dayOfMonth +  "日";
         }
     }
 

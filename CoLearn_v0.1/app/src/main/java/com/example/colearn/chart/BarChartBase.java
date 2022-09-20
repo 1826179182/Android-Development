@@ -11,6 +11,7 @@ import androidx.core.content.ContextCompat;
 import com.example.colearn.R;
 import com.example.colearn.custom.DayAxisValueFormatter;
 import com.example.colearn.custom.MyValueFormatter;
+import com.example.colearn.entity.MyBarChart;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
@@ -30,12 +31,12 @@ public class BarChartBase implements SeekBar.OnSeekBarChangeListener {
 
     private Context context;
     private Activity activity;
-    private BarChart chart;
+    private MyBarChart chart;
     private BarData barData;
     private String[] mLabels;
     private Typeface tfLight;
 
-    public BarChartBase(Context context, Activity activity, BarChart chart, String[] labels) {
+    public BarChartBase(Context context, Activity activity, MyBarChart chart, String[] labels) {
         this.context = context;
         this.activity = activity;
         this.chart = chart;
@@ -45,8 +46,8 @@ public class BarChartBase implements SeekBar.OnSeekBarChangeListener {
     }
 
     public void init() {
-        chart.getDescription().setEnabled(false);
 
+        chart.getDescription().setEnabled(false);
         chart.setDrawGridBackground(false);
         chart.setDrawBarShadow(false);
         chart.setBackgroundColor(Color.rgb(255, 255, 255));
@@ -80,14 +81,14 @@ public class BarChartBase implements SeekBar.OnSeekBarChangeListener {
         rightAxis.setAxisMinimum(0f); // this replaces setStartAtZero(true)
 
         Legend l = chart.getLegend();
-        l.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
-        l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
+        l.setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
+        l.setHorizontalAlignment(Legend.LegendHorizontalAlignment.CENTER);
         l.setOrientation(Legend.LegendOrientation.HORIZONTAL);
         l.setDrawInside(false);
         l.setForm(Legend.LegendForm.SQUARE);
         l.setFormSize(9f);
-        l.setTextSize(11f);
-        l.setXEntrySpace(4f);
+        l.setTextSize(12f);
+        l.setYEntrySpace(10f);
 
         generateBarData(1, 2000, 5);
 //        chart.setData(barData);

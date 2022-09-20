@@ -45,7 +45,6 @@ public class Chart extends Fragment implements OnTabSelectListener {
     private ArrayList<Fragment> mFragments;
     private ArrayList<String> mTitles;
     private MyViewPager2Adapter mAdapter;
-    private ChartBinding binding;
     private TabLayout mTabLayout;
     private XUILinearLayout monthLayout;
     private TextView chartMonth;
@@ -180,7 +179,7 @@ public class Chart extends Fragment implements OnTabSelectListener {
                         startMonth = Calendar.getInstance();
                         endMonth = Calendar.getInstance();
                         selectedDate = Calendar.getInstance();
-                        //正确设置方式 原因：注意事项有说明
+
                         startMonth.set(2010, 0, 1);
                         endMonth.set(2099, 12, 31);
 
@@ -193,6 +192,7 @@ public class Chart extends Fragment implements OnTabSelectListener {
                                 .setType(new boolean[]{true, true, false, false, false, false})// 默认全部显示
                                 .setCancelText("取消")
                                 .setSubmitText("确认")
+
                                 .setContentTextSize(17)
                                 .setItemVisibleCount(5)
                                 .setTitleSize(20)//标题文字大小
@@ -205,6 +205,8 @@ public class Chart extends Fragment implements OnTabSelectListener {
                                 .isCenterLabel(false) //是否只显示中间选中项的label文字，false则每项item全部都带有label。
                                 .isDialog(true)//是否显示为对话框样式
                                 .build();
+                        pvTime.findViewById(com.bigkoo.pickerview.R.id.rv_topbar).setBackgroundResource(R.drawable.round_white_top);
+                        pvTime.findViewById(com.bigkoo.pickerview.R.id.timepicker).setBackgroundResource(R.drawable.round_white_bottom);
                         pvTime.show();
                     }
                 });
