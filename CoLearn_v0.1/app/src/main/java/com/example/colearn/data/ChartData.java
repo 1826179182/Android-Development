@@ -19,7 +19,6 @@ public class ChartData {
         cdCategory = category;
     }
 
-
     public void setCdLength(String cdLength) {
         this.cdLength = cdLength;
     }

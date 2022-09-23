@@ -8,8 +8,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.alibaba.fastjson.JSONObject;
-import com.example.colearn.pojo.User;
 import com.example.colearn.entity.TabEntity;
+import com.example.colearn.pojo.User;
 import com.example.colearn.utils.SPUtils;
 import com.example.colearn.utils.ViewFindUtils;
 import com.flyco.tablayout.CommonTabLayout;
@@ -34,13 +34,24 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<Fragment> mFragments = new ArrayList<>();
     private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
     private View mDecorView;
+    private static String videoURL = "";
     private CommonTabLayout mTabLayout;
     private String[] mTitles = {"主页", "图表", "我的"};
+
+    public static void updateUrl(String url) {
+        videoURL = url;
+    }
+
+    public static String getVideoURL(){
+        return videoURL;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+
+
 //播放器配置，注意：此为全局配置，按需开启
         VideoViewManager.setConfig(VideoViewConfig.newBuilder()
                 .setLogEnabled(xyz.doikki.videoplayer.BuildConfig.DEBUG) //调试的时候请打开日志，方便排错

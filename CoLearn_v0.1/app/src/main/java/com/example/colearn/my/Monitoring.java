@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.colearn.MainActivity;
 import com.example.colearn.R;
 import com.example.colearn.chart.Daily;
 import com.example.colearn.chart.Weekly;
@@ -33,6 +34,8 @@ public class Monitoring extends AppCompatActivity implements OnTabSelectListener
     private String[] mTitles = {"行为统计", "图表分析"};
     private MyPagerAdapter mAdapter;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +48,7 @@ public class Monitoring extends AppCompatActivity implements OnTabSelectListener
                 .init();
 
 
-        binding.player.setUrl("rtmp://192.168.1.116:1935/video"); //设置视频地址
+        binding.player.setUrl(MainActivity.getVideoURL()); //设置视频地址
         binding.player.setPlayerFactory(IjkPlayerFactory.create());
 
         StandardVideoController controller = new StandardVideoController(this);

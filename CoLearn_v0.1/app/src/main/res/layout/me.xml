@@ -290,6 +290,7 @@
                     android:orientation="vertical">
 
                     <com.xuexiang.xui.widget.layout.XUILinearLayout
+                        android:id="@+id/me_version"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginVertical="3dp"

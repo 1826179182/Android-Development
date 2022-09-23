@@ -37,10 +37,14 @@
         android:theme="@style/Theme.CoLearn"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".my.DevMode"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".my.Monitoring"
             android:configChanges="orientation|screenSize|keyboardHidden"
-            android:screenOrientation="portrait"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".home.ChangeWallpaper"
             android:exported="false" />
@@ -108,7 +112,8 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

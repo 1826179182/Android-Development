@@ -2,20 +2,24 @@ package com.example.colearn;
 
 import static com.luck.picture.lib.thread.PictureThreadUtils.runOnUiThread;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
 import com.example.colearn.databinding.MeBinding;
 import com.example.colearn.my.DataSynchronize;
+import com.example.colearn.my.DevMode;
 import com.example.colearn.my.HabitManager;
 import com.example.colearn.my.LoginOrRegister;
 import com.example.colearn.my.PersonalInformation;
@@ -27,12 +31,13 @@ import com.xuexiang.xui.widget.toast.XToast;
 
 public class Me extends androidx.fragment.app.Fragment implements View.OnClickListener {
 
+    private final String TAG = "Me";
     private static MeBinding binding;
     public static Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            if(User.getUser()!=null){
+            if (User.getUser() != null) {
                 binding.loginStatue.setVisibility(View.GONE);
                 binding.dataSynchronize.setVisibility(View.VISIBLE);
                 binding.exit.setVisibility(View.VISIBLE);
@@ -43,7 +48,8 @@ public class Me extends androidx.fragment.app.Fragment implements View.OnClickLi
             }
         }
     };
-
+    private int version_click_count;
+    private Toast version_click_toast;
 
     @Nullable
     @Override
@@ -58,8 +64,9 @@ public class Me extends androidx.fragment.app.Fragment implements View.OnClickLi
         init(view);
     }
 
+    @SuppressLint("HandlerLeak")
     private void init(View view) {
-        if(User.getUser()!=null){
+        if (User.getUser() != null) {
             binding.loginStatue.setVisibility(View.GONE);
             binding.dataSynchronize.setVisibility(View.VISIBLE);
             binding.exit.setVisibility(View.VISIBLE);
@@ -78,21 +85,27 @@ public class Me extends androidx.fragment.app.Fragment implements View.OnClickLi
         binding.privacy.setOnClickListener(this::onClick);
         binding.exit.setOnClickListener(this::onClick);
         binding.dataSynchronize.setOnClickListener(this::onClick);
+        binding.meVersion.setOnClickListener(this::onClick);
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
             }
         });
+
+        version_click_count = 0;
     }
+
 
     @Override
     public void onClick(View v) {
-        if (ButtonClickUtils.isFastClick()) { return; }
+        if (ButtonClickUtils.isFastClick()) {
+            return;
+        }
 
         Intent intent = new Intent();
         switch (v.getId()) {
             case R.id.avatar:
-                if (User.getUser()!=null) {
+                if (User.getUser() != null) {
                     intent.setClass(getContext(), PersonalInformation.class);
                 } else {
                     intent.setClass(getContext(), LoginOrRegister.class);
@@ -127,15 +140,31 @@ public class Me extends androidx.fragment.app.Fragment implements View.OnClickLi
                         .setBackgroundColor(R.color.checked_bg)
                         .setLayoutGravity(Gravity.TOP)
                         .show();
-                SPUtils.putString("user",null,getContext());
-                Message msg =new Message();
+                SPUtils.putString("user", null, getContext());
+                Message msg = new Message();
                 Me.mHandler.sendMessage(msg);
                 break;
             case R.id.data_synchronize:
                 intent.setClass(getContext(), DataSynchronize.class);
                 startActivity(intent);
                 break;
-
+            case R.id.me_version:
+                Log.d(TAG, "me_version clicked!");
+                version_click_count++;
+                if (version_click_toast != null) {
+                    version_click_toast.cancel();
+                }
+                if (version_click_count >= 3 && version_click_count <= 6) {
+                    version_click_toast = Toast.makeText(getContext(), "现在再执行" + String.valueOf(7 - version_click_count) + "次操作即可进入开发者模式", Toast.LENGTH_SHORT);
+                    version_click_toast.show();
+                } else if (version_click_count >= 7) {
+                    version_click_toast = Toast.makeText(getContext(), "你已进入开发者模式", Toast.LENGTH_SHORT);
+                    version_click_toast.show();
+                    version_click_count = 0;
+                    Intent intent1 = new Intent();
+                    intent1.setClass(getContext(), DevMode.class);
+                    startActivity(intent1);
+                }
         }
     }
 }
