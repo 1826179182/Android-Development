@@ -322,7 +322,7 @@
                             android:layout_gravity="center_vertical"
                             android:layout_marginRight="22dp"
                             android:gravity="center_vertical"
-                            android:text="1.0.0"
+                            android:text="0.1"
                             android:textColor="#B3B8C1"
                             android:textSize="13dp" />
                     </com.xuexiang.xui.widget.layout.XUILinearLayout>

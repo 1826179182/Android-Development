@@ -107,6 +107,9 @@ public class Daily extends Fragment {
             chartDataArrayList.add(chartData);
         }
 
+        pieChart.updateData(chartDataArrayList);
+        pieChart.init();
+
         recyclerView_pie = view.findViewById(R.id.dialy_pie_recycleview);
         recyclerView_pie.setLayoutManager(new LinearLayoutManager(mContext));
         recyclerView_pie.setAdapter(new ChartItemsAdapter(mContext, chartDataArrayList));
@@ -128,7 +131,7 @@ public class Daily extends Fragment {
 //                    e.printStackTrace();
 //                }
                 pieChart.updateData(chartDataArrayList);
-                pieChart.init();
+
                 refreshlayout.finishRefresh(1000/*,false*/);//传入false表示刷新失败
             }
         });
