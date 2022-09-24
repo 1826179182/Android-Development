@@ -19,7 +19,7 @@
             android:id="@+id/editTxt_videoURL"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:hint="rtmp://123.123.123.123/video" />
+            android:hint="rtmp://123.123.123.123:80/video" />
     </LinearLayout>
 
     <Button

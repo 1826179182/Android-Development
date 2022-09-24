@@ -115,6 +115,11 @@ public class Daily extends Fragment {
         recyclerView_pie.setAdapter(new ChartItemsAdapter(mContext, chartDataArrayList));
 
         //cubicChart
+        HotSeq = new ArrayList<>();
+        for (int j = 0; j < 24; j++) {
+            HotSeq.add((float) Math.random() * 2);
+        }
+
         cubicLineChart = new CubicLineChartBase(mContext, getActivity(), view.findViewById(R.id.daily_chart_cubicline));
         cubicLineChart.init();
         cubicLineChart.updateData(Daily.HotSeq);
