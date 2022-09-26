@@ -58,11 +58,13 @@ public class Login extends AppCompatActivity {
         binding.loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (ButtonClickUtils.isFastClick()) { return; }
+                if (ButtonClickUtils.isFastClick()) {
+                    return;
+                }
 
                 try {
                     loginRequest();
-                }  catch (Exception e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
@@ -117,7 +119,7 @@ public class Login extends AppCompatActivity {
                 }
                 if (body == null) return;
                 Log.d(TAG, "返回的数据：" + result);
-                if (response.code()==200){
+                if (response.code() == 200) {
                     JSONObject data = JSONObject.parseObject(result);
                     Log.d(TAG, "onResponse: login success! token:" + data.get("token"));
                     User.setUser(new User());
@@ -125,13 +127,15 @@ public class Login extends AppCompatActivity {
                     User.getUser().setId((String) data.get("id"));
                     User.getUser().setNickname((String) data.get("username"));
                     User.getUser().setGender((String) data.get("gender"));
-                    SPUtils.putString("token", (String) data.get("token"),Login.this);
-                    SPUtils.putString("user",new Gson().toJson(User.getUser()),Login.this);
-                    Message msg =new Message();
+                    SPUtils.putString("token", (String) data.get("token"), Login.this);
+                    Log.d(TAG, "token received:" + (String) data.get("token"));
+                    Log.d(TAG, "token loaded:" + SPUtils.getString("token", null, Login.this));
+                    SPUtils.putString("user", new Gson().toJson(User.getUser()), Login.this);
+                    Message msg = new Message();
                     Me.mHandler.sendMessage(msg);
                     finish();
                     LoginOrRegister.loginOrRegister.finish();
-                }else {
+                } else {
                     CookieBar.builder(Login.this)
                             .setTitle("登录失败")
                             .setMessage(response.message())

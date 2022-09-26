@@ -117,11 +117,6 @@
                     android:text="昵称"
                     android:textSize="13dp" />
 
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="4" />
-
                 <TextView
                     android:id="@+id/nickname"
                     android:layout_width="0dp"
@@ -134,11 +129,11 @@
                     android:textSize="12dp" />
 
                 <ImageView
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginRight="20dp"
-                    android:src="@mipmap/right"
+                    android:src="@drawable/ic_baseline_chevron_right_15"
                     app:riv_corner_radius="23dp" />
             </com.xuexiang.xui.widget.layout.XUILinearLayout>
         </com.xuexiang.xui.widget.layout.XUILinearLayout>
@@ -198,11 +193,11 @@
                     android:textSize="12dp" />
 
                 <ImageView
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginRight="20dp"
-                    android:src="@mipmap/right"
+                    android:src="@drawable/ic_baseline_chevron_right_15"
                     app:riv_corner_radius="23dp" />
             </com.xuexiang.xui.widget.layout.XUILinearLayout>
         </com.xuexiang.xui.widget.layout.XUILinearLayout>

@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -21,6 +22,7 @@ import com.example.colearn.databinding.ActivityPersonalInformationBinding;
 import com.example.colearn.pojo.User;
 import com.example.colearn.utils.GlideEngine;
 import com.example.colearn.utils.OkHttpUtil;
+import com.example.colearn.utils.SPUtils;
 import com.gyf.immersionbar.ImmersionBar;
 import com.hjq.bar.OnTitleBarListener;
 import com.hjq.bar.TitleBar;
@@ -50,8 +52,17 @@ public class PersonalInformation extends AppCompatActivity implements View.OnCli
 
     private String[] genderList = {"男", "女"};
     private int constellationSelectOption = 0;
-    private ActivityPersonalInformationBinding binding;
+    private static ActivityPersonalInformationBinding binding;
     private String imageUrl;
+
+    public static void updateSelfInfo() {
+        binding.gender.setText(SPUtils.getString("gender", null, getContext()));
+        binding.nickname.setText(SPUtils.getString("nickname", null, getContext()));
+    }
+
+    public static String getNickname(){
+        return binding.nickname.getText().toString();
+    }
 
     //权限请求
     private RequestOptions requestOptions = RequestOptions.circleCropTransform()
@@ -84,10 +95,25 @@ public class PersonalInformation extends AppCompatActivity implements View.OnCli
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                if(response.code() == 200){
-                    User.getUser().setGender(changeResult);
-                }else {
-                    
+                Log.d(TAG, String.valueOf(response.code()));
+                if (response.code() == 200) {
+                    switch (path) {
+                        case "gender":
+                            User.getUser().setGender(changeResult);
+                            SPUtils.putString("gender", changeResult, getContext());
+                            break;
+                        case "nickname":
+                            User.getUser().setNickname(changeResult);
+                            SPUtils.putString("nickname", changeResult, getContext());
+                            break;
+                        default:
+                            break;
+                    }
+                    Toast.makeText(getContext(), "修改成功", Toast.LENGTH_SHORT).show();
+                    PersonalInformation.updateSelfInfo();
+                    return;
+                } else {
+                    Toast.makeText(getContext(), "失败", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -120,7 +146,7 @@ public class PersonalInformation extends AppCompatActivity implements View.OnCli
                 finish();
             }
         });
-        if (User.getUser() != null){
+        if (User.getUser() != null) {
             User user = User.getUser();
             binding.nickname.setText(user.getNickname());
             binding.gender.setText(user.getGender());
@@ -129,6 +155,8 @@ public class PersonalInformation extends AppCompatActivity implements View.OnCli
         binding.changeAvatar.setOnClickListener(this::onClick);
         binding.changeGender.setOnClickListener(this::onClick);
         binding.changeNickname.setOnClickListener(this::onClick);
+
+        updateSelfInfo();
     }
 
     @Override

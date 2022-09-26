@@ -2,6 +2,8 @@ package com.example.colearn.utils;
 
 import static com.xuexiang.xui.XUI.getContext;
 
+import android.util.Log;
+
 import java.io.IOException;
 
 import okhttp3.Interceptor;
@@ -20,6 +22,7 @@ public class TokenInterceptor implements Interceptor {
     public Response intercept(Chain chain) throws IOException {
 
         token = SPUtils.getString("token", null, getContext());
+        Log.d("TokenIntercepter", "token:" + token);
 
         Request request;
         if (token == null) {

@@ -1,16 +1,19 @@
 package com.example.colearn.my;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.colearn.R;
 import com.example.colearn.databinding.ActivityChangeNicknameBinding;
+import com.example.colearn.pojo.User;
 import com.gyf.immersionbar.ImmersionBar;
 import com.hjq.bar.OnTitleBarListener;
 import com.hjq.bar.TitleBar;
+
+import java.util.Objects;
 
 public class ChangeNickname extends AppCompatActivity {
 
@@ -37,12 +40,12 @@ public class ChangeNickname extends AppCompatActivity {
                 finish();
             }
         });
-        binding.confirmBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                PersonalInformation.changeIngo(binding.newNickname.getText().toString(), "nickname");
-            }
+        binding.confirmBtn.setOnClickListener(v -> {
+            Log.d("ChangeNickName", "enter clicked");
+            PersonalInformation.changeIngo(Objects.requireNonNull(binding.newNickname.getText()).toString(), "nickname");
+            this.finish();
         });
+        binding.newNickname.setText(PersonalInformation.getNickname());
     }
 
 }
