@@ -54,8 +54,8 @@ public class DataSynchronize extends AppCompatActivity implements View.OnClickLi
         getList("getTodoList");
         getList("getCheckInHistory");
         getList("getPlantsList");
-        getList("getDailyActivityDetails");
-        getList("getDailyHotSeq");
+//        getList("getDailyActivityDetails");
+//        getList("getDailyHotSeq");
     }
 
 
@@ -181,16 +181,16 @@ public class DataSynchronize extends AppCompatActivity implements View.OnClickLi
                             SPUtils.putString("plants".concat(User.getUser() == null ? "" : User.getUser().getAccount())
                                     , JSON.toJSONString(result), getContext());
                             break;
-                        case "getDailyActivityDetails":
-                            Daily.setChartDataList(JSONObject.parseArray(result, ChartData.class));
-                            SPUtils.putString("DailyActivities".concat(User.getUser() == null ? "" : User.getUser().getAccount())
-                                    , JSON.toJSONString(result), getContext());
-                            break;
-                        case "getDailyHotSeq":
-                            Daily.setHotSeq(JSONObject.parseArray(result, Float.class));
-                            SPUtils.putString("DailyActivities".concat(User.getUser() == null ? "" : User.getUser().getAccount())
-                                    , JSON.toJSONString(result), getContext());
-                            break;
+//                        case "getDailyActivityDetails":
+//                            Daily.setChartDataList(JSONObject.parseArray(result, ChartData.class));
+//                            SPUtils.putString("DailyActivities".concat(User.getUser() == null ? "" : User.getUser().getAccount())
+//                                    , JSON.toJSONString(result), getContext());
+//                            break;
+//                        case "getDailyHotSeq":
+//                            Daily.setHotSeq(JSONObject.parseArray(result, Float.class));
+//                            SPUtils.putString("DailyActivities".concat(User.getUser() == null ? "" : User.getUser().getAccount())
+//                                    , JSON.toJSONString(result), getContext());
+//                            break;
                     }
                     CookieBar.builder(DataSynchronize.this)
                             .setTitle(response.message())

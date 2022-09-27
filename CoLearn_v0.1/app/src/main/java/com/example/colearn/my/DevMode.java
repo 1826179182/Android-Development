@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.colearn.MainActivity;
 import com.example.colearn.R;
 import com.example.colearn.databinding.ActivityDevModeBinding;
+import com.example.colearn.utils.SPUtils;
 import com.gyf.immersionbar.ImmersionBar;
 
 public class DevMode extends AppCompatActivity implements View.OnClickListener {
@@ -30,6 +31,7 @@ public class DevMode extends AppCompatActivity implements View.OnClickListener {
 
         binding.editTxtVideoURL.setOnClickListener(this::onClick);
         binding.btnDevApply.setOnClickListener(this::onClick);
+        init();
     }
 
     @Override
@@ -37,7 +39,13 @@ public class DevMode extends AppCompatActivity implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.btn_dev_apply:
                 MainActivity.updateUrl(binding.editTxtVideoURL.getText().toString());
+                SPUtils.putString("rtmpURL", binding.editTxtVideoURL.getText().toString(), this);
                 Toast.makeText(this, "已应用", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void init() {
+        binding.editTxtVideoURL.setText(SPUtils.getString("rtmpURL", null, this));
+        binding.devModeToken.setText(SPUtils.getString("token", null, this));
     }
 }

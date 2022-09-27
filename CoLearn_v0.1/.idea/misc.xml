@@ -16,7 +16,7 @@
         <entry key="..\:/Android/Project/Android-Development/CoLearn_v0.1/app/src/main/res/layout/activity_dev_mode.xml" value="0.25885416666666666" />
         <entry key="..\:/Android/Project/Android-Development/CoLearn_v0.1/app/src/main/res/layout/activity_edit_habit.xml" value="0.5588541666666667" />
         <entry key="..\:/Android/Project/Android-Development/CoLearn_v0.1/app/src/main/res/layout/activity_history_check_in.xml" value="0.5588541666666667" />
-        <entry key="..\:/Android/Project/Android-Development/CoLearn_v0.1/app/src/main/res/layout/activity_login.xml" value="0.5588541666666667" />
+        <entry key="..\:/Android/Project/Android-Development/CoLearn_v0.1/app/src/main/res/layout/activity_login.xml" value="0.25885416666666666" />
         <entry key="..\:/Android/Project/Android-Development/CoLearn_v0.1/app/src/main/res/layout/activity_personal_information.xml" value="0.5" />
         <entry key="..\:/Android/Project/Android-Development/CoLearn_v0.1/app/src/main/res/layout/activity_register.xml" value="0.5588541666666667" />
         <entry key="..\:/Android/Project/Android-Development/CoLearn_v0.1/app/src/main/res/layout/cardview.xml" value="0.5588541666666667" />
@@ -35,6 +35,7 @@
         <entry key="..\:/Android/Project/Android-Development/CoLearn_v0.1/app/src/main/res/layout/home.xml" value="0.4203125" />
         <entry key="..\:/Android/Project/Android-Development/CoLearn_v0.1/app/src/main/res/layout/me.xml" value="0.2548717948717949" />
         <entry key="..\:/Android/Project/Android-Development/CoLearn_v0.1/app/src/main/res/layout/monthly.xml" value="0.29635416666666664" />
+        <entry key="..\:/Android/Project/Android-Development/CoLearn_v0.1/app/src/main/res/layout/player_layout_prepare_view.xml" value="0.17395833333333333" />
         <entry key="..\:/Android/Project/Android-Development/CoLearn_v0.1/app/src/main/res/layout/radar_markerview.xml" value="0.4270833333333333" />
         <entry key="..\:/Android/Project/Android-Development/CoLearn_v0.1/app/src/main/res/layout/weekly.xml" value="0.29635416666666664" />
         <entry key="..\:/Android/Project/Android-Development/CoLearn_v0.1/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.302" />

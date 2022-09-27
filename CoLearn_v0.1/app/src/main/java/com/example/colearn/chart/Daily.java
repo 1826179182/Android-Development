@@ -130,14 +130,11 @@ public class Daily extends Fragment {
         refreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(RefreshLayout refreshlayout) {
-//                try {
-//                    updateData();
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
-                pieChart.updateData(chartDataArrayList);
-
-                refreshlayout.finishRefresh(1000/*,false*/);//传入false表示刷新失败
+                try {
+                    updateData(refreshlayout);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
         refreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
@@ -148,7 +145,7 @@ public class Daily extends Fragment {
         });
     }
 
-    private void updateData() throws Exception {
+    private void updateData(RefreshLayout refreshlayout) throws Exception {
         Log.d(TAG, "Daily: start updating data");
         //构建Retrofit实例
         Retrofit retrofit = new Retrofit.Builder()
@@ -161,8 +158,8 @@ public class Daily extends Fragment {
         //创建网络请求接口对象实例
         CoLearnRequestInterface request = retrofit.create(CoLearnRequestInterface.class);
         //对发送请求进行封装
-        Call<ResponseBody> call = request.getDailyAcitvities(User.getUser().getAccount()
-                , String.valueOf(Chart.getYear()), String.valueOf(Chart.getMonth()));
+        Call<ResponseBody> call = request.getDailyAcitvities("getDaily",User.getUser().getAccount()
+                , String.valueOf(Chart.getYear()), String.valueOf(Chart.getMonth()),String.valueOf(Chart.getDay()));
         //步骤7:发送网络请求(异步)
         call.enqueue(new Callback<ResponseBody>() {
             //请求成功时回调
@@ -179,17 +176,14 @@ public class Daily extends Fragment {
                 Log.d(TAG, "返回的数据：" + result);
                 if (response.code() == 200) {
                     Daily.setChartDataList(JSONObject.parseArray(result, ChartData.class));
+                    pieChart.updateData(Daily.chartDataArrayList);
                     SPUtils.putString("DailyActivities".concat(User.getUser() == null ? "" : User.getUser().getAccount())
                             , JSON.toJSONString(result), getContext());
                     Message msg = new Message();
                     Me.mHandler.sendMessage(msg);
+                    refreshlayout.finishRefresh(1000);
                 } else {
-                    CookieBar.builder(getActivity())
-                            .setTitle("登录失败")
-                            .setMessage(response.message())
-                            .setBackgroundColor(R.color.error)
-                            .setLayoutGravity(Gravity.TOP)
-                            .show();
+                    refreshlayout.finishRefresh(false);
                 }
             }
 
@@ -197,12 +191,7 @@ public class Daily extends Fragment {
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable throwable) {
                 Log.d(TAG, "post回调失败：" + throwable.getMessage() + "," + throwable.toString());
-                CookieBar.builder(getActivity())
-                        .setTitle("登录失败")
-                        .setMessage("网络错误！请稍后再试。")
-                        .setBackgroundColor(R.color.error)
-                        .setLayoutGravity(Gravity.TOP)
-                        .show();
+                refreshlayout.finishRefresh(false);
             }
         });
     }

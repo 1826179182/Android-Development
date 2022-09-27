@@ -55,18 +55,28 @@ public class Chart extends Fragment implements OnTabSelectListener {
     public static LocalDate selectDate;
     private static int Year = 2022;
     private static int Month = 8;
+    private static int Day = 1;
 
     public static void setYear(int year) {
         Year = year;
     }
 
-    public static void setMonth(int month){
-        Month=month;
+    public static void setMonth(int month) {
+        Month = month;
     }
 
-    public static int getYear(){return Year;}
+    public static int getYear() {
+        return Year;
+    }
 
-    public static int getMonth(){return Month;}
+    public static int getMonth() {
+        return Month;
+    }
+
+    public static int getDay(){
+        return Day;
+    }
+
 
     @Nullable
     @Override
@@ -133,6 +143,7 @@ public class Chart extends Fragment implements OnTabSelectListener {
                 Log.e(Oscillator.TAG, "baseCalendar::" + baseCalendar);
                 Year = year;
                 Month = month;
+                Day = localDate.getDayOfMonth();
                 switch (month) {
                     case 1:
                         chartMonth.setText("一月");

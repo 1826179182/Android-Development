@@ -14,6 +14,7 @@ import com.gyf.immersionbar.ImmersionBar;
 public class LoginOrRegister extends AppCompatActivity implements View.OnClickListener {
     private static ActivityLoginOrRegisterBinding binding;
     public static LoginOrRegister loginOrRegister;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +33,6 @@ public class LoginOrRegister extends AppCompatActivity implements View.OnClickLi
                 .init();
         binding.loginBtn.setOnClickListener(this::onClick);
         binding.registerBtn.setOnClickListener(this::onClick);
-
     }
 
     @Override

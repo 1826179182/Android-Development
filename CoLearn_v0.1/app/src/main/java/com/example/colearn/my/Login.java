@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -39,6 +40,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class Login extends AppCompatActivity {
     private final static String TAG = "Login";
     private static ActivityLoginBinding binding;
+    private boolean pwdVisibility = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,12 +63,25 @@ public class Login extends AppCompatActivity {
                 if (ButtonClickUtils.isFastClick()) {
                     return;
                 }
-
                 try {
                     loginRequest();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+            }
+        });
+        binding.visibilityTouch.setOnClickListener(v -> {
+            Log.d(TAG, "visibility img clicked");
+            if (pwdVisibility) {
+                Log.d(TAG, "visible->invisible");
+                binding.visibilityImg.setImageResource(R.mipmap.invisible);
+                binding.password.setInputType(EditorInfo.TYPE_CLASS_TEXT | EditorInfo.TYPE_TEXT_VARIATION_PASSWORD);
+                pwdVisibility = false;
+            } else {
+                Log.d(TAG, "invisible->visible");
+                binding.visibilityImg.setImageResource(R.mipmap.visible);
+                binding.password.setInputType(EditorInfo.TYPE_TEXT_VARIATION_NORMAL);
+                pwdVisibility = true;
             }
         });
     }
@@ -127,10 +142,14 @@ public class Login extends AppCompatActivity {
                     User.getUser().setId((String) data.get("id"));
                     User.getUser().setNickname((String) data.get("username"));
                     User.getUser().setGender((String) data.get("gender"));
+                    SPUtils.putString("user", new Gson().toJson(User.getUser()), Login.this);
                     SPUtils.putString("token", (String) data.get("token"), Login.this);
+                    SPUtils.putString("gender", (String) data.get("gender"), Login.this);
+                    SPUtils.putString("id", (String) data.get("id"), Login.this);
+                    SPUtils.putString("nickname", (String) data.get("username"), Login.this);
                     Log.d(TAG, "token received:" + (String) data.get("token"));
                     Log.d(TAG, "token loaded:" + SPUtils.getString("token", null, Login.this));
-                    SPUtils.putString("user", new Gson().toJson(User.getUser()), Login.this);
+                    Log.d(TAG, "current user=>" + SPUtils.getString("user", null, Login.this));
                     Message msg = new Message();
                     Me.mHandler.sendMessage(msg);
                     finish();

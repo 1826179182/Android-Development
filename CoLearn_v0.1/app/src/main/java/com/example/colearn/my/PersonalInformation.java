@@ -50,17 +50,19 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class PersonalInformation extends AppCompatActivity implements View.OnClickListener {
     private final static String TAG = "PersonalInformation";
 
-    private String[] genderList = {"男", "女"};
+    private final String[] genderList = {"男", "女"};
     private int constellationSelectOption = 0;
     private static ActivityPersonalInformationBinding binding;
     private String imageUrl;
 
-    public static void updateSelfInfo() {
+    public static void loadAndUpdateSelfInfo() {
+        Log.d(TAG, "gender:" + SPUtils.getString("gender", null, getContext()));
         binding.gender.setText(SPUtils.getString("gender", null, getContext()));
         binding.nickname.setText(SPUtils.getString("nickname", null, getContext()));
+        binding.id.setText(SPUtils.getString("id", null, getContext()));
     }
 
-    public static String getNickname(){
+    public static String getNickname() {
         return binding.nickname.getText().toString();
     }
 
@@ -110,7 +112,7 @@ public class PersonalInformation extends AppCompatActivity implements View.OnCli
                             break;
                     }
                     Toast.makeText(getContext(), "修改成功", Toast.LENGTH_SHORT).show();
-                    PersonalInformation.updateSelfInfo();
+                    PersonalInformation.loadAndUpdateSelfInfo();
                     return;
                 } else {
                     Toast.makeText(getContext(), "失败", Toast.LENGTH_SHORT).show();
@@ -151,12 +153,12 @@ public class PersonalInformation extends AppCompatActivity implements View.OnCli
             binding.nickname.setText(user.getNickname());
             binding.gender.setText(user.getGender());
             binding.id.setText(user.getId());
+        } else {
+           loadAndUpdateSelfInfo();
         }
         binding.changeAvatar.setOnClickListener(this::onClick);
         binding.changeGender.setOnClickListener(this::onClick);
         binding.changeNickname.setOnClickListener(this::onClick);
-
-        updateSelfInfo();
     }
 
     @Override

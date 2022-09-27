@@ -33,6 +33,8 @@ public class Me extends androidx.fragment.app.Fragment implements View.OnClickLi
 
     private final String TAG = "Me";
     private static MeBinding binding;
+
+    @SuppressLint("HandlerLeak")
     public static Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
