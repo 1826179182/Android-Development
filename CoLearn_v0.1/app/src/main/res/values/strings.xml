@@ -4,5 +4,5 @@
     <string name="check_in">日常打卡</string>
     <string name="planting">种植植物</string>
     <string name="camera">远程监控</string>
-    <string name="version">0.1.2</string>
+    <string name="version">0.1.3</string>
 </resources>

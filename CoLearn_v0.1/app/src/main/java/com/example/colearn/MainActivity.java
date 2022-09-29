@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         videoURL = url;
     }
 
-    public static String getVideoURL(){
+    public static String getVideoURL() {
         return videoURL;
     }
 
@@ -101,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
         mDecorView = getWindow().getDecorView();
         mTabLayout = ViewFindUtils.find(mDecorView, R.id.tl);
         mTabLayout.setTabData(mTabEntities, this, R.id.flContent, mFragments);
+        videoURL = SPUtils.getString("rtmpURL", null, this);
 
         mTabLayout.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
