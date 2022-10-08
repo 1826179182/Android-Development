@@ -27,7 +27,7 @@ import xyz.doikki.videoplayer.player.VideoViewManager;
 
 public class MainActivity extends AppCompatActivity {
     private final static String TAG = "MainActivity";
-    public static String baseUrl = "http://47.104.134.68:8989/";
+    public static String baseUrl = "";
 
 
     private Context mContext = this;
@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
         mTabLayout = ViewFindUtils.find(mDecorView, R.id.tl);
         mTabLayout.setTabData(mTabEntities, this, R.id.flContent, mFragments);
         videoURL = SPUtils.getString("rtmpURL", null, this);
-
+        baseUrl = SPUtils.getString("serverAddress", null, this);
         mTabLayout.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
             public void onTabSelect(int position) {
