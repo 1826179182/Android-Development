@@ -51,7 +51,7 @@ android {
             shrinkResources true
             zipAlignEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'),'proguard-rules.pro'
-            debuggable true
+            debuggable false
             signingConfig signingConfigs.release
         }
         debug {
@@ -127,7 +127,7 @@ dependencies {
     //解析器
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     //快速解析json
-    implementation 'com.alibaba:fastjson:1.2.76'
+    implementation 'com.alibaba:fastjson:1.2.83'
     //通过注解绑定控件
     implementation 'com.jakewharton:butterknife:10.2.3'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'

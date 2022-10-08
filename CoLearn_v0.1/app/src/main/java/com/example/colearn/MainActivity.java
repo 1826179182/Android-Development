@@ -27,7 +27,7 @@ import xyz.doikki.videoplayer.player.VideoViewManager;
 
 public class MainActivity extends AppCompatActivity {
     private final static String TAG = "MainActivity";
-    public final static String baseUrl = "http://47.104.134.68:8989/";
+    public static String baseUrl = "http://47.104.134.68:8989/";
 
 
     private Context mContext = this;
@@ -45,6 +45,15 @@ public class MainActivity extends AppCompatActivity {
     public static String getVideoURL() {
         return videoURL;
     }
+
+    public static String getServerAddress() {
+        return baseUrl;
+    }
+
+    public static void updateServerAddress(String address) {
+        baseUrl = address;
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

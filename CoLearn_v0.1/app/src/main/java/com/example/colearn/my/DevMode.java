@@ -30,6 +30,7 @@ public class DevMode extends AppCompatActivity implements View.OnClickListener {
                 .init();
 
         binding.editTxtVideoURL.setOnClickListener(this::onClick);
+        binding.editTxtServerURL.setOnClickListener(this::onClick);
         binding.btnDevApply.setOnClickListener(this::onClick);
         init();
     }
@@ -39,12 +40,15 @@ public class DevMode extends AppCompatActivity implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.btn_dev_apply:
                 MainActivity.updateUrl(binding.editTxtVideoURL.getText().toString());
+                MainActivity.updateServerAddress(binding.editTxtServerURL.getText().toString());
                 SPUtils.putString("rtmpURL", binding.editTxtVideoURL.getText().toString(), this);
+                SPUtils.putString("serverAddress", binding.editTxtServerURL.getText().toString(), this);
                 Toast.makeText(this, "已应用", Toast.LENGTH_SHORT).show();
         }
     }
 
     private void init() {
+        binding.editTxtServerURL.setText(SPUtils.getString("serverAddress", null, this));
         binding.editTxtVideoURL.setText(SPUtils.getString("rtmpURL", null, this));
         binding.devModeToken.setText(SPUtils.getString("token", null, this));
     }
